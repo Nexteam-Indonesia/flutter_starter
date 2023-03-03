@@ -11,7 +11,7 @@ abstract class ApiService {
   Dio dio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://beceran.nexteam.id/api/v1/',
+        baseUrl: 'https://cuaca-gempa-rest-api.vercel.app/',
         sendTimeout: const Duration(milliseconds: 1000 * 60 * 3),
         connectTimeout: const Duration(milliseconds: 1000 * 60 * 3),
         receiveTimeout: const Duration(milliseconds: 1000 * 60 * 3),
