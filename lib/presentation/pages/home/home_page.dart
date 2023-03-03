@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
                   Text(success.model.wilayah ?? '-'),
                   ElevatedButton(
                     onPressed: () {
-                      locator<AppRouter>().replace(const HomeRoute());
+                      locator<AppRouter>().replace(const FormRoute());
                     },
                     child: const Text('Form Validation'),
                   )

@@ -29,6 +29,12 @@ class _$AppRouter extends RootStackRouter {
         child: const HomePage(),
       );
     },
+    FormRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const FormPage(),
+      );
+    },
   };
 
   @override
@@ -40,6 +46,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           HomeRoute.name,
           path: '/home-page',
+        ),
+        RouteConfig(
+          FormRoute.name,
+          path: '/form-page',
         ),
       ];
 }
@@ -66,4 +76,16 @@ class HomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'HomeRoute';
+}
+
+/// generated route for
+/// [FormPage]
+class FormRoute extends PageRouteInfo<void> {
+  const FormRoute()
+      : super(
+          FormRoute.name,
+          path: '/form-page',
+        );
+
+  static const String name = 'FormRoute';
 }
