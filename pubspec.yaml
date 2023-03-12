@@ -2,7 +2,7 @@ name: next_starter
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.2 <3.0.0'
+  sdk: ">=2.19.2 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,16 +31,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.5
   auto_route: ^5.0.4
   bloc: ^8.1.1
   flutter_bloc: ^8.1.2
   cached_network_image: ^3.2.3
   dartz: ^0.10.1
-  dio: ^5.0.1
+  dio: ^5.0.2
   equatable: ^2.0.5
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
@@ -58,13 +57,19 @@ dependencies:
   adaptive_sizer:
     git:
       url: https://github.com/kishor98100/adaptive_sizer
-  image_picker: ^0.8.6+3
+  image_picker: ^0.8.7
   json_annotation: ^4.8.0
+  intl: ^0.18.0
+
+  # Local Database
+  # drift: ^2.5.0
+  # sqlite3_flutter_libs: ^0.5.0
+  # path_provider: ^2.0.0
+  # path: ^1.8.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -80,6 +85,9 @@ dev_dependencies:
   change_app_package_name: ^1.1.0
   icons_launcher: ^2.1.0
 
+  # Local Database
+  # drift_dev: ^2.5.2
+
 dependency_overrides:
   analyzer: ^5.2.0
   path: ^1.8.3
@@ -90,7 +98,6 @@ dependency_overrides:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -98,7 +105,7 @@ flutter:
 
 # To add assets to your application, add an assets section, like this:
 assets:
-- assets/images/
+  - assets/images/
 
 # An image asset can refer to one or more resolution-specific "variants", see
 # https://flutter.dev/assets-and-images/#resolution-aware
