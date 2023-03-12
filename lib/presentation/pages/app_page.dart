@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/pages/home/home_page.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
+
+import '../../injection.dart';
+import '../routes/app_router.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
@@ -24,7 +24,7 @@ class _AppPageState extends State<AppPage> {
       routeInformationParser: _appRouter.defaultRouteParser(),
       routerDelegate: _appRouter.delegate(
         navigatorObservers: () => [
-           MyObserver(),
+          MyObserver(),
         ],
       ),
     );

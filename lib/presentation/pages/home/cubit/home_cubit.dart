@@ -1,11 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:next_starter/data/contract/quake_contract.dart';
-import 'package:next_starter/data/models/quake/quake_model.dart';
 
-part 'home_state.dart';
+import '../../../../data/contract/quake_contract.dart';
+import '../../../../data/models/quake/quake_model.dart';
+
 part 'home_cubit.freezed.dart';
+part 'home_state.dart';
 
 @injectable
 class HomeCubit extends Cubit<HomeState> {

@@ -1,8 +1,9 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
-import 'package:next_starter/common/widgets/loading_indicator_widget.dart';
-import 'package:next_starter/common/widgets/snack_bar_widget.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 import 'package:flutter/material.dart';
+
+import '../../presentation/theme/theme.dart';
+import '../widgets/loading_indicator_widget.dart';
+import '../widgets/snack_bar_widget.dart';
 import 'num_extension.dart';
 
 extension BuildContextX on BuildContext {
@@ -62,7 +63,9 @@ extension BuildContextX on BuildContext {
           shape: RoundedRectangleBorder(
             borderRadius: 10.rounded,
           ),
-          backgroundColor: error ? ColorTheme.statusLightRed : ColorTheme.brandBackgroundLight,
+          backgroundColor: error
+              ? ColorTheme.statusLightRed
+              : ColorTheme.brandBackgroundLight,
           padding: EdgeInsets.zero,
           elevation: 0,
           duration: const Duration(seconds: 3),
@@ -105,7 +108,9 @@ extension BuildContextX on BuildContext {
           shape: RoundedRectangleBorder(
             borderRadius: 10.rounded,
           ),
-          backgroundColor: error ? ColorTheme.statusLightRed : ColorTheme.brandBackgroundLight,
+          backgroundColor: error
+              ? ColorTheme.statusLightRed
+              : ColorTheme.brandBackgroundLight,
           padding: EdgeInsets.zero,
           elevation: 0,
           duration: const Duration(seconds: 3),

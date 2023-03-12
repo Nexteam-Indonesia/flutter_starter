@@ -1,10 +1,10 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:next_starter/presentation/pages/form/form_page.dart';
-import 'package:next_starter/presentation/pages/home/home_page.dart';
-import 'package:next_starter/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
+
+import '../pages/form/form_page.dart';
+import '../pages/home/home_page.dart';
+import '../pages/splash_page.dart';
 
 part 'app_router.gr.dart';
 

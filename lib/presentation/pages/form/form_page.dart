@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/presentation/components/button/primary_button.dart';
-import 'package:next_starter/presentation/components/input/text_input.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../components/button/primary_button.dart';
+import '../../components/input/text_input.dart';
 
 class FormPage extends StatefulWidget {
   const FormPage({super.key});
