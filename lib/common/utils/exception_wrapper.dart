@@ -1,8 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:next_starter/data/models/validation_exception_model.dart';
 
 import '../../data/models/exception_model.dart';
+import '../../data/models/validation_exception_model.dart';
 
 class ExceptionWrapper<R extends Object> {
   Left<ExceptionModel, R> wrapError(e) {

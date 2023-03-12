@@ -1,7 +1,8 @@
-import 'package:next_starter/common/extensions/extensions.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
 import 'package:flutter/material.dart';
+
+import '../../common/extensions/extensions.dart';
+import '../../injection.dart';
+import '../routes/app_router.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

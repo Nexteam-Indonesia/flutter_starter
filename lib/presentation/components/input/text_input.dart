@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+
+import '../../theme/theme.dart';
 
 class TextInput extends StatefulWidget {
   const TextInput({
@@ -58,17 +59,20 @@ class _TextInputState extends State<TextInput> {
               if (widget.isRequiredText)
                 TextSpan(
                   text: " (Required)",
-                  style: CustomTextTheme.caption.copyWith(color: ColorTheme.warning[500]),
+                  style: CustomTextTheme.caption
+                      .copyWith(color: ColorTheme.warning[500]),
                 ),
             ],
           ),
-          style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[800]),
+          style: CustomTextTheme.paragraph1
+              .copyWith(color: ColorTheme.neutral[800]),
         ),
         const SizedBox(height: 4),
         ReactiveTextField(
           keyboardType: widget.textInputType,
           formControlName: widget.formControlName,
-          style: CustomTextTheme.paragraph2.copyWith(color: ColorTheme.neutral[800]),
+          style: CustomTextTheme.paragraph2
+              .copyWith(color: ColorTheme.neutral[800]),
           decoration: GenerateTheme.inputDecoration(widget.hint).copyWith(
             suffixIcon: widget.suffix,
             prefixIcon: widget.prefix,

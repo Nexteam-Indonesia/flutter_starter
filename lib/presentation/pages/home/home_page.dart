@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/pages/home/cubit/home_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
+
+import '../../../injection.dart';
+import '../../routes/app_router.dart';
+import 'cubit/home_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

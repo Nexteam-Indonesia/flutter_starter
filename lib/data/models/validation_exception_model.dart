@@ -1,4 +1,4 @@
-import 'package:next_starter/data/models/exception_model.dart';
+import 'exception_model.dart';
 
 class ValidationExceptionModel extends ExceptionModel {
   ValidationExceptionModel(this.message, this.payload)

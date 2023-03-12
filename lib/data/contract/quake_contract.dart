@@ -1,6 +1,5 @@
-import 'package:next_starter/data/models/quake/quake_model.dart';
-
 import '../../common/typedefs/typedefs.dart';
+import '../models/quake/quake_model.dart';
 
 abstract class QuakeContract {
   EitherResponse<QuakeModel> getLatestQuake();
