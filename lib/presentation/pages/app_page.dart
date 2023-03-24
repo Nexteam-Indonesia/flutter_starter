@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:adaptive_sizer/adaptive_sizer.dart';
 
 import '../../injection.dart';
 import '../routes/app_router.dart';
@@ -16,16 +17,18 @@ class _AppPageState extends State<AppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Flutter Starter',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      routeInformationParser: _appRouter.defaultRouteParser(),
-      routerDelegate: _appRouter.delegate(
-        navigatorObservers: () => [
-          MyObserver(),
-        ],
+    return AdaptiveSizer(
+      builder: (context) => MaterialApp.router(
+        title: 'Flutter Starter',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate(
+          navigatorObservers: () => [
+            MyObserver(),
+          ],
+        ),
       ),
     );
   }
