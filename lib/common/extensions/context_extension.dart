@@ -19,25 +19,29 @@ extension BuildContextX on BuildContext {
 
   double get height => MediaQuery.of(this).size.height;
 
+  void hideLoading() {
+    if (Navigator.of(this).canPop()) {
+      Navigator.of(this).pop();
+    }
+  }
+
   void showLoadingIndicator({
     bool barrierDismissible = false,
     Color barrierColor = Colors.black54,
     String message = "Please wait",
   }) {
-    ScaffoldMessenger.of(this).showSnackBar(
-      SnackBar(
-        elevation: 1,
-        content: WillPopScope(
-          onWillPop: () async {
-            return false;
-          },
-          child: AlertDialog(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            content: LoadingIndicatorWidget(
-              color: Colors.white,
-              semanticsLabel: message,
-            ),
+    showDialog(
+      context: this,
+      builder: (context) => WillPopScope(
+        onWillPop: () async {
+          return false;
+        },
+        child: AlertDialog(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          content: LoadingIndicatorWidget(
+            color: Colors.white,
+            semanticsLabel: message,
           ),
         ),
       ),
@@ -63,9 +67,7 @@ extension BuildContextX on BuildContext {
           shape: RoundedRectangleBorder(
             borderRadius: 10.rounded,
           ),
-          backgroundColor: error
-              ? ColorTheme.statusLightRed
-              : ColorTheme.brandBackgroundLight,
+          backgroundColor: error ? ColorTheme.statusLightRed : ColorTheme.brandBackgroundLight,
           padding: EdgeInsets.zero,
           elevation: 0,
           duration: const Duration(seconds: 3),
@@ -108,9 +110,7 @@ extension BuildContextX on BuildContext {
           shape: RoundedRectangleBorder(
             borderRadius: 10.rounded,
           ),
-          backgroundColor: error
-              ? ColorTheme.statusLightRed
-              : ColorTheme.brandBackgroundLight,
+          backgroundColor: error ? ColorTheme.statusLightRed : ColorTheme.brandBackgroundLight,
           padding: EdgeInsets.zero,
           elevation: 0,
           duration: const Duration(seconds: 3),
