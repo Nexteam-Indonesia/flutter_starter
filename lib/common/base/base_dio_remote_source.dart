@@ -58,7 +58,21 @@ class BaseDioRemoteSource {
         throw const ApiException.serverException(message: 'UnExpected Error Occurred!!!');
       }
     } on DioError catch (e) {
-      throw e.toApiException;
+      var err = e.toApiException;
+      // TODO: if auto redirect to login page
+      // await err.maybeWhen(
+      //   orElse: () {},
+      //   unAuthorized: (message) async {
+      //     logger.d(message);
+      //     if (message != "Password atau No HP salah!") {
+      //       await _session.deleteToken();
+      //       await _session.deleteUserData();
+      //       locator<AppRouter>().pushAndPopUntil(const LoginRoute(), predicate: (r) => false);
+      //       return;
+      //     }
+      //   },
+      // );
+      throw err;
     } catch (e) {
       throw const ApiException.serverException(message: 'UnExpected Error Occurred!!!');
     }
