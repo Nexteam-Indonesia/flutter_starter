@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
+import 'package:next_starter/common/logging/logger.dart';
 
 import '../../data/datasources/session/session_source.dart';
 import '../errors/api_exception.dart';
@@ -41,21 +41,20 @@ class BaseDioRemoteSource {
       }
       final response = await request(_dio);
 
-      Logger().i('response.statusCode: ${response.data['status']}');
       if (response.statusCode == 401) {
         await _session.deleteToken();
       }
       if (response.statusCode! >= 200 || response.statusCode! < 300) {
-        if (response.data['status'] == "success") {
-          // print('response.data: ${response.data['data']['data']}');
-          return onResponse(response.data);
-        } else {
-          throw ApiException.database(
-            message: response.data['message'],
-          );
-        }
+        // if (response.data['status'] == "success") {
+        // print('response.data: ${response.data['data']['data']}');
+        return onResponse(response.data);
+        // } else {
+        //   throw ApiException.database(
+        //     message: response.data['message'],
+        //   );
+        // }
       } else {
-        throw const ApiException.serverException(message: 'UnExpected Error Occurred!!!');
+        throw const ApiException.serverException(message: 'UnExpected Error in status code!!!');
       }
     } on DioError catch (e) {
       var err = e.toApiException;
@@ -74,7 +73,8 @@ class BaseDioRemoteSource {
       // );
       throw err;
     } catch (e) {
-      throw const ApiException.serverException(message: 'UnExpected Error Occurred!!!');
+      logger.e(e);
+      throw const ApiException.serverException(message: 'UnExpected Error Occurred in dio!!!');
     }
   }
 }

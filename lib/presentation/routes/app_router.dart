@@ -1,10 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:injectable/injectable.dart';
 
-import '../pages/form/form_page.dart';
-import '../pages/home/home_page.dart';
-import '../pages/post/post_page.dart';
-import '../pages/splash_page.dart';
+import '../pages/pages.dart';
 
 part 'app_router.gr.dart';
 

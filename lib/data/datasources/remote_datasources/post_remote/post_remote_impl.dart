@@ -14,9 +14,9 @@ class PostRemoteImpl extends BaseDioRemoteSource implements PostRemote {
     return networkRequest(
       request: (dio) => dio.get(
         ApiPath.posts,
-        queryParameters: {'_start': '$startIn', '_limit': '5'},
+        queryParameters: {'_start': startIn, '_limit': 5},
       ),
-      onResponse: (json) => json
+      onResponse: (json) => (json as List)
           .map<PostModel>(
             (post) => PostModel.fromJson(post),
           )

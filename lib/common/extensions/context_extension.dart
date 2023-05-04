@@ -1,6 +1,8 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
+import 'package:next_starter/injection.dart';
 
+import '../../presentation/routes/app_router.dart';
 import '../../presentation/theme/theme.dart';
 import '../widgets/loading_indicator_widget.dart';
 import '../widgets/snack_bar_widget.dart';
@@ -8,6 +10,8 @@ import 'num_extension.dart';
 
 extension BuildContextX on BuildContext {
   ThemeData get theme => Theme.of(this);
+
+  AppRouter get route => locator<AppRouter>();
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 

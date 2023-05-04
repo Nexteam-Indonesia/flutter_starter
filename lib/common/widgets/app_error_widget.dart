@@ -1,5 +1,6 @@
 import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../../presentation/theme/theme.dart';
 
@@ -43,6 +44,6 @@ class AppErrorWidget extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ).wFull(context);
   }
 }

@@ -35,7 +35,7 @@ class PaginationBloc extends Bloc<PaginationEvent, PaginationState> {
     if (state.status == PaginationStatus.initial) {
       final posts = await repo.getPosts();
       posts.fold(
-        (l) => emit(state.copyWith(status: PaginationStatus.failure)),
+        (l) => emit(state.copyWith(status: PaginationStatus.failure, errorMessage: l.message)),
         (r) => emit(state.copyWith(
           status: PaginationStatus.success,
           posts: r,
@@ -45,7 +45,7 @@ class PaginationBloc extends Bloc<PaginationEvent, PaginationState> {
     }
     final post = await repo.getPosts(startIn: state.posts.length); // bisa diganti dengan page
     post.fold(
-      (l) => emit(state.copyWith(status: PaginationStatus.failure)),
+      (l) => emit(state.copyWith(status: PaginationStatus.failure, errorMessage: l.message)),
       (r) {
         emit(
           r.isEmpty

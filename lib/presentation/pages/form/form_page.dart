@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../components/base/base_scaffold.dart';
 import '../../components/button/primary_button.dart';
 import '../../components/input/text_input.dart';
 
@@ -20,7 +21,7 @@ class _FormPageState extends State<FormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScaffold(
       body: ReactiveFormBuilder(
         form: () => formGroup,
         builder: (context, formGroup, child) {

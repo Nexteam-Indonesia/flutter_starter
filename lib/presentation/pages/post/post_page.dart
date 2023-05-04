@@ -1,11 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:next_starter/common/widgets/app_error_widget.dart';
 import 'package:next_starter/common/widgets/loading_indicator_widget.dart';
 import 'package:next_starter/common/widgets/row_loading_widget.dart';
 
 import '../../../application/bloc/pagination_bloc.dart';
 import '../../../injection.dart';
+import '../../components/base/base_scaffold.dart';
 
 @RoutePage()
 class PostPage extends StatelessWidget {
@@ -57,12 +59,15 @@ class _PostViewState extends State<PostView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return BaseScaffold(
       body: BlocBuilder<PaginationBloc, PaginationState>(
         builder: (context, state) {
           switch (state.status) {
             case PaginationStatus.failure:
-              return const Center(child: Text('failed to fetch posts'));
+              return AppErrorWidget(
+                message: state.errorMessage,
+                onTap: () => context.read<PaginationBloc>().add(PaginationFetch()),
+              );
             case PaginationStatus.success:
               if (state.posts.isEmpty) {
                 return const Center(child: Text('no posts'));
