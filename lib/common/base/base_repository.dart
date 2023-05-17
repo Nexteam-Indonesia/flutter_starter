@@ -22,10 +22,15 @@ class BaseRepository {
   EitherResponse<T> handleNetworkCall<R, T>({
     required Future<R> call,
     required T Function(R data) onSuccess,
+    Future<void> Function(R data)? onSaveToLocal,
+    T? getOnLocal,
   }) async {
     if (await _networkInfo.isConnected) {
       try {
         final data = await call;
+        if (onSaveToLocal != null) {
+          await onSaveToLocal(data);
+        }
         return right(onSuccess(data));
       } on ApiException catch (e) {
         return left(e.when(
@@ -34,11 +39,13 @@ class BaseRepository {
               AppError.validationError(message: message, errors: errors),
           unAuthorized: (message) => AppError.unAuthorized(message: message),
           network: () => const AppError.noInternet(),
-          database: (message) =>
-              AppError.serverError(message: message, code: 200),
+          database: (message) => AppError.serverError(message: message, code: 200),
         ));
       }
     } else {
+      if (getOnLocal != null) {
+        return right(getOnLocal);
+      }
       return left(const AppError.noInternet());
     }
   }

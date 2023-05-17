@@ -1,8 +1,11 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:flutter/material.dart';
 import 'package:adaptive_sizer/adaptive_sizer.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flavor/flavor.dart';
+import 'package:flutter/material.dart';
 
+import '../../common/logging/logger.dart';
 import '../../injection.dart';
+import '../components/app_error_view.dart';
 import '../routes/app_router.dart';
 
 class AppPage extends StatefulWidget {
@@ -18,16 +21,22 @@ class _AppPageState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveSizer(
-      builder: (context) => MaterialApp.router(
-        title: 'Flutter Starter',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        routeInformationParser: _appRouter.defaultRouteParser(),
-        routerDelegate: _appRouter.delegate(
-          navigatorObservers: () => [
-            MyObserver(),
-          ],
+      builder: (context) => FlavorBanner(
+        child: MaterialApp.router(
+          title: 'Flutter Starter',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          routeInformationParser: _appRouter.defaultRouteParser(),
+          routerDelegate: _appRouter.delegate(
+            navigatorObservers: () => [
+              MyObserver(),
+            ],
+          ),
+          builder: (BuildContext context, Widget? child) {
+            ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
+            return child!;
+          },
         ),
       ),
     );
@@ -37,16 +46,16 @@ class _AppPageState extends State<AppPage> {
 class MyObserver extends AutoRouterObserver {
   @override
   void didPush(Route route, Route? previousRoute) {
-    print('New route pushed: ${route.settings.name}');
+    logger.d('New route pushed: ${route.settings.name}');
   }
 
   @override
   void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
-    print('Tab route visited: ${route.name}');
+    logger.d('Tab route visited: ${route.name}');
   }
 
   @override
   void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
-    print('Tab route re-visited: ${route.name}');
+    logger.d('Tab route re-visited: ${route.name}');
   }
 }

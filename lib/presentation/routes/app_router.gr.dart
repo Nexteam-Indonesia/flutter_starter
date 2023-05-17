@@ -1,91 +1,99 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
 part of 'app_router.dart';
 
-class _$AppRouter extends RootStackRouter {
-  _$AppRouter([GlobalKey<NavigatorState>? navigatorKey]) : super(navigatorKey);
+abstract class _$AppRouter extends RootStackRouter {
+  // ignore: unused_element
+  _$AppRouter({super.navigatorKey});
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const SplashPage(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
-        routeData: routeData,
-        child: const HomePage(),
-      );
-    },
     FormRoute.name: (routeData) {
-      return MaterialPageX<dynamic>(
+      return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const FormPage(),
       );
     },
+    HomeRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const HomePage(),
+      );
+    },
+    PostRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const PostPage(),
+      );
+    },
+    SplashRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SplashPage(),
+      );
+    },
   };
-
-  @override
-  List<RouteConfig> get routes => [
-        RouteConfig(
-          SplashRoute.name,
-          path: '/',
-        ),
-        RouteConfig(
-          HomeRoute.name,
-          path: '/home-page',
-        ),
-        RouteConfig(
-          FormRoute.name,
-          path: '/form-page',
-        ),
-      ];
-}
-
-/// generated route for
-/// [SplashPage]
-class SplashRoute extends PageRouteInfo<void> {
-  const SplashRoute()
-      : super(
-          SplashRoute.name,
-          path: '/',
-        );
-
-  static const String name = 'SplashRoute';
-}
-
-/// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute()
-      : super(
-          HomeRoute.name,
-          path: '/home-page',
-        );
-
-  static const String name = 'HomeRoute';
 }
 
 /// generated route for
 /// [FormPage]
 class FormRoute extends PageRouteInfo<void> {
-  const FormRoute()
+  const FormRoute({List<PageRouteInfo>? children})
       : super(
           FormRoute.name,
-          path: '/form-page',
+          initialChildren: children,
         );
 
   static const String name = 'FormRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [HomePage]
+class HomeRoute extends PageRouteInfo<void> {
+  const HomeRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [PostPage]
+class PostRoute extends PageRouteInfo<void> {
+  const PostRoute({List<PageRouteInfo>? children})
+      : super(
+          PostRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PostRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SplashPage]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute({List<PageRouteInfo>? children})
+      : super(
+          SplashRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SplashRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
