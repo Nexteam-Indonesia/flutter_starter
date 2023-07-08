@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../theme/theme.dart';
 
-class BaseAppBar extends StatelessWidget with PreferredSizeWidget {
+class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
   final bool isBack;

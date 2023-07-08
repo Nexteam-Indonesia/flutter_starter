@@ -19,7 +19,8 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.4 <3.0.0"
+  sdk: ">=3.0.5 <4.0.0"
+  flutter: ">=3.10.5"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,34 +35,34 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
-  auto_route: ^6.4.0
-  bloc: ^8.1.1
-  flutter_bloc: ^8.1.2
+  auto_route: ^7.7.0
+  bloc: ^8.1.2
+  flutter_bloc: ^8.1.3
   cached_network_image: ^3.2.3
   dartz: ^0.10.1
-  dio: ^5.1.1
+  dio: ^5.2.1+1
   equatable: ^2.0.5
   freezed_annotation: ^2.2.0
-  get_it: ^7.4.0
+  get_it: ^7.6.0
   geolocator: ^9.0.2
-  google_fonts: ^4.0.4
+  google_fonts: ^5.1.0
   injectable: ^2.1.1
-  reactive_forms: ^14.3.0
-  velocity_x: ^3.6.0
+  reactive_forms: ^16.0.1
+  velocity_x: ^4.1.0
   pretty_dio_logger: ^1.3.1
-  permission_handler: ^10.2.0
+  permission_handler: ^10.4.2
   geocoding: ^2.1.0
   flutter_secure_storage: ^8.0.0
-  logger: ^1.3.0
+  logger: ^1.4.0
   internet_connection_checker: ^1.0.0+1
   adaptive_sizer:
     git:
       url: https://github.com/kishor98100/adaptive_sizer
-  image_picker: ^0.8.7+4
+  image_picker: ^1.0.0
   json_annotation: ^4.8.1
   intl: ^0.18.1
   stream_transform: ^2.1.0
-  bloc_concurrency: ^0.2.1
+  bloc_concurrency: ^0.2.2
   flavor: ^2.0.0
 
   # Local Database
@@ -80,21 +81,22 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  auto_route_generator: ^6.2.0
-  build_runner: ^2.3.3
-  freezed: ^2.3.3
-  injectable_generator: ^2.1.5
-  json_serializable: ^6.6.2
+  auto_route_generator: ^7.2.0
+  build_runner: ^2.4.6
+  build_verify: ^3.1.0
+  freezed: ^2.3.5
+  injectable_generator: ^2.1.6
+  json_serializable: ^6.7.1
   change_app_package_name: ^1.1.0
-  icons_launcher: ^2.1.0
+  icons_launcher: ^2.1.3
 
   # Local Database
   # drift_dev: ^2.5.2
 
-dependency_overrides:
-  analyzer: ^5.11.1
-  path: ^1.8.3
-  intl: ^0.18.1
+# dependency_overrides:
+#   analyzer: ^5.11.1
+#   path: ^1.8.3
+#   intl: ^0.18.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
