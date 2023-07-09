@@ -30,25 +30,17 @@ class PaginationBloc extends Bloc<PaginationEvent, PaginationState> {
     on<PaginationFetch>(_onPaginationFetch);
   }
 
-  FutureOr<void> _onPaginationFetch(PaginationFetch event, Emitter<PaginationState> emit) async {
+  FutureOr<void> _onPaginationFetch(
+      PaginationFetch event, Emitter<PaginationState> emit) async {
     if (state.hasReachedMax) return;
-    if (state.status == PaginationStatus.initial) {
-      final posts = await repo.getPosts();
-      posts.fold(
-        (l) => emit(state.copyWith(status: PaginationStatus.failure, errorMessage: l.message)),
-        (r) => emit(state.copyWith(
-          status: PaginationStatus.success,
-          posts: r,
-          hasReachedMax: false,
-        )),
-      );
-    }
-    final post = await repo.getPosts(startIn: state.posts.length); // bisa diganti dengan page
+    final post = await repo.getPosts(
+        startIn: state.posts.length, limit: 10); // bisa diganti dengan page
     post.fold(
-      (l) => emit(state.copyWith(status: PaginationStatus.failure, errorMessage: l.message)),
+      (l) => emit(state.copyWith(
+          status: PaginationStatus.failure, errorMessage: l.message)),
       (r) {
         emit(
-          r.isEmpty
+          r.length < 10
               ? state.copyWith(
                   status: PaginationStatus.success,
                   hasReachedMax: true,

@@ -10,11 +10,11 @@ class PostRemoteImpl extends BaseDioRemoteSource implements PostRemote {
   PostRemoteImpl(super.dio, super.session);
 
   @override
-  Future<List<PostModel>> getPosts(int startIn) {
+  Future<List<PostModel>> getPosts(int startIn, int limit) {
     return networkRequest(
       request: (dio) => dio.get(
         ApiPath.posts,
-        queryParameters: {'_start': startIn, '_limit': 5},
+        queryParameters: {'_start': startIn, '_limit': limit},
       ),
       onResponse: (json) => (json as List)
           .map<PostModel>(
