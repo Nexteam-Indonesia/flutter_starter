@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/presentation/components/components.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -73,7 +72,9 @@ class _LoginPageState extends State<LoginPage> {
                             if (widget.isAddAccount) {
                               context.pop();
                             } else {
-                              context.read<AuthCubit>().login(formG.value);
+                              // context.read<AuthCubit>().login(formG.value);
+                              context.route.pushAndPopUntil(const HomeRoute(),
+                                  predicate: (route) => false);
                             }
                           },
                           title: "Masuk",
@@ -144,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                   prefix: Icon(Icons.person),
                   isRequiredText: true,
                 ),
-                8.verticalSpaceRadius,
+                12.verticalSpaceRadius,
                 const PasswordInput(
                   formControlName: "password",
                   title: "Password",

@@ -197,10 +197,12 @@ class _OtpViewState extends State<OtpView> {
                               ),
                             );
                           } else {
-                            context.read<AuthCubit>().verifyOtp({
-                              "email": widget.email,
-                              "otp": formState.rawValue['otp'],
-                            });
+                            // context.read<AuthCubit>().verifyOtp({
+                            //   "email": widget.email,
+                            //   "otp": formState.rawValue['otp'],
+                            // });
+                            context.route.replace(SuccessRoute(
+                                message: "Berhasil verifikasi OTP"));
                           }
                         },
                         isEnable: formState.valid,

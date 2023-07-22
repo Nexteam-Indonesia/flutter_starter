@@ -64,10 +64,10 @@ class RegisterView extends StatelessWidget {
                 },
                 success: (msg) {
                   context.hideLoading();
-                  context.showSnackbar(title: "Sukses", message: msg);
                   context.route.push(
                     OtpRoute(email: form.controls['email']!.value.toString()),
                   );
+                  context.showSnackbar(title: "Sukses", message: msg);
                 },
               );
             },
@@ -77,7 +77,11 @@ class RegisterView extends StatelessWidget {
                   return PrimaryButton(
                     onTap: () {
                       FocusManager.instance.primaryFocus?.unfocus();
-                      context.read<AuthCubit>().register(formL.rawValue);
+                      // context.read<AuthCubit>().register(formL.rawValue);
+                      context.route.push(
+                        OtpRoute(
+                            email: form.controls['email']!.value.toString()),
+                      );
                     },
                     title: "Daftar",
                     isEnable:
@@ -131,7 +135,7 @@ class RegisterView extends StatelessWidget {
                 prefix: Icon(Icons.person),
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              12.verticalSpaceRadius,
               const TextInput(
                 title: "Nomor Ponsel",
                 formControlName: "phone_number",
@@ -140,7 +144,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.phone,
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              12.verticalSpaceRadius,
               const TextInput(
                 title: "Email",
                 formControlName: "email",
@@ -149,7 +153,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              12.verticalSpaceRadius,
               PasswordInput(
                 formControlName: "password",
                 title: "Password",
@@ -161,7 +165,7 @@ class RegisterView extends StatelessWidget {
                       'Password Minimal 8 karakter',
                 },
               ),
-              8.verticalSpace,
+              18.verticalSpace,
               Text.rich(
                 TextSpan(
                   text: "Sudah memiliki akun? ",

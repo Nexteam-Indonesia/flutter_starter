@@ -88,7 +88,7 @@ class ChangePasswordView extends StatelessWidget {
                 isRequiredText: true,
                 prefix: Icon(Icons.key),
               ),
-              8.verticalSpaceRadius,
+              12.verticalSpaceRadius,
               const PasswordInput(
                 formControlName: 'confirmPassword',
                 hint: 'Masukkan Konfirmasi Kata Sandi',
@@ -119,9 +119,11 @@ class ChangePasswordView extends StatelessWidget {
                         title: "Verifikasi",
                         onTap: () {
                           FocusManager.instance.primaryFocus?.unfocus();
-                          context
-                              .read<AuthCubit>()
-                              .resetPassword(formState.rawValue);
+                          // context
+                          //     .read<AuthCubit>()
+                          //     .resetPassword(formState.rawValue);
+                          context.route.replace(SuccessRoute(
+                              message: "Berhasil mengubah kata sandi"));
                         },
                         isEnable: formState.valid,
                       );

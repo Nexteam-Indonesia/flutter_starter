@@ -86,9 +86,13 @@ class ForgotPasswordPage extends StatelessWidget {
                           title: "Verifikasi",
                           onTap: () {
                             FocusManager.instance.primaryFocus?.unfocus();
-                            context
-                                .read<AuthCubit>()
-                                .forgotPassword(formState.rawValue);
+                            // context
+                            //     .read<AuthCubit>()
+                            //     .forgotPassword(formState.rawValue);
+                            context.route.push(OtpRoute(
+                              email: formG.rawValue['email'].toString(),
+                              isResetPassword: true,
+                            ));
                           },
                           isEnable: formState.valid,
                         );

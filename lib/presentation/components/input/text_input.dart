@@ -1,3 +1,4 @@
+import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
@@ -58,16 +59,16 @@ class _TextInputState extends State<TextInput> {
               ),
               if (widget.isRequiredText)
                 TextSpan(
-                  text: " (Required)",
+                  text: "*",
                   style: CustomTextTheme.caption
-                      .copyWith(color: ColorTheme.warning[500]),
+                      .copyWith(color: ColorTheme.statusRed),
                 ),
             ],
           ),
-          style: CustomTextTheme.paragraph1
-              .copyWith(color: ColorTheme.neutral[800]),
+          style:
+              CustomTextTheme.paragraph1.copyWith(fontWeight: FontWeight.w700),
         ),
-        const SizedBox(height: 4),
+        6.verticalSpaceRadius,
         ReactiveTextField(
           keyboardType: widget.textInputType,
           formControlName: widget.formControlName,
