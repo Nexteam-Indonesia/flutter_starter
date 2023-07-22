@@ -27,7 +27,10 @@ class PaginationBloc extends Bloc<PaginationEvent, PaginationState> {
   PaginationBloc(
     this.repo,
   ) : super(const PaginationState()) {
-    on<PaginationFetch>(_onPaginationFetch);
+    on<PaginationFetch>(
+      _onPaginationFetch,
+      transformer: throttleDroppable(throttleDuration),
+    );
   }
 
   FutureOr<void> _onPaginationFetch(

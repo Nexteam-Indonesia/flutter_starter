@@ -74,6 +74,7 @@ class _PostViewState extends State<PostView> {
                 return const Center(child: Text('no posts'));
               }
               return ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (BuildContext context, int i) {
                   return i >= state.posts.length
                       ? const RowLoadingWidget()
