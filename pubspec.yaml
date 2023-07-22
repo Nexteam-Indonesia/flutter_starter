@@ -35,34 +35,42 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
+  google_fonts: ^5.1.0
+  image_picker: ^1.0.1
+
   auto_route: ^7.7.1
+
   bloc: ^8.1.2
+  bloc_concurrency: ^0.2.2
   flutter_bloc: ^8.1.3
-  cached_network_image: ^3.2.3
-  dartz: ^0.10.1
+
   dio: ^5.3.0
+  pretty_dio_logger: ^1.3.1
+  dio_http2_adapter: ^2.3.1
+
   equatable: ^2.0.5
   freezed_annotation: ^2.4.1
-  get_it: ^7.6.0
-  geolocator: ^9.0.2
-  google_fonts: ^5.1.0
+  json_annotation: ^4.8.1
+
   injectable: ^2.1.2
+  get_it: ^7.6.0
+
+  geolocator: ^9.0.2
+  geocoding: ^2.1.0
+
+  cached_network_image: ^3.2.3
+  dartz: ^0.10.1
   reactive_forms: ^16.0.2
   velocity_x: ^4.1.0
-  pretty_dio_logger: ^1.3.1
   permission_handler: ^10.4.3
-  geocoding: ^2.1.0
   flutter_secure_storage: ^8.0.0
   logger: ^1.4.0
   internet_connection_checker_plus: ^2.0.0
   adaptive_sizer:
     git:
       url: https://github.com/kishor98100/adaptive_sizer
-  image_picker: ^1.0.1
-  json_annotation: ^4.8.1
   intl: ^0.18.1
   stream_transform: ^2.1.0
-  bloc_concurrency: ^0.2.2
   flavor: ^2.0.0
 
   # Local Database

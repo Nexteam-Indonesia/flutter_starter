@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:dio/io.dart';
+import 'package:dio_http2_adapter/dio_http2_adapter.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/foundation.dart';
 import 'package:image_picker/image_picker.dart';
@@ -16,16 +16,18 @@ abstract class ApiService {
         // baseUrl: 'https://cuaca-gempa-rest-api.vercel.app/',
         baseUrl: Flavor.I.getString(Keys.apiUrl) ??
             'https://jsonplaceholder.typicode.com/',
-        sendTimeout: const Duration(milliseconds: 1000 * 60 * 3),
-        connectTimeout: const Duration(milliseconds: 1000 * 60 * 3),
-        receiveTimeout: const Duration(milliseconds: 1000 * 60 * 3),
+        sendTimeout: const Duration(minutes: 3),
+        connectTimeout: const Duration(minutes: 3),
+        receiveTimeout: const Duration(minutes: 3),
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
       ),
     );
-    dio.httpClientAdapter = IOHttpClientAdapter();
+    dio.httpClientAdapter = Http2Adapter(
+      ConnectionManager(idleTimeout: const Duration(seconds: 15)),
+    );
     if (kDebugMode) {
       dio.interceptors.add(PrettyDioLogger());
     }
@@ -45,6 +47,7 @@ abstract class ApiService {
             timeout: const Duration(seconds: 1),
           ),
         ],
+        useDefaultOptions: false,
       );
 
   @lazySingleton

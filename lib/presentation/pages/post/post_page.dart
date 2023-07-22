@@ -66,7 +66,8 @@ class _PostViewState extends State<PostView> {
             case PaginationStatus.failure:
               return AppErrorWidget(
                 message: state.errorMessage,
-                onTap: () => context.read<PaginationBloc>().add(PaginationFetch()),
+                onTap: () =>
+                    context.read<PaginationBloc>().add(PaginationFetch()),
               );
             case PaginationStatus.success:
               if (state.posts.isEmpty) {
@@ -82,7 +83,9 @@ class _PostViewState extends State<PostView> {
                           leading: Text("${state.posts[i].id}"),
                         );
                 },
-                itemCount: state.hasReachedMax ? state.posts.length : state.posts.length + 1,
+                itemCount: state.hasReachedMax
+                    ? state.posts.length
+                    : state.posts.length + 1,
                 controller: _scrollController,
               );
             case PaginationStatus.initial:
