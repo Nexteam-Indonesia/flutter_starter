@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   google_fonts: ^5.1.0
   image_picker: ^1.0.1
+  file_picker: ^5.3.2
 
   auto_route: ^7.7.1
 
@@ -73,6 +74,7 @@ dependencies:
   stream_transform: ^2.1.0
   flavor: ^2.0.0
   shimmer: ^3.0.0
+  lecle_downloads_path_provider: ^0.0.2+8
 
   # Local Database
   # drift: ^2.5.0

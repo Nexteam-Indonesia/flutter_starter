@@ -7,6 +7,8 @@ import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+import '../../../common/storage/storage_path.dart';
+
 @module
 abstract class ApiService {
   @LazySingleton()
@@ -52,4 +54,7 @@ abstract class ApiService {
 
   @lazySingleton
   ImagePicker get imagePicker => ImagePicker();
+
+  @preResolve
+  Future<StoragePathInterface> init() async => StoragePath().initialize();
 }

@@ -1,22 +1,27 @@
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
+
+import '../../../common/storage/shared_pref_storage.dart';
 
 @lazySingleton
 class SessionSource {
-  final storage = const FlutterSecureStorage();
-  static const String key = 'token';
+  final SharedPrefStorageInterface storage;
+  static const String _key = 'token';
+
+  SessionSource({
+    required this.storage,
+  });
 
   Future<String?> get token async {
-    return await storage.read(key: key);
+    return await storage.get(_key);
   }
 
   Future<void> setToken(String token) async {
-    await storage.write(key: key, value: token);
+    await storage.store(_key, token);
   }
 
   Future<void> deleteToken() async {
-    await storage.delete(key: key);
+    await storage.remove(_key);
   }
 
-  Future<bool> get hasSession async => await storage.containsKey(key: key);
+  Future<bool> get hasSession async => await storage.hasData(_key);
 }

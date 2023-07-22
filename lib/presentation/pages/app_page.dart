@@ -2,6 +2,7 @@ import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
+import 'package:next_starter/common/utils/config.dart';
 
 import '../../common/logging/logger.dart';
 import '../../injection.dart';
@@ -23,7 +24,7 @@ class _AppPageState extends State<AppPage> {
     return AdaptiveSizer(
       builder: (context) => FlavorBanner(
         child: MaterialApp.router(
-          title: 'Flutter Starter',
+          title: Configs.titleApp,
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
@@ -34,7 +35,8 @@ class _AppPageState extends State<AppPage> {
             ],
           ),
           builder: (BuildContext context, Widget? child) {
-            ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
+            ErrorWidget.builder =
+                (FlutterErrorDetails details) => AppErrorView(details: details);
             return child!;
           },
         ),
