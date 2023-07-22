@@ -41,6 +41,11 @@ extension ApiExceptionDioX on DioException {
       case DioExceptionType.badResponse:
         return const ApiException.badResponse();
       case DioExceptionType.unknown:
+        if (response == null) {
+          return const ApiException.serverException(
+            message: "Tidak ada respon dari server",
+          );
+        }
         if (error is SocketException) {
           return const ApiException.network();
         } else {
