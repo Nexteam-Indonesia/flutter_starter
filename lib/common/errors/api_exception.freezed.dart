@@ -23,6 +23,9 @@ mixin _$ApiException {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) =>
       throw _privateConstructorUsedError;
@@ -33,6 +36,9 @@ mixin _$ApiException {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) =>
       throw _privateConstructorUsedError;
@@ -43,6 +49,9 @@ mixin _$ApiException {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) =>
@@ -53,6 +62,9 @@ mixin _$ApiException {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +74,9 @@ mixin _$ApiException {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) =>
       throw _privateConstructorUsedError;
@@ -71,6 +86,9 @@ mixin _$ApiException {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) =>
@@ -164,6 +182,9 @@ class _$_ServerException implements _ServerException {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) {
     return serverException(message);
@@ -177,6 +198,9 @@ class _$_ServerException implements _ServerException {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) {
     return serverException?.call(message);
@@ -190,6 +214,9 @@ class _$_ServerException implements _ServerException {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -206,6 +233,9 @@ class _$_ServerException implements _ServerException {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) {
     return serverException(this);
@@ -218,6 +248,9 @@ class _$_ServerException implements _ServerException {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) {
     return serverException?.call(this);
@@ -230,6 +263,9 @@ class _$_ServerException implements _ServerException {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) {
@@ -336,6 +372,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) {
     return unprocessableEntity(message, errors);
@@ -349,6 +388,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) {
     return unprocessableEntity?.call(message, errors);
@@ -362,6 +404,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -378,6 +423,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) {
     return unprocessableEntity(this);
@@ -390,6 +438,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) {
     return unprocessableEntity?.call(this);
@@ -402,6 +453,9 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) {
@@ -493,6 +547,9 @@ class _$_UnAuthorized implements _UnAuthorized {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) {
     return unAuthorized(message);
@@ -506,6 +563,9 @@ class _$_UnAuthorized implements _UnAuthorized {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) {
     return unAuthorized?.call(message);
@@ -519,6 +579,9 @@ class _$_UnAuthorized implements _UnAuthorized {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -535,6 +598,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) {
     return unAuthorized(this);
@@ -547,6 +613,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) {
     return unAuthorized?.call(this);
@@ -559,6 +628,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) {
@@ -620,6 +692,9 @@ class _$_Network implements _Network {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) {
     return network();
@@ -633,6 +708,9 @@ class _$_Network implements _Network {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) {
     return network?.call();
@@ -646,6 +724,9 @@ class _$_Network implements _Network {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -662,6 +743,9 @@ class _$_Network implements _Network {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) {
     return network(this);
@@ -674,6 +758,9 @@ class _$_Network implements _Network {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) {
     return network?.call(this);
@@ -686,6 +773,9 @@ class _$_Network implements _Network {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) {
@@ -698,6 +788,429 @@ class _$_Network implements _Network {
 
 abstract class _Network implements ApiException {
   const factory _Network() = _$_Network;
+}
+
+/// @nodoc
+abstract class _$$_ConnectionTimeOutCopyWith<$Res> {
+  factory _$$_ConnectionTimeOutCopyWith(_$_ConnectionTimeOut value,
+          $Res Function(_$_ConnectionTimeOut) then) =
+      __$$_ConnectionTimeOutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ConnectionTimeOutCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$_ConnectionTimeOut>
+    implements _$$_ConnectionTimeOutCopyWith<$Res> {
+  __$$_ConnectionTimeOutCopyWithImpl(
+      _$_ConnectionTimeOut _value, $Res Function(_$_ConnectionTimeOut) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ConnectionTimeOut implements _ConnectionTimeOut {
+  const _$_ConnectionTimeOut();
+
+  @override
+  String toString() {
+    return 'ApiException.connectionTimeOut()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ConnectionTimeOut);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) serverException,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        unprocessableEntity,
+    required TResult Function(String message) unAuthorized,
+    required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
+    required TResult Function(String message) database,
+  }) {
+    return connectionTimeOut();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? serverException,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult? Function(String message)? unAuthorized,
+    TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
+    TResult? Function(String message)? database,
+  }) {
+    return connectionTimeOut?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? serverException,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult Function(String message)? unAuthorized,
+    TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
+    TResult Function(String message)? database,
+    required TResult orElse(),
+  }) {
+    if (connectionTimeOut != null) {
+      return connectionTimeOut();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
+    required TResult Function(_UnprocessableEntity value) unprocessableEntity,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_Database value) database,
+  }) {
+    return connectionTimeOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerException value)? serverException,
+    TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_Database value)? database,
+  }) {
+    return connectionTimeOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
+    TResult Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_Database value)? database,
+    required TResult orElse(),
+  }) {
+    if (connectionTimeOut != null) {
+      return connectionTimeOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ConnectionTimeOut implements ApiException {
+  const factory _ConnectionTimeOut() = _$_ConnectionTimeOut;
+}
+
+/// @nodoc
+abstract class _$$_BadCertificateCopyWith<$Res> {
+  factory _$$_BadCertificateCopyWith(
+          _$_BadCertificate value, $Res Function(_$_BadCertificate) then) =
+      __$$_BadCertificateCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_BadCertificateCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$_BadCertificate>
+    implements _$$_BadCertificateCopyWith<$Res> {
+  __$$_BadCertificateCopyWithImpl(
+      _$_BadCertificate _value, $Res Function(_$_BadCertificate) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_BadCertificate implements _BadCertificate {
+  const _$_BadCertificate();
+
+  @override
+  String toString() {
+    return 'ApiException.badCertificate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_BadCertificate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) serverException,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        unprocessableEntity,
+    required TResult Function(String message) unAuthorized,
+    required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
+    required TResult Function(String message) database,
+  }) {
+    return badCertificate();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? serverException,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult? Function(String message)? unAuthorized,
+    TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
+    TResult? Function(String message)? database,
+  }) {
+    return badCertificate?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? serverException,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult Function(String message)? unAuthorized,
+    TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
+    TResult Function(String message)? database,
+    required TResult orElse(),
+  }) {
+    if (badCertificate != null) {
+      return badCertificate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
+    required TResult Function(_UnprocessableEntity value) unprocessableEntity,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_Database value) database,
+  }) {
+    return badCertificate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerException value)? serverException,
+    TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_Database value)? database,
+  }) {
+    return badCertificate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
+    TResult Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_Database value)? database,
+    required TResult orElse(),
+  }) {
+    if (badCertificate != null) {
+      return badCertificate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BadCertificate implements ApiException {
+  const factory _BadCertificate() = _$_BadCertificate;
+}
+
+/// @nodoc
+abstract class _$$_BadResponseCopyWith<$Res> {
+  factory _$$_BadResponseCopyWith(
+          _$_BadResponse value, $Res Function(_$_BadResponse) then) =
+      __$$_BadResponseCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_BadResponseCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$_BadResponse>
+    implements _$$_BadResponseCopyWith<$Res> {
+  __$$_BadResponseCopyWithImpl(
+      _$_BadResponse _value, $Res Function(_$_BadResponse) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_BadResponse implements _BadResponse {
+  const _$_BadResponse();
+
+  @override
+  String toString() {
+    return 'ApiException.badResponse()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_BadResponse);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) serverException,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        unprocessableEntity,
+    required TResult Function(String message) unAuthorized,
+    required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
+    required TResult Function(String message) database,
+  }) {
+    return badResponse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? serverException,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult? Function(String message)? unAuthorized,
+    TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
+    TResult? Function(String message)? database,
+  }) {
+    return badResponse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? serverException,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        unprocessableEntity,
+    TResult Function(String message)? unAuthorized,
+    TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
+    TResult Function(String message)? database,
+    required TResult orElse(),
+  }) {
+    if (badResponse != null) {
+      return badResponse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerException value) serverException,
+    required TResult Function(_UnprocessableEntity value) unprocessableEntity,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+    required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_Database value) database,
+  }) {
+    return badResponse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerException value)? serverException,
+    TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+    TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_Database value)? database,
+  }) {
+    return badResponse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerException value)? serverException,
+    TResult Function(_UnprocessableEntity value)? unprocessableEntity,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_Database value)? database,
+    required TResult orElse(),
+  }) {
+    if (badResponse != null) {
+      return badResponse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BadResponse implements ApiException {
+  const factory _BadResponse() = _$_BadResponse;
 }
 
 /// @nodoc
@@ -769,6 +1282,9 @@ class _$_Database implements _Database {
         unprocessableEntity,
     required TResult Function(String message) unAuthorized,
     required TResult Function() network,
+    required TResult Function() connectionTimeOut,
+    required TResult Function() badCertificate,
+    required TResult Function() badResponse,
     required TResult Function(String message) database,
   }) {
     return database(message);
@@ -782,6 +1298,9 @@ class _$_Database implements _Database {
         unprocessableEntity,
     TResult? Function(String message)? unAuthorized,
     TResult? Function()? network,
+    TResult? Function()? connectionTimeOut,
+    TResult? Function()? badCertificate,
+    TResult? Function()? badResponse,
     TResult? Function(String message)? database,
   }) {
     return database?.call(message);
@@ -795,6 +1314,9 @@ class _$_Database implements _Database {
         unprocessableEntity,
     TResult Function(String message)? unAuthorized,
     TResult Function()? network,
+    TResult Function()? connectionTimeOut,
+    TResult Function()? badCertificate,
+    TResult Function()? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -811,6 +1333,9 @@ class _$_Database implements _Database {
     required TResult Function(_UnprocessableEntity value) unprocessableEntity,
     required TResult Function(_UnAuthorized value) unAuthorized,
     required TResult Function(_Network value) network,
+    required TResult Function(_ConnectionTimeOut value) connectionTimeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_Database value) database,
   }) {
     return database(this);
@@ -823,6 +1348,9 @@ class _$_Database implements _Database {
     TResult? Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult? Function(_UnAuthorized value)? unAuthorized,
     TResult? Function(_Network value)? network,
+    TResult? Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_Database value)? database,
   }) {
     return database?.call(this);
@@ -835,6 +1363,9 @@ class _$_Database implements _Database {
     TResult Function(_UnprocessableEntity value)? unprocessableEntity,
     TResult Function(_UnAuthorized value)? unAuthorized,
     TResult Function(_Network value)? network,
+    TResult Function(_ConnectionTimeOut value)? connectionTimeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_Database value)? database,
     required TResult orElse(),
   }) {

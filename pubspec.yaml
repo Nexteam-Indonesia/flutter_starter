@@ -35,22 +35,22 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.5
-  auto_route: ^7.7.0
+  auto_route: ^7.7.1
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
   cached_network_image: ^3.2.3
   dartz: ^0.10.1
-  dio: ^5.2.1+1
+  dio: ^5.3.0
   equatable: ^2.0.5
-  freezed_annotation: ^2.2.0
+  freezed_annotation: ^2.4.1
   get_it: ^7.6.0
   geolocator: ^9.0.2
   google_fonts: ^5.1.0
   injectable: ^2.1.2
-  reactive_forms: ^16.0.1
+  reactive_forms: ^16.0.2
   velocity_x: ^4.1.0
   pretty_dio_logger: ^1.3.1
-  permission_handler: ^10.4.2
+  permission_handler: ^10.4.3
   geocoding: ^2.1.0
   flutter_secure_storage: ^8.0.0
   logger: ^1.4.0
@@ -58,7 +58,7 @@ dependencies:
   adaptive_sizer:
     git:
       url: https://github.com/kishor98100/adaptive_sizer
-  image_picker: ^1.0.0
+  image_picker: ^1.0.1
   json_annotation: ^4.8.1
   intl: ^0.18.1
   stream_transform: ^2.1.0
@@ -80,11 +80,11 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.2
   auto_route_generator: ^7.2.0
   build_runner: ^2.4.6
   build_verify: ^3.1.0
-  freezed: ^2.3.5
+  freezed: ^2.4.1
   injectable_generator: ^2.1.6
   json_serializable: ^6.7.1
   change_app_package_name: ^1.1.0

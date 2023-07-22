@@ -5,10 +5,10 @@ import 'package:dio/dio.dart';
 import '../errors/api_exception.dart';
 
 // TODO: tergantung jenis apinya bisa dari data/message untuk mengambil pesan errornya
-extension ApiExceptionDioX on DioError {
+extension ApiExceptionDioX on DioException {
   ApiException get toApiException {
     switch (type) {
-      case DioErrorType.connectionError:
+      case DioExceptionType.connectionError:
         final code = response?.statusCode!;
         if (code == 422) {
           return ApiException.unprocessableEntity(
@@ -28,9 +28,19 @@ extension ApiExceptionDioX on DioError {
             message: response?.data['message'] ?? message,
           );
         }
-      case DioErrorType.connectionTimeout:
+      case DioExceptionType.connectionTimeout:
+        return const ApiException.connectionTimeOut();
+      case DioExceptionType.sendTimeout:
+        return const ApiException.connectionTimeOut();
+      case DioExceptionType.receiveTimeout:
+        return const ApiException.connectionTimeOut();
+      case DioExceptionType.cancel:
         return const ApiException.network();
-      case DioErrorType.unknown:
+      case DioExceptionType.badCertificate:
+        return const ApiException.badCertificate();
+      case DioExceptionType.badResponse:
+        return const ApiException.badResponse();
+      case DioExceptionType.unknown:
         if (error is SocketException) {
           return const ApiException.network();
         } else {

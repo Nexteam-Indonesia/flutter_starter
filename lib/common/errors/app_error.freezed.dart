@@ -23,6 +23,9 @@ mixin _$AppError {
     required TResult Function(String message, Map<String, dynamic> errors)
         validationError,
     required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) unAuthorized,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,6 +35,9 @@ mixin _$AppError {
     TResult? Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? unAuthorized,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,6 +47,9 @@ mixin _$AppError {
     TResult Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? unAuthorized,
     required TResult orElse(),
   }) =>
@@ -50,6 +59,9 @@ mixin _$AppError {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_ValidationError value) validationError,
     required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_UnAuthorized value) unAuthorized,
   }) =>
       throw _privateConstructorUsedError;
@@ -58,6 +70,9 @@ mixin _$AppError {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_ValidationError value)? validationError,
     TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_UnAuthorized value)? unAuthorized,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +81,9 @@ mixin _$AppError {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_ValidationError value)? validationError,
     TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_UnAuthorized value)? unAuthorized,
     required TResult orElse(),
   }) =>
@@ -107,6 +125,9 @@ class _$_ServerError implements _ServerError {
     required TResult Function(String message, Map<String, dynamic> errors)
         validationError,
     required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) unAuthorized,
   }) {
     return serverError(code, message);
@@ -119,6 +140,9 @@ class _$_ServerError implements _ServerError {
     TResult? Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? unAuthorized,
   }) {
     return serverError?.call(code, message);
@@ -131,6 +155,9 @@ class _$_ServerError implements _ServerError {
     TResult Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -146,6 +173,9 @@ class _$_ServerError implements _ServerError {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_ValidationError value) validationError,
     required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_UnAuthorized value) unAuthorized,
   }) {
     return serverError(this);
@@ -157,6 +187,9 @@ class _$_ServerError implements _ServerError {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_ValidationError value)? validationError,
     TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_UnAuthorized value)? unAuthorized,
   }) {
     return serverError?.call(this);
@@ -168,6 +201,9 @@ class _$_ServerError implements _ServerError {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_ValidationError value)? validationError,
     TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_UnAuthorized value)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -230,6 +266,9 @@ class _$_ValidationError implements _ValidationError {
     required TResult Function(String message, Map<String, dynamic> errors)
         validationError,
     required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) unAuthorized,
   }) {
     return validationError(message, errors);
@@ -242,6 +281,9 @@ class _$_ValidationError implements _ValidationError {
     TResult? Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? unAuthorized,
   }) {
     return validationError?.call(message, errors);
@@ -254,6 +296,9 @@ class _$_ValidationError implements _ValidationError {
     TResult Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -269,6 +314,9 @@ class _$_ValidationError implements _ValidationError {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_ValidationError value) validationError,
     required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_UnAuthorized value) unAuthorized,
   }) {
     return validationError(this);
@@ -280,6 +328,9 @@ class _$_ValidationError implements _ValidationError {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_ValidationError value)? validationError,
     TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_UnAuthorized value)? unAuthorized,
   }) {
     return validationError?.call(this);
@@ -291,6 +342,9 @@ class _$_ValidationError implements _ValidationError {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_ValidationError value)? validationError,
     TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_UnAuthorized value)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -343,6 +397,9 @@ class _$_NoInternet implements _NoInternet {
     required TResult Function(String message, Map<String, dynamic> errors)
         validationError,
     required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) unAuthorized,
   }) {
     return noInternet(message);
@@ -355,6 +412,9 @@ class _$_NoInternet implements _NoInternet {
     TResult? Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? unAuthorized,
   }) {
     return noInternet?.call(message);
@@ -367,6 +427,9 @@ class _$_NoInternet implements _NoInternet {
     TResult Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -382,6 +445,9 @@ class _$_NoInternet implements _NoInternet {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_ValidationError value) validationError,
     required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_UnAuthorized value) unAuthorized,
   }) {
     return noInternet(this);
@@ -393,6 +459,9 @@ class _$_NoInternet implements _NoInternet {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_ValidationError value)? validationError,
     TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_UnAuthorized value)? unAuthorized,
   }) {
     return noInternet?.call(this);
@@ -404,6 +473,9 @@ class _$_NoInternet implements _NoInternet {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_ValidationError value)? validationError,
     TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_UnAuthorized value)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -416,6 +488,390 @@ class _$_NoInternet implements _NoInternet {
 
 abstract class _NoInternet implements AppError {
   const factory _NoInternet({final String message}) = _$_NoInternet;
+
+  @override
+  String get message;
+}
+
+/// @nodoc
+
+class _$_TimeOut implements _TimeOut {
+  const _$_TimeOut({this.message = "Koneksi gagal karena waktu habis!"});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppError.timeOut(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TimeOut &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) serverError,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        validationError,
+    required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
+    required TResult Function(String message) unAuthorized,
+  }) {
+    return timeOut(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? serverError,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
+    TResult? Function(String message)? unAuthorized,
+  }) {
+    return timeOut?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? serverError,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
+    TResult Function(String message)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (timeOut != null) {
+      return timeOut(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ValidationError value) validationError,
+    required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+  }) {
+    return timeOut(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ValidationError value)? validationError,
+    TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+  }) {
+    return timeOut?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ValidationError value)? validationError,
+    TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (timeOut != null) {
+      return timeOut(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _TimeOut implements AppError {
+  const factory _TimeOut({final String message}) = _$_TimeOut;
+
+  @override
+  String get message;
+}
+
+/// @nodoc
+
+class _$_BadCertificate implements _BadCertificate {
+  const _$_BadCertificate({this.message = "Sertifikat tidak valid!"});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppError.badCertificate(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BadCertificate &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) serverError,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        validationError,
+    required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
+    required TResult Function(String message) unAuthorized,
+  }) {
+    return badCertificate(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? serverError,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
+    TResult? Function(String message)? unAuthorized,
+  }) {
+    return badCertificate?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? serverError,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
+    TResult Function(String message)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (badCertificate != null) {
+      return badCertificate(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ValidationError value) validationError,
+    required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+  }) {
+    return badCertificate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ValidationError value)? validationError,
+    TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+  }) {
+    return badCertificate?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ValidationError value)? validationError,
+    TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (badCertificate != null) {
+      return badCertificate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BadCertificate implements AppError {
+  const factory _BadCertificate({final String message}) = _$_BadCertificate;
+
+  @override
+  String get message;
+}
+
+/// @nodoc
+
+class _$_BadResponse implements _BadResponse {
+  const _$_BadResponse({this.message = "Respon tidak valid!"});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppError.badResponse(message: $message)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_BadResponse &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int code, String message) serverError,
+    required TResult Function(String message, Map<String, dynamic> errors)
+        validationError,
+    required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
+    required TResult Function(String message) unAuthorized,
+  }) {
+    return badResponse(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int code, String message)? serverError,
+    TResult? Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
+    TResult? Function(String message)? unAuthorized,
+  }) {
+    return badResponse?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int code, String message)? serverError,
+    TResult Function(String message, Map<String, dynamic> errors)?
+        validationError,
+    TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
+    TResult Function(String message)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (badResponse != null) {
+      return badResponse(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_ValidationError value) validationError,
+    required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
+    required TResult Function(_UnAuthorized value) unAuthorized,
+  }) {
+    return badResponse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_ValidationError value)? validationError,
+    TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
+    TResult? Function(_UnAuthorized value)? unAuthorized,
+  }) {
+    return badResponse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_ValidationError value)? validationError,
+    TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
+    TResult Function(_UnAuthorized value)? unAuthorized,
+    required TResult orElse(),
+  }) {
+    if (badResponse != null) {
+      return badResponse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _BadResponse implements AppError {
+  const factory _BadResponse({final String message}) = _$_BadResponse;
 
   @override
   String get message;
@@ -453,6 +909,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function(String message, Map<String, dynamic> errors)
         validationError,
     required TResult Function(String message) noInternet,
+    required TResult Function(String message) timeOut,
+    required TResult Function(String message) badCertificate,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) unAuthorized,
   }) {
     return unAuthorized(message);
@@ -465,6 +924,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult? Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult? Function(String message)? noInternet,
+    TResult? Function(String message)? timeOut,
+    TResult? Function(String message)? badCertificate,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? unAuthorized,
   }) {
     return unAuthorized?.call(message);
@@ -477,6 +939,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function(String message, Map<String, dynamic> errors)?
         validationError,
     TResult Function(String message)? noInternet,
+    TResult Function(String message)? timeOut,
+    TResult Function(String message)? badCertificate,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? unAuthorized,
     required TResult orElse(),
   }) {
@@ -492,6 +957,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function(_ServerError value) serverError,
     required TResult Function(_ValidationError value) validationError,
     required TResult Function(_NoInternet value) noInternet,
+    required TResult Function(_TimeOut value) timeOut,
+    required TResult Function(_BadCertificate value) badCertificate,
+    required TResult Function(_BadResponse value) badResponse,
     required TResult Function(_UnAuthorized value) unAuthorized,
   }) {
     return unAuthorized(this);
@@ -503,6 +971,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult? Function(_ServerError value)? serverError,
     TResult? Function(_ValidationError value)? validationError,
     TResult? Function(_NoInternet value)? noInternet,
+    TResult? Function(_TimeOut value)? timeOut,
+    TResult? Function(_BadCertificate value)? badCertificate,
+    TResult? Function(_BadResponse value)? badResponse,
     TResult? Function(_UnAuthorized value)? unAuthorized,
   }) {
     return unAuthorized?.call(this);
@@ -514,6 +985,9 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function(_ServerError value)? serverError,
     TResult Function(_ValidationError value)? validationError,
     TResult Function(_NoInternet value)? noInternet,
+    TResult Function(_TimeOut value)? timeOut,
+    TResult Function(_BadCertificate value)? badCertificate,
+    TResult Function(_BadResponse value)? badResponse,
     TResult Function(_UnAuthorized value)? unAuthorized,
     required TResult orElse(),
   }) {

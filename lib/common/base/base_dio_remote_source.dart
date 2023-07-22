@@ -54,9 +54,10 @@ class BaseDioRemoteSource {
         //   );
         // }
       } else {
-        throw const ApiException.serverException(message: 'UnExpected Error in status code!!!');
+        throw const ApiException.serverException(
+            message: 'UnExpected Error in status code!!!');
       }
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       var err = e.toApiException;
       // TODO: if auto redirect to login page
       // await err.maybeWhen(
@@ -74,7 +75,8 @@ class BaseDioRemoteSource {
       throw err;
     } catch (e) {
       logger.e(e);
-      throw const ApiException.serverException(message: 'UnExpected Error Occurred in dio!!!');
+      throw const ApiException.serverException(
+          message: 'UnExpected Error Occurred in dio!!!');
     }
   }
 }

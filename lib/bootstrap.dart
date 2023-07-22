@@ -22,15 +22,17 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = AppBlocObserver();
-  FlutterError.onError = (FlutterErrorDetails details) {
-    logger.e(details.exceptionAsString(), details.exception, details.stack);
-  };
-  await configureDependencies();
-
-  await runZonedGuarded(
-    () async => runApp(const AppPage()),
-    (Object error, StackTrace stackTrace) => logger.e(error.toString(), error, stackTrace),
+  return runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      Bloc.observer = AppBlocObserver();
+      FlutterError.onError = (FlutterErrorDetails details) {
+        logger.e(details.exceptionAsString(), details.exception, details.stack);
+      };
+      await configureDependencies();
+      runApp(const AppPage());
+    },
+    (Object error, StackTrace stackTrace) =>
+        logger.e(error.toString(), error, stackTrace),
   );
 }

@@ -21,6 +21,15 @@ class ApiException with _$ApiException implements Exception {
   // for socket exception from server
   const factory ApiException.network() = _Network;
 
+  // for connection time out
+  const factory ApiException.connectionTimeOut() = _ConnectionTimeOut;
+
+  // for error from client
+  const factory ApiException.badCertificate() = _BadCertificate;
+
+  // for error from client
+  const factory ApiException.badResponse() = _BadResponse;
+
   // for error from client
   const factory ApiException.database({
     required String message,
