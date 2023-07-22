@@ -16,10 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Page'),
-        centerTitle: true,
+    return BaseScaffold(
+      appBar: const BaseAppBar(
+        title: 'Posts',
       ),
       body: Center(
         child: PrimaryButton(
@@ -27,6 +26,8 @@ class _HomePageState extends State<HomePage> {
           onTap: () {
             context.route.push(const PostRoute());
           },
+          width: 200,
+          isFullWidth: false,
         ),
       ),
     );

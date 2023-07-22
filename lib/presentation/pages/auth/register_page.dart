@@ -135,7 +135,7 @@ class RegisterView extends StatelessWidget {
                 prefix: Icon(Icons.person),
                 isRequiredText: true,
               ),
-              12.verticalSpaceRadius,
+              6.verticalSpaceRadius,
               const TextInput(
                 title: "Nomor Ponsel",
                 formControlName: "phone_number",
@@ -144,7 +144,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.phone,
                 isRequiredText: true,
               ),
-              12.verticalSpaceRadius,
+              6.verticalSpaceRadius,
               const TextInput(
                 title: "Email",
                 formControlName: "email",
@@ -153,7 +153,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
                 isRequiredText: true,
               ),
-              12.verticalSpaceRadius,
+              6.verticalSpaceRadius,
               PasswordInput(
                 formControlName: "password",
                 title: "Password",

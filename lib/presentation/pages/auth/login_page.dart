@@ -112,15 +112,12 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(
+                const Padding(
+                  padding: EdgeInsets.only(
                     top: kBottomNavigationBarHeight,
                     bottom: 20,
                   ),
-                  child: Image.asset(
-                    'assets/images/launcher.png',
-                    height: 29,
-                  ),
+                  child: BaseLogo(isSmall: true),
                 ),
                 Text(
                   'Selamat datang di Nexteam',
@@ -145,7 +142,7 @@ class _LoginPageState extends State<LoginPage> {
                   prefix: Icon(Icons.person),
                   isRequiredText: true,
                 ),
-                12.verticalSpaceRadius,
+                6.verticalSpaceRadius,
                 const PasswordInput(
                   formControlName: "password",
                   title: "Password",

@@ -8,6 +8,7 @@ import '../../common/logging/logger.dart';
 import '../../injection.dart';
 import '../components/app_error_view.dart';
 import '../routes/app_router.dart';
+import '../theme/theme.dart';
 
 class AppPage extends StatefulWidget {
   const AppPage({super.key});
@@ -25,9 +26,8 @@ class _AppPageState extends State<AppPage> {
       builder: (context) => FlavorBanner(
         child: MaterialApp.router(
           title: Configs.titleApp,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
+          theme: AppCoreTheme.theme,
+          darkTheme: AppCoreTheme.theme,
           routeInformationParser: _appRouter.defaultRouteParser(),
           routerDelegate: _appRouter.delegate(
             navigatorObservers: () => [

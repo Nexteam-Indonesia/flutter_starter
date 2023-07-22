@@ -13,7 +13,7 @@ class BaseLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Image.asset(
       'assets/images/launcher.png',
-      height: isSmall ? null : 45.h,
+      height: isSmall ? null : 100.h,
       width: isSmall ? 68.w : null,
       fit: BoxFit.cover,
     );

@@ -88,7 +88,7 @@ class ChangePasswordView extends StatelessWidget {
                 isRequiredText: true,
                 prefix: Icon(Icons.key),
               ),
-              12.verticalSpaceRadius,
+              6.verticalSpaceRadius,
               const PasswordInput(
                 formControlName: 'confirmPassword',
                 hint: 'Masukkan Konfirmasi Kata Sandi',
