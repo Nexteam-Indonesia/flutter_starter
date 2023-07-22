@@ -1,22 +1,22 @@
 import 'package:injectable/injectable.dart';
-import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 abstract class NetworkInfo {
   Future<bool> get isConnected;
 
   /// listen the connectivity change
-  Stream<InternetConnectionStatus> getStatus();
+  Stream<InternetStatus> getStatus();
 }
 
 @LazySingleton(as: NetworkInfo)
 class NetworkInfoImpl implements NetworkInfo {
   const NetworkInfoImpl(this.checker);
 
-  final InternetConnectionChecker checker;
+  final InternetConnection checker;
 
   @override
-  Future<bool> get isConnected => checker.hasConnection;
+  Future<bool> get isConnected => checker.hasInternetAccess;
 
   @override
-  Stream<InternetConnectionStatus> getStatus() => checker.onStatusChange;
+  Stream<InternetStatus> getStatus() => checker.onStatusChange;
 }

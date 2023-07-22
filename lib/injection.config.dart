@@ -13,7 +13,7 @@ import 'package:dio/dio.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:image_picker/image_picker.dart' as _i5;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:internet_connection_checker/internet_connection_checker.dart'
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i7;
 
 import 'application/bloc/pagination_bloc.dart' as _i17;
@@ -52,10 +52,10 @@ _i1.GetIt $initGetIt(
   gh.lazySingleton<_i4.Dio>(() => apiService.dio());
   gh.lazySingleton<_i5.ImagePicker>(() => apiService.imagePicker);
   gh.lazySingleton<_i6.ImageResizeUtils>(() => _i6.ImageResizeUtils());
-  gh.lazySingleton<_i7.InternetConnectionChecker>(
+  gh.lazySingleton<_i7.InternetConnection>(
       () => apiService.internetConnectionChecker());
   gh.lazySingleton<_i8.NetworkInfo>(
-      () => _i8.NetworkInfoImpl(gh<_i7.InternetConnectionChecker>()));
+      () => _i8.NetworkInfoImpl(gh<_i7.InternetConnection>()));
   gh.lazySingleton<_i9.SessionSource>(() => _i9.SessionSource());
   gh.lazySingleton<_i10.PostRemote>(() => _i11.PostRemoteImpl(
         gh<_i4.Dio>(),

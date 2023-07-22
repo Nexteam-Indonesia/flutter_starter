@@ -54,7 +54,7 @@ dependencies:
   geocoding: ^2.1.0
   flutter_secure_storage: ^8.0.0
   logger: ^1.4.0
-  internet_connection_checker: ^1.0.0+1
+  internet_connection_checker_plus: ^2.0.0
   adaptive_sizer:
     git:
       url: https://github.com/kishor98100/adaptive_sizer
