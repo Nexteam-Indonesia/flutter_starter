@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 import '../pages/pages.dart';
@@ -18,5 +19,13 @@ class AppRouter extends _$AppRouter {
     AutoRoute(page: SplashRoute.page, path: '/'),
     AutoRoute(page: FormRoute.page),
     AutoRoute(page: PostRoute.page),
+    // auth
+    AutoRoute(page: LoginRoute.page),
+    AutoRoute(page: RegisterRoute.page),
+    AutoRoute(page: OtpRoute.page),
+    AutoRoute(page: ChangePasswordRoute.page),
+    AutoRoute(page: ForgotPasswordRoute.page),
+    AutoRoute(page: SuccessRoute.page),
+    AutoRoute(page: HomeRoute.page),
   ];
 }

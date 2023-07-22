@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:next_starter/data/datasources/session/session_source.dart';
+import 'package:next_starter/presentation/components/components.dart';
 
 import '../../common/extensions/extensions.dart';
 import '../../injection.dart';
@@ -22,26 +24,19 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> init() async {
     await 3.delayedSeconds;
-    locator<AppRouter>().replace(const PostRoute());
+    final user = await locator<SessionSource>().hasSession;
+    if (user) {
+      locator<AppRouter>().replace(const HomeRoute());
+      return;
+    }
+    locator<AppRouter>().replace(LoginRoute());
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              height: 150,
-              width: 150,
-              decoration: BoxDecoration(
-                color: Colors.blue,
-                borderRadius: BorderRadius.circular(10),
-              ),
-            )
-          ],
-        ),
+        child: BaseLogo(),
       ),
     );
   }
