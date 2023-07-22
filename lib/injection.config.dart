@@ -16,22 +16,16 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart'
     as _i7;
 
-import 'application/bloc/pagination_bloc.dart' as _i17;
+import 'application/bloc/pagination_bloc.dart' as _i13;
 import 'common/network/network_info.dart' as _i8;
 import 'common/utils/image_resize.dart' as _i6;
-import 'data/datasources/network/network_source.dart' as _i18;
+import 'data/datasources/network/network_source.dart' as _i14;
 import 'data/datasources/remote_datasources/post_remote/post_remote.dart'
     as _i10;
 import 'data/datasources/remote_datasources/post_remote/post_remote_impl.dart'
     as _i11;
-import 'data/datasources/remote_datasources/quake_remote/quake_remote.dart'
-    as _i13;
-import 'data/datasources/remote_datasources/quake_remote/quake_remote_impl.dart'
-    as _i14;
 import 'data/datasources/session/session_source.dart' as _i9;
 import 'data/repositories/post_repository.dart' as _i12;
-import 'data/repositories/quake_repository.dart' as _i15;
-import 'presentation/pages/home/cubit/home_cubit.dart' as _i16;
 import 'presentation/routes/app_router.dart' as _i3;
 
 // ignore_for_file: unnecessary_lambdas
@@ -65,18 +59,9 @@ _i1.GetIt $initGetIt(
         gh<_i8.NetworkInfo>(),
         gh<_i10.PostRemote>(),
       ));
-  gh.lazySingleton<_i13.QuakeRemote>(() => _i14.QuakeRemoteImpl(
-        gh<_i4.Dio>(),
-        gh<_i9.SessionSource>(),
-      ));
-  gh.lazySingleton<_i15.QuakeRepository>(() => _i15.QuakeRepository(
-        gh<_i13.QuakeRemote>(),
-        gh<_i8.NetworkInfo>(),
-      ));
-  gh.factory<_i16.HomeCubit>(() => _i16.HomeCubit(gh<_i15.QuakeRepository>()));
-  gh.factory<_i17.PaginationBloc>(
-      () => _i17.PaginationBloc(gh<_i12.PostRepository>()));
+  gh.factory<_i13.PaginationBloc>(
+      () => _i13.PaginationBloc(gh<_i12.PostRepository>()));
   return getIt;
 }
 
-class _$ApiService extends _i18.ApiService {}
+class _$ApiService extends _i14.ApiService {}
