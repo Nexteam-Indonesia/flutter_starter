@@ -11,7 +11,7 @@ class AppBlocObserver extends BlocObserver {
   @override
   Future<void> onChange(BlocBase bloc, Change change) async {
     super.onChange(bloc, change);
-    logger.d('onChange(${bloc.runtimeType}, $change)');
+    logger.d('onChange(${bloc.runtimeType}, change)');
   }
 
   @override
