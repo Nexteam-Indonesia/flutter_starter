@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.5
   google_fonts: ^5.1.0
   image_picker: ^1.0.1
+  file_picker: ^5.3.2
 
   auto_route: ^7.7.1
 
@@ -58,9 +59,13 @@ dependencies:
   geolocator: ^9.0.2
   geocoding: ^2.1.0
 
-  cached_network_image: ^3.2.3
-  dartz: ^0.10.1
   reactive_forms: ^16.0.2
+  reactive_pinput: ^1.0.0
+
+  cached_network_image: ^3.2.3
+  flutter_svg: ^2.0.7
+
+  dartz: ^0.10.1
   velocity_x: ^4.1.0
   permission_handler: ^10.4.3
   flutter_secure_storage: ^8.0.0
@@ -72,6 +77,8 @@ dependencies:
   intl: ^0.18.1
   stream_transform: ^2.1.0
   flavor: ^2.0.0
+  shimmer: ^3.0.0
+  lecle_downloads_path_provider: ^0.0.2+8
 
   # Local Database
   # drift: ^2.5.0
@@ -101,7 +108,8 @@ dev_dependencies:
   # Local Database
   # drift_dev: ^2.5.2
 
-# dependency_overrides:
+dependency_overrides:
+  reactive_forms: ^16.0.2
 #   analyzer: ^5.11.1
 #   path: ^1.8.3
 #   intl: ^0.18.1

@@ -7,6 +7,7 @@ import 'package:next_starter/common/widgets/row_loading_widget.dart';
 
 import '../../../application/bloc/pagination_bloc.dart';
 import '../../../injection.dart';
+import '../../components/base/base_app_bar.dart';
 import '../../components/base/base_scaffold.dart';
 
 @RoutePage()
@@ -60,6 +61,9 @@ class _PostViewState extends State<PostView> {
   @override
   Widget build(BuildContext context) {
     return BaseScaffold(
+      appBar: const BaseAppBar(
+        title: 'Posts',
+      ),
       body: BlocBuilder<PaginationBloc, PaginationState>(
         builder: (context, state) {
           switch (state.status) {

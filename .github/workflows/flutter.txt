@@ -1,0 +1,54 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - release
+  # pull_request:
+#   branches:
+#     - release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: "zulu"
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: "stable"
+          architecture: x64
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build APK
+        run: flutter build apk --release lib/main_prod.dart --no-tree-shake-icons
+
+      # - name: Create destination directory
+      #   run: mkdir -p release/
+
+      - name: Copy APK file
+        run: cp build/app/outputs/apk/release/app-release.apk app-release.apk
+      - name: Archive files
+        # run: cp login.json release/login.json
+        run: zip -r app.zip app-release.apk
+
+      - name: Upload to gdrive
+        uses: mathisve/gdrive-upload-action@main
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_SERVICE_ACCOUNT }}
+          filename: app.zip
+          # filename: release/login.json
+          # folderId: 1kSH5QC868Oup1f8r9RWqQEJ0DmY
+          overwrite: true
+          encoded: true
