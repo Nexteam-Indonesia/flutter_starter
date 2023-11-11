@@ -1,4 +1,4 @@
-package com.example.next_starter
+package id.nexteam.next_starter
 
 import io.flutter.embedding.android.FlutterActivity
 
