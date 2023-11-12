@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/presentation/components/components.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
 import '../../../../injection.dart';
@@ -50,14 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                   orElse: () {},
                   loading: () => context.showLoadingIndicator(),
                   error: (msg) {
-                    context.showSnackbar(
-                        title: "Error", message: msg, error: true);
+                    context.showSnackbar(title: "Error", message: msg, error: true);
                   },
                   success: (msg) {
                     context.hideLoading();
                     context.showSnackbar(title: "Sukses", message: msg);
-                    context.route.pushAndPopUntil(const HomeRoute(),
-                        predicate: (route) => false);
+                    context.route.pushAndPopUntil(const HomeRoute(), predicate: (route) => false);
                   },
                 );
               },
@@ -70,11 +67,11 @@ class _LoginPageState extends State<LoginPage> {
                           onTap: () {
                             FocusManager.instance.primaryFocus?.unfocus();
                             if (widget.isAddAccount) {
-                              context.pop();
+                              context.route.pop();
                             } else {
                               // context.read<AuthCubit>().login(formG.value);
-                              context.route.pushAndPopUntil(const HomeRoute(),
-                                  predicate: (route) => false);
+                              context.route
+                                  .pushAndPopUntil(const HomeRoute(), predicate: (route) => false);
                             }
                           },
                           title: "Masuk",
@@ -94,8 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                                   color: ColorTheme.primary,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () =>
-                                      context.route.push(const RegisterRoute()),
+                                  ..onTap = () => context.route.push(const RegisterRoute()),
                               ),
                             ],
                           ),
@@ -164,8 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorTheme.primary,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () =>
-                              context.route.push(const ForgotPasswordRoute()),
+                          ..onTap = () => context.route.push(const ForgotPasswordRoute()),
                       ),
                     ],
                   ),

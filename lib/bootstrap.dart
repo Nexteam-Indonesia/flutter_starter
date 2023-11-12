@@ -16,7 +16,7 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
-    logger.e('onError(${bloc.runtimeType}, $error, $stackTrace)');
+    logger.e('onError(${bloc.runtimeType})', error: error, stackTrace: stackTrace);
     super.onError(bloc, error, stackTrace);
   }
 }
@@ -27,12 +27,12 @@ Future<void> bootstrap() async {
       WidgetsFlutterBinding.ensureInitialized();
       Bloc.observer = AppBlocObserver();
       FlutterError.onError = (FlutterErrorDetails details) {
-        logger.e(details.exceptionAsString(), details.exception, details.stack);
+        logger.e(details.exceptionAsString(), error: details.exception, stackTrace: details.stack);
       };
       await configureDependencies();
       runApp(const AppPage());
     },
     (Object error, StackTrace stackTrace) =>
-        logger.e(error.toString(), error, stackTrace),
+        logger.e(error.toString(), error: error, stackTrace: stackTrace),
   );
 }

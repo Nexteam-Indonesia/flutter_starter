@@ -4,9 +4,8 @@ import 'dart:typed_data';
 import 'package:dio/dio.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:injectable/injectable.dart';
-import 'package:lecle_downloads_path_provider/lecle_downloads_path_provider.dart';
-import 'package:path/path.dart' as p;
 import 'package:next_starter/common/storage/storage_path.dart';
+import 'package:path/path.dart' as p;
 
 import '../permission/permission.dart';
 
@@ -44,8 +43,7 @@ class Storage extends StorageInterface {
   }) : super();
 
   @override
-  Future<File> download(String url,
-      {bool isTemp = false, String? fileName}) async {
+  Future<File> download(String url, {bool isTemp = false, String? fileName}) async {
     // Download file from uri with dio return File
     String fName = fileName ?? p.basenameWithoutExtension(url);
     fName = fName.replaceAll('/', '-');
@@ -54,9 +52,8 @@ class Storage extends StorageInterface {
     if (isTemp) {
       path = storagePath.temporary;
     } else {
-      path = (await DownloadsPath.downloadsDirectory())?.path;
+      path = storagePath.external;
     }
-    path ??= storagePath.temporary;
     int i = 1;
     String savePath = '$path/$fName$ext';
     while (File(savePath).existsSync()) {
