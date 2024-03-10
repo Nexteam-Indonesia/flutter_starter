@@ -22,10 +22,14 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+def compileSdkVer = 34
+def ndkVer = "24.0.8215888"
+def minSdkVer = 21
+
 android {
     namespace "id.nexteam.next_starter"
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    ndkVersion rootProject.ext.ndkVersion
+    compileSdk compileSdkVer
+    ndkVersion ndkVer
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -45,8 +49,8 @@ android {
         applicationId "id.nexteam.next_starter"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
+        minSdkVersion minSdkVer
+        targetSdkVersion compileSdkVer
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

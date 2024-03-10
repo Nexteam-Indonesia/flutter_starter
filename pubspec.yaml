@@ -76,6 +76,7 @@ dependencies:
   flavor: ^2.0.0
   shimmer: ^3.0.0
   flutter_screenutil: ^5.9.0
+  alice: ^0.4.1
   # lecle_downloads_path_provider: ^0.0.2+8
 
   # Local Database
