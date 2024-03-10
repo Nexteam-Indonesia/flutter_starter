@@ -1,20 +1,20 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
-
 import 'package:next_starter/common/extensions/context_extension.dart';
 import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
 import 'package:next_starter/presentation/theme/theme.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-@RoutePage()
+import 'login_page.dart';
+
 class SuccessPage extends StatelessWidget {
   const SuccessPage({
-    Key? key,
+    super.key,
     required this.message,
-  }) : super(key: key);
+  });
 
   final String message;
+
+  static const path = "/success";
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +23,7 @@ class SuccessPage extends StatelessWidget {
         title: "Lanjutkan",
         isEnable: true,
         onTap: () {
-          context.route
-              .pushAndPopUntil(LoginRoute(), predicate: (route) => false);
+          context.route.go(LoginPage.path);
         },
       ).p20(),
       body: SizedBox(
@@ -50,8 +49,7 @@ class SuccessPage extends StatelessWidget {
             ),
             Text(
               message,
-              style: CustomTextTheme.paragraph1
-                  .copyWith(color: ColorTheme.neutral[600]),
+              style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
             ),
           ],
         ),

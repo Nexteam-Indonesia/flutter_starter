@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:next_starter/injection.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../presentation/routes/app_router.dart';
 import '../../presentation/theme/theme.dart';
 import '../widgets/loading_indicator_widget.dart';
 import '../widgets/snack_bar_widget.dart';
@@ -11,7 +10,11 @@ import 'num_extension.dart';
 extension BuildContextX on BuildContext {
   ThemeData get theme => Theme.of(this);
 
-  AppRouter get route => locator<AppRouter>();
+  GoRouter get route => GoRouter.of(this);
+
+  popUntil(String path) {
+    Navigator.popUntil(this, (state) => state.settings.name == path);
+  }
 
   ColorScheme get colorScheme => Theme.of(this).colorScheme;
 

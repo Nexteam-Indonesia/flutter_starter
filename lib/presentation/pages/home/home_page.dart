@@ -1,13 +1,15 @@
-import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:next_starter/common/extensions/context_extension.dart';
 
 import '../../components/components.dart';
 import '../../routes/app_router.dart';
+import '../post/post_page.dart';
 
-@RoutePage()
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  static const path = "/home";
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -24,7 +26,7 @@ class _HomePageState extends State<HomePage> {
         child: PrimaryButton(
           title: "Go to Post Page",
           onTap: () {
-            context.route.push(const PostRoute());
+            context.go(PostPage.path);
           },
           width: 200,
           isFullWidth: false,

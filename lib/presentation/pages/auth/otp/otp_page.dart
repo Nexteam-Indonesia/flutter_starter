@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,24 +5,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/context_extension.dart';
 import 'package:next_starter/injection.dart';
 import 'package:next_starter/presentation/components/components.dart';
+import 'package:next_starter/presentation/pages/auth/auth.dart';
 import 'package:next_starter/presentation/theme/theme.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:reactive_pinput/reactive_pinput.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
-import '../../../routes/app_router.dart';
-import 'widget/resend_otp_timer.dart';
 
-@RoutePage()
 class OtpPage extends StatelessWidget {
   const OtpPage({
-    Key? key,
+    super.key,
     required this.email,
     this.isResetPassword = false,
-  }) : super(key: key);
+  });
 
   final String email;
   final bool isResetPassword;
+  static const path = "/otp";
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +37,10 @@ class OtpPage extends StatelessWidget {
 
 class OtpView extends StatefulWidget {
   const OtpView({
-    Key? key,
+    super.key,
     required this.email,
     this.isResetPassword = false,
-  }) : super(key: key);
+  });
 
   final String email;
   final bool isResetPassword;
@@ -85,7 +83,7 @@ class _OtpViewState extends State<OtpView> {
                 icon: Icons.arrow_back_ios_new_rounded,
                 size: 36,
                 onTap: () {
-                  context.router.pop();
+                  context.route.pop();
                 },
               ),
               20.verticalSpace,
@@ -157,15 +155,17 @@ class _OtpViewState extends State<OtpView> {
                     success: (msg) {
                       context.hideLoading();
                       if (widget.isResetPassword) {
-                        context.route.replace(
-                          ChangePasswordRoute(
-                            email: widget.email,
-                            otp: formG.rawValue['otp'].toString(),
-                          ),
+                        context.route.replaceNamed(
+                          ChangePasswordPage.path,
+                          pathParameters: {
+                            "email": widget.email,
+                            "otp": formG.rawValue['otp'].toString(),
+                          },
                         );
                         return;
                       }
-                      context.route.replace(SuccessRoute(message: msg));
+                      context.route
+                          .replaceNamed(SuccessPage.path, pathParameters: {"message": msg});
                     },
                     successAdd: (msg) {
                       context.hideLoading();
@@ -185,18 +185,20 @@ class _OtpViewState extends State<OtpView> {
                         onTap: () {
                           FocusManager.instance.primaryFocus?.unfocus();
                           if (widget.isResetPassword) {
-                            context.route.replace(
-                              ChangePasswordRoute(
-                                email: widget.email,
-                                otp: formG.rawValue['otp'].toString(),
-                              ),
+                            context.route.replaceNamed(
+                              ChangePasswordPage.path,
+                              pathParameters: {
+                                "email": widget.email,
+                                "otp": formG.rawValue['otp'].toString(),
+                              },
                             );
                           } else {
                             // context.read<AuthCubit>().verifyOtp({
                             //   "email": widget.email,
                             //   "otp": formState.rawValue['otp'],
                             // });
-                            context.route.replace(SuccessRoute(message: "Berhasil verifikasi OTP"));
+                            context.route.replaceNamed(SuccessPage.path,
+                                pathParameters: {"message": "Berhasil verifikasi OTP"});
                           }
                         },
                         isEnable: formState.valid,

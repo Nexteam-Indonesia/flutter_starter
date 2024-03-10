@@ -1,20 +1,20 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/presentation/components/components.dart';
+import 'package:next_starter/presentation/pages/auth/auth.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
 import '../../../../injection.dart';
-import '../../routes/app_router.dart';
 import '../../theme/theme.dart';
 
-@RoutePage()
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
+
+  static const path = "/register";
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +31,8 @@ class RegisterPage extends StatelessWidget {
 
 class RegisterView extends StatelessWidget {
   const RegisterView({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +63,9 @@ class RegisterView extends StatelessWidget {
                 },
                 success: (msg) {
                   context.hideLoading();
-                  context.route.push(
-                    OtpRoute(email: form.controls['email']!.value.toString()),
+                  context.route.goNamed(
+                    OtpPage.path,
+                    pathParameters: {"email": form.controls['email']!.value.toString()},
                   );
                   context.showSnackbar(title: "Sukses", message: msg);
                 },
@@ -77,8 +78,9 @@ class RegisterView extends StatelessWidget {
                     onTap: () {
                       FocusManager.instance.primaryFocus?.unfocus();
                       // context.read<AuthCubit>().register(formL.rawValue);
-                      context.route.push(
-                        OtpRoute(email: form.controls['email']!.value.toString()),
+                      context.route.goNamed(
+                        OtpPage.path,
+                        pathParameters: {"email": form.controls['email']!.value.toString()},
                       );
                     },
                     title: "Daftar",

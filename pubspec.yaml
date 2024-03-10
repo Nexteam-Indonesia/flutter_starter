@@ -37,9 +37,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   google_fonts: ^6.2.1
   image_picker: ^1.0.7
-  file_picker: ^6.2.0
+  file_selector: ^1.0.3
 
-  auto_route: ^7.8.4
+  go_router: ^13.2.0
 
   bloc: ^8.1.3  
   bloc_concurrency: ^0.2.4
@@ -48,6 +48,7 @@ dependencies:
   dio: ^5.4.1
   pretty_dio_logger: ^1.3.1
   dio_http2_adapter: ^2.5.0
+  alice: ^0.4.1
 
   equatable: ^2.0.5
   freezed_annotation: ^2.4.1
@@ -76,7 +77,6 @@ dependencies:
   flavor: ^2.0.0
   shimmer: ^3.0.0
   flutter_screenutil: ^5.9.0
-  alice: ^0.4.1
   # lecle_downloads_path_provider: ^0.0.2+8
 
   # Local Database
@@ -95,7 +95,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
-  auto_route_generator: ^7.3.2
   build_runner: ^2.4.8
   build_verify: ^3.1.0
   freezed: ^2.4.7

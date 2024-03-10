@@ -22,6 +22,7 @@ class AppBlocObserver extends BlocObserver {
 }
 
 Future<void> bootstrap() async {
+  final navigatorKey = GlobalKey<NavigatorState>();
   return runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ Future<void> bootstrap() async {
         logger.e(details.exceptionAsString(), error: details.exception, stackTrace: details.stack);
       };
       await configureDependencies();
-      runApp(const AppPage());
+      runApp(AppPage(navigatorKey: navigatorKey));
     },
     (Object error, StackTrace stackTrace) =>
         logger.e(error.toString(), error: error, stackTrace: stackTrace),

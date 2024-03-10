@@ -1,19 +1,20 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/injection.dart';
 import 'package:next_starter/presentation/components/components.dart';
+import 'package:next_starter/presentation/pages/auth/auth.dart';
+import 'package:next_starter/presentation/pages/auth/otp/otp_page.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
-import '../../routes/app_router.dart';
 import '../../theme/theme.dart';
 
-@RoutePage()
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
+
+  static const path = "/forgot-password";
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +34,7 @@ class ForgotPasswordPage extends StatelessWidget {
                   icon: Icons.arrow_back_ios_new_rounded,
                   size: 36,
                   onTap: () {
-                    context.router.pop();
+                    context.route.pop();
                   },
                 ),
                 20.verticalSpace,
@@ -69,10 +70,10 @@ class ForgotPasswordPage extends StatelessWidget {
                       },
                       success: (msg) {
                         context.hideLoading();
-                        context.route.push(OtpRoute(
-                          email: formG.rawValue['email'].toString(),
-                          isResetPassword: true,
-                        ));
+                        context.route.goNamed(OtpPage.path, pathParameters: {
+                          "email": formG.rawValue['email'].toString(),
+                          "isResetPassword": true.toString(),
+                        });
                         context.showSnackbar(title: "Sukses", message: msg);
                       },
                     );
@@ -87,10 +88,10 @@ class ForgotPasswordPage extends StatelessWidget {
                             // context
                             //     .read<AuthCubit>()
                             //     .forgotPassword(formState.rawValue);
-                            context.route.push(OtpRoute(
-                              email: formG.rawValue['email'].toString(),
-                              isResetPassword: true,
-                            ));
+                            context.route.goNamed(OtpPage.path, pathParameters: {
+                              "email": formG.rawValue['email'].toString(),
+                              "isResetPassword": true.toString(),
+                            });
                           },
                           isEnable: formState.valid,
                         );
