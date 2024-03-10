@@ -1,5 +1,5 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../theme/theme.dart';
@@ -45,13 +45,11 @@ class DropdownInput<T extends Object> extends StatelessWidget {
               if (isRequiredText)
                 TextSpan(
                   text: "*",
-                  style: CustomTextTheme.caption
-                      .copyWith(color: ColorTheme.primary),
+                  style: CustomTextTheme.caption.copyWith(color: ColorTheme.primary),
                 ),
             ],
           ),
-          style:
-              CustomTextTheme.paragraph1.copyWith(fontWeight: FontWeight.w700),
+          style: CustomTextTheme.paragraph1.copyWith(fontWeight: FontWeight.w700),
         ),
         8.verticalSpace,
         ReactiveDropdownField<T>(
@@ -59,8 +57,7 @@ class DropdownInput<T extends Object> extends StatelessWidget {
               .map(
                 (e) => DropdownMenuItem<T>(
                   value: e['value'],
-                  child:
-                      Text(e['text'] ?? '-', style: CustomTextTheme.paragraph1),
+                  child: Text(e['text'] ?? '-', style: CustomTextTheme.paragraph1),
                 ),
               )
               .toList(),

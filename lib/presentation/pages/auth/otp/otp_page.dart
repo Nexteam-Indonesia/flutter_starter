@@ -1,8 +1,8 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/context_extension.dart';
 import 'package:next_starter/injection.dart';
 import 'package:next_starter/presentation/components/components.dart';
@@ -88,7 +88,7 @@ class _OtpViewState extends State<OtpView> {
                   context.router.pop();
                 },
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               Text(
                 'Email Verification',
                 maxLines: 1,
@@ -100,15 +100,14 @@ class _OtpViewState extends State<OtpView> {
               Text(
                 'Masukkan kode verifikasi yang kami kirimkan kepada '
                 'Anda di: ${widget.email}',
-                style: CustomTextTheme.paragraph1
-                    .copyWith(color: ColorTheme.neutral[600]),
+                style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               ReactivePinPut(
                 formControlName: 'otp',
                 length: 5,
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               Center(
                 child: Text.rich(
                   TextSpan(
@@ -117,9 +116,7 @@ class _OtpViewState extends State<OtpView> {
                       TextSpan(
                         text: 'Kirim Ulang',
                         style: TextStyle(
-                          color: showResend
-                              ? ColorTheme.primary
-                              : ColorTheme.neutral[800],
+                          color: showResend ? ColorTheme.primary : ColorTheme.neutral[800],
                           fontWeight: showResend ? FontWeight.bold : null,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -133,8 +130,7 @@ class _OtpViewState extends State<OtpView> {
                               : null,
                       ),
                     ],
-                    style: CustomTextTheme.paragraph1
-                        .copyWith(color: ColorTheme.neutral[900]),
+                    style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[900]),
                   ),
                 ),
               ),
@@ -149,15 +145,14 @@ class _OtpViewState extends State<OtpView> {
                   },
                 ),
               ),
-              15.verticalSpaceRadius,
+              15.verticalSpace,
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
                   state.maybeWhen(
                     orElse: () {},
                     loading: () => context.showLoadingIndicator(),
                     error: (msg) {
-                      context.showSnackbar(
-                          title: "Error", message: msg, error: true);
+                      context.showSnackbar(title: "Error", message: msg, error: true);
                     },
                     success: (msg) {
                       context.hideLoading();
@@ -201,8 +196,7 @@ class _OtpViewState extends State<OtpView> {
                             //   "email": widget.email,
                             //   "otp": formState.rawValue['otp'],
                             // });
-                            context.route.replace(SuccessRoute(
-                                message: "Berhasil verifikasi OTP"));
+                            context.route.replace(SuccessRoute(message: "Berhasil verifikasi OTP"));
                           }
                         },
                         isEnable: formState.valid,

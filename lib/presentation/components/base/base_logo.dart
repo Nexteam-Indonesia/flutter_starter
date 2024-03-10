@@ -1,5 +1,5 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BaseLogo extends StatelessWidget {
   const BaseLogo({

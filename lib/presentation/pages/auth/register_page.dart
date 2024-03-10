@@ -1,8 +1,8 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/presentation/components/components.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -59,8 +59,7 @@ class RegisterView extends StatelessWidget {
                 orElse: () {},
                 loading: () => context.showLoadingIndicator(),
                 error: (msg) {
-                  context.showSnackbar(
-                      title: "Error", message: msg, error: true);
+                  context.showSnackbar(title: "Error", message: msg, error: true);
                 },
                 success: (msg) {
                   context.hideLoading();
@@ -79,13 +78,11 @@ class RegisterView extends StatelessWidget {
                       FocusManager.instance.primaryFocus?.unfocus();
                       // context.read<AuthCubit>().register(formL.rawValue);
                       context.route.push(
-                        OtpRoute(
-                            email: form.controls['email']!.value.toString()),
+                        OtpRoute(email: form.controls['email']!.value.toString()),
                       );
                     },
                     title: "Daftar",
-                    isEnable:
-                        formL.valid && formL.control('unit_1').value != -1,
+                    isEnable: formL.valid && formL.control('unit_1').value != -1,
                   );
                 },
               );
@@ -118,7 +115,7 @@ class RegisterView extends StatelessWidget {
                   color: ColorTheme.neutral[600],
                 ),
               ),
-              28.verticalSpaceRadius,
+              28.verticalSpace,
               // const TextInput(
               //   title: "Nip",
               //   formControlName: "nip",
@@ -127,7 +124,7 @@ class RegisterView extends StatelessWidget {
               //   textInputType: TextInputType.number,
               //   isRequiredText: true,
               // ),
-              // 6.verticalSpaceRadius,
+              // 6.verticalSpace,
               const TextInput(
                 title: "Nama",
                 formControlName: "name",
@@ -135,7 +132,7 @@ class RegisterView extends StatelessWidget {
                 prefix: Icon(Icons.person),
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              6.verticalSpace,
               const TextInput(
                 title: "Nomor Ponsel",
                 formControlName: "phone_number",
@@ -144,7 +141,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.phone,
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              6.verticalSpace,
               const TextInput(
                 title: "Email",
                 formControlName: "email",
@@ -153,7 +150,7 @@ class RegisterView extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
                 isRequiredText: true,
               ),
-              6.verticalSpaceRadius,
+              6.verticalSpace,
               PasswordInput(
                 formControlName: "password",
                 title: "Password",
@@ -161,8 +158,7 @@ class RegisterView extends StatelessWidget {
                 isRequiredText: true,
                 prefix: const Icon(Icons.key),
                 validationMessages: {
-                  ValidationMessage.minLength: (p0) =>
-                      'Password Minimal 8 karakter',
+                  ValidationMessage.minLength: (p0) => 'Password Minimal 8 karakter',
                 },
               ),
               18.verticalSpace,
@@ -180,8 +176,7 @@ class RegisterView extends StatelessWidget {
                       ),
                       // recognizer: TapGestureRecognizer()
                       // ..onTap = () => context.route.push(OtpRoute(email: "Aaab".toString())),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => context.route.pop(),
+                      recognizer: TapGestureRecognizer()..onTap = () => context.route.pop(),
                     ),
                   ],
                 ),

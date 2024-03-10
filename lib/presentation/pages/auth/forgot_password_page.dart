@@ -1,7 +1,7 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/injection.dart';
 import 'package:next_starter/presentation/components/components.dart';
@@ -36,7 +36,7 @@ class ForgotPasswordPage extends StatelessWidget {
                     context.router.pop();
                   },
                 ),
-                20.verticalSpaceRadius,
+                20.verticalSpace,
                 Text(
                   'Setel Ulang Kata Sandi',
                   maxLines: 1,
@@ -47,10 +47,9 @@ class ForgotPasswordPage extends StatelessWidget {
                 ),
                 Text(
                   'Masukkan email yang terkait dengan akun anda dan kami akan mengirimkan email berisi kode verifikasi untuk mengatur ulang kata sandi anda ',
-                  style: CustomTextTheme.paragraph1
-                      .copyWith(color: ColorTheme.neutral[600]),
+                  style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
                 ),
-                20.verticalSpaceRadius,
+                20.verticalSpace,
                 const TextInput(
                   formControlName: 'email',
                   hint: 'Masukkan email anda',
@@ -66,8 +65,7 @@ class ForgotPasswordPage extends StatelessWidget {
                       orElse: () {},
                       loading: () => context.showLoadingIndicator(),
                       error: (msg) {
-                        context.showSnackbar(
-                            title: "Error", message: msg, error: true);
+                        context.showSnackbar(title: "Error", message: msg, error: true);
                       },
                       success: (msg) {
                         context.hideLoading();

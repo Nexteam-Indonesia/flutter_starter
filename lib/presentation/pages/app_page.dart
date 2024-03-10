@@ -1,7 +1,7 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/utils/config.dart';
 
 import '../../common/logging/logger.dart';
@@ -22,8 +22,11 @@ class _AppPageState extends State<AppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveSizer(
-      builder: (context) => FlavorBanner(
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => FlavorBanner(
         child: MaterialApp.router(
           title: Configs.titleApp,
           theme: AppCoreTheme.theme,
@@ -35,8 +38,7 @@ class _AppPageState extends State<AppPage> {
             ],
           ),
           builder: (BuildContext context, Widget? child) {
-            ErrorWidget.builder =
-                (FlutterErrorDetails details) => AppErrorView(details: details);
+            ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
             return child!;
           },
         ),

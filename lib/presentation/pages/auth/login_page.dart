@@ -1,9 +1,9 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/presentation/components/components.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                           title: "Masuk",
                           isEnable: formG.valid,
                         ),
-                        18.verticalSpaceRadius,
+                        18.verticalSpace,
                         Text.rich(
                           TextSpan(
                             text: "Belum memiliki akun? ",
@@ -129,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: ColorTheme.neutral[600],
                   ),
                 ),
-                50.verticalSpaceRadius,
+                50.verticalSpace,
                 const TextInput(
                   title: "Email",
                   formControlName: "email",
@@ -138,7 +138,7 @@ class _LoginPageState extends State<LoginPage> {
                   prefix: Icon(Icons.person),
                   isRequiredText: true,
                 ),
-                6.verticalSpaceRadius,
+                6.verticalSpace,
                 const PasswordInput(
                   formControlName: "password",
                   title: "Password",
