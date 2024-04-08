@@ -1,4 +1,3 @@
-import 'package:injectable/injectable.dart';
 import 'package:next_starter/common/base/base_dio_remote_source.dart';
 import 'package:next_starter/common/utils/api_path.dart';
 import 'package:next_starter/data/dto/register_dto.dart';
@@ -6,7 +5,6 @@ import 'package:next_starter/data/dto/register_dto.dart';
 import '../../../models/auth/session_model.dart';
 import 'auth_remote.dart';
 
-@LazySingleton(as: AuthRemote)
 class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
   AuthRemoteImpl(super.dio, super.session);
 
@@ -25,8 +23,7 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
   }
 
   @override
-  Future<SessionModel> login(
-      {required String email, required String password}) {
+  Future<SessionModel> login({required String email, required String password}) {
     return networkRequest(
       request: (dio) => dio.post(
         ApiPath.login,
@@ -95,8 +92,7 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
   }
 
   @override
-  Future<bool> verifyOtp(
-      {required String email, required String oneTimePassword}) {
+  Future<bool> verifyOtp({required String email, required String oneTimePassword}) {
     return networkRequest(
       request: (dio) => dio.post(
         ApiPath.verifyOtp + email,

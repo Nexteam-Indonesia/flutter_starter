@@ -2,20 +2,16 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
 import 'package:next_starter/data/repositories/auth_repository.dart';
+import 'package:next_starter/injection.dart';
 
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
-@injectable
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(
-    this.repo,
-    // this.userRepo,
-  ) : super(const AuthState.initial());
+  AuthCubit() : super(const AuthState.initial());
 
-  final AuthRepository repo;
+  final AuthRepository repo = locator<AuthRepository>();
 
   Future<void> login(Map<String, dynamic> json) async {
     // final NotificationInterface notification = locator<NotificationInterface>();

@@ -1,4 +1,3 @@
-import 'package:injectable/injectable.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
 abstract class NetworkInfo {
@@ -8,7 +7,6 @@ abstract class NetworkInfo {
   Stream<InternetStatus> getStatus();
 }
 
-@LazySingleton(as: NetworkInfo)
 class NetworkInfoImpl implements NetworkInfo {
   const NetworkInfoImpl(this.checker);
 

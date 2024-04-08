@@ -22,11 +22,6 @@ class AppRouter {
           name: FormPage.path,
           builder: (context, state) => const FormPage(),
         ),
-        GoRoute(
-          path: FormPage.path,
-          name: FormPage.path,
-          builder: (context, state) => const FormPage(),
-        ),
         // auth routes
         GoRoute(
           path: RegisterPage.path,
@@ -50,8 +45,8 @@ class AppRouter {
           path: ChangePasswordPage.path,
           name: ChangePasswordPage.path,
           builder: (context, state) => ChangePasswordPage(
-            email: state.pathParameters['email']!,
-            otp: state.pathParameters['otp']!,
+            email: state.pathParameters['email'] as String,
+            otp: state.pathParameters['otp'] as String,
           ),
         ),
         GoRoute(

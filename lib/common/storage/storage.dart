@@ -3,7 +3,6 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:file_selector/file_selector.dart';
-import 'package:injectable/injectable.dart';
 import 'package:next_starter/common/storage/storage_path.dart';
 import 'package:path/path.dart' as p;
 
@@ -28,7 +27,6 @@ abstract class StorageInterface {
   Future<File> download(String url, {bool isTemp = false, String? fileName});
 }
 
-@LazySingleton(as: StorageInterface)
 class Storage extends StorageInterface {
   final PermissionInterface permission;
   final StoragePathInterface storagePath;

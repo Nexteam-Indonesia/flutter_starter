@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:next_starter/common/extensions/context_extension.dart';
 
 import '../../components/components.dart';
-import '../../routes/app_router.dart';
 import '../post/post_page.dart';
 
 class HomePage extends StatefulWidget {

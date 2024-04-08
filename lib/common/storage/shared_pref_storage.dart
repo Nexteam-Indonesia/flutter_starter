@@ -1,5 +1,4 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:injectable/injectable.dart';
 
 abstract class SharedPrefStorageInterface {
   final Map<String, String> collections;
@@ -16,7 +15,6 @@ abstract class SharedPrefStorageInterface {
   Future<void> reset();
 }
 
-@LazySingleton(as: SharedPrefStorageInterface)
 class SharedPreferenceStorage extends SharedPrefStorageInterface {
   late final FlutterSecureStorage storage;
 
