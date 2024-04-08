@@ -1,9 +1,9 @@
 import 'package:alice/alice.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:next_starter/application/auth/auth_cubit.dart';
 import 'package:next_starter/application/bloc/pagination_bloc.dart';
 import 'package:next_starter/common/network/network_info.dart';
@@ -40,7 +40,7 @@ Future<void> initializeDependencies(GlobalKey<NavigatorState> navigatorKey) asyn
   locator.registerLazySingleton<ImagePicker>(() => apiService.imagePicker);
   locator.registerFactoryAsync<StoragePathInterface>(apiService.init);
   locator.registerLazySingleton<ImageResizeUtils>(() => ImageResizeUtils());
-  locator.registerLazySingleton<InternetConnection>(() => apiService.internetConnectionChecker());
+  locator.registerLazySingleton<Connectivity>(() => apiService.internetConnectionChecker());
   locator.registerSingleton<NetworkInfo>(NetworkInfoImpl(locator.get()));
   locator.registerLazySingleton<PermissionInterface>(() => const KendaliPermission());
   locator.registerSingleton<SharedPrefStorageInterface>(SharedPreferenceStorage());

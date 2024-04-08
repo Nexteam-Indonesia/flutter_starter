@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 
 import '../errors/api_exception.dart';
@@ -25,7 +26,7 @@ class BaseRepository {
     Future<void> Function(R data)? onSaveToLocal,
     T? getOnLocal,
   }) async {
-    if (await _networkInfo.isConnected) {
+    if ((await _networkInfo.getStatus()).first != ConnectivityResult.none) {
       try {
         final data = await call;
         if (onSaveToLocal != null) {
@@ -39,8 +40,7 @@ class BaseRepository {
               AppError.validationError(message: message, errors: errors),
           unAuthorized: (message) => AppError.unAuthorized(message: message),
           network: () => const AppError.noInternet(),
-          database: (message) =>
-              AppError.serverError(message: message, code: 200),
+          database: (message) => AppError.serverError(message: message, code: 200),
           connectionTimeOut: () => const AppError.timeOut(),
           badCertificate: () => const AppError.badCertificate(),
           badResponse: () => const AppError.badResponse(),
