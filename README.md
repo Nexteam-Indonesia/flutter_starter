@@ -58,40 +58,40 @@ Follow these simple steps to use this template.
 
 | Dependency                                        | Documentation                                                     |
 | ------------------------------------------------- | ----------------------------------------------------------------- |
-| cupertino_icons (version ^1.0.5)                  | [Link](https://pub.dev/packages/cupertino_icons)                  |
-| google_fonts (version ^5.1.0)                     | [Link](https://pub.dev/packages/google_fonts)                     |
-| image_picker (version ^1.0.1)                     | [Link](https://pub.dev/packages/image_picker)                     |
-| file_picker (version ^5.3.2)                      | [Link](https://pub.dev/packages/file_picker)                      |
-| auto_route (version ^7.7.1)                       | [Link](https://pub.dev/packages/auto_route)                       |
-| bloc                                              | [Link](https://pub.dev/packages/bloc)                             |
-| bloc_concurrency                                  | [Link](https://pub.dev/packages/bloc_concurrency)                 |
-| flutter_bloc                                      | [Link](https://pub.dev/packages/flutter_bloc)                     |
-| dio (version ^5.3.0)                              | [Link](https://pub.dev/packages/dio)                              |
-| dio_http2_adapter (version ^2.3.1)                | [Link](https://pub.dev/packages/dio_http2_adapter)                |
-| pretty_dio_logger (version ^1.3.1)                | [Link](https://pub.dev/packages/pretty_dio_logger)                |
-| equatable (version ^2.0.5)                        | [Link](https://pub.dev/packages/equatable)                        |
-| freezed_annotation (version ^2.4.1)               | [Link](https://pub.dev/packages/freezed_annotation)               |
-| json_annotation (version ^4.8.1)                  | [Link](https://pub.dev/packages/json_annotation)                  |
-| injectable (version ^2.1.2)                       | [Link](https://pub.dev/packages/injectable)                       |
-| get_it (version ^7.6.0)                           | [Link](https://pub.dev/packages/get_it)                           |
-| geolocator (version ^9.0.2)                       | [Link](https://pub.dev/packages/geolocator)                       |
-| geocoding (version ^2.1.0)                        | [Link](https://pub.dev/packages/geocoding)                        |
-| reactive_forms (version ^16.0.2)                  | [Link](https://pub.dev/packages/reactive_forms)                   |
-| reactive_pinput (version ^1.0.0)                  | [Link](https://pub.dev/packages/reactive_pinput)                  |
-| cached_network_image (version ^3.2.3)             | [Link](https://pub.dev/packages/cached_network_image)             |
-| flutter_svg (version ^2.0.7)                      | [Link](https://pub.dev/packages/flutter_svg)                      |
-| dartz (version ^0.10.1)                           | [Link](https://pub.dev/packages/dartz)                            |
-| velocity_x (version ^4.1.0)                       | [Link](https://pub.dev/packages/velocity_x)                       |
-| permission_handler (version ^10.4.3)              | [Link](https://pub.dev/packages/permission_handler)               |
-| flutter_secure_storage (version ^8.0.0)           | [Link](https://pub.dev/packages/flutter_secure_storage)           |
-| logger (version ^1.4.0)                           | [Link](https://pub.dev/packages/logger)                           |
-| internet_connection_checker_plus (version ^2.0.0) | [Link](https://pub.dev/packages/internet_connection_checker_plus) |
-| adaptive_sizer                                    | [Link](https://github.com/kishor98100/adaptive_sizer)             |
-| intl (version ^0.18.1)                            | [Link](https://pub.dev/packages/intl)                             |
-| stream_transform (version ^2.1.0)                 | [Link](https://pub.dev/packages/stream_transform)                 |
-| flavor (version ^2.0.0)                           | [Link](https://pub.dev/packages/flavor)                           |
-| shimmer (version ^3.0.0)                          | [Link](https://pub.dev/packages/shimmer)                          |
-| lecle_downloads_path_provider (version ^0.0.2+8)  | [Link](https://pub.dev/packages/lecle_downloads_path_provider)    |
+| cupertino_icons | [![pub package](https://img.shields.io/pub/v/cupertino_icons.svg)](https://pub.dev/packages/cupertino_icons) |
+| google_fonts | [![pub package](https://img.shields.io/pub/v/google_fonts.svg)](https://pub.dev/packages/google_fonts) |
+| image_picker | [![pub package](https://img.shields.io/pub/v/image_picker.svg)](https://pub.dev/packages/image_picker) |
+| file_selector | [![pub package](https://img.shields.io/pub/v/google_fonts.svg)](https://pub.dev/packages/file_selector) |
+| go_router | [![pub package](https://img.shields.io/pub/v/go_router.svg)](https://pub.dev/packages/go_router) |
+| bloc | [![pub package](https://img.shields.io/pub/v/bloc.svg)](https://pub.dev/packages/bloc) |
+| bloc_concurrency | [![pub package](https://img.shields.io/pub/v/bloc_concurrency.svg)](https://pub.dev/packages/bloc_concurrency) |
+| flutter_bloc | [![pub package](https://img.shields.io/pub/v/flutter_bloc.svg)](https://pub.dev/packages/flutter_bloc) |
+| dio | [![pub package](https://img.shields.io/pub/v/dio.svg)](https://pub.dev/packages/dio) |
+| dio_http2_adapter | [![pub package](https://img.shields.io/pub/v/dio_http2_adapter.svg)](https://pub.dev/packages/dio_http2_adapter) |
+| flutter_alice | [![pub package](https://img.shields.io/pub/v/flutter_alice.svg)](https://pub.dev/packages/flutter_alice) |
+| equatable | [![pub package](https://img.shields.io/pub/v/equatable.svg)](https://pub.dev/packages/equatable) |
+| freezed | [![pub package](https://img.shields.io/pub/v/freezed.svg)](https://pub.dev/packages/freezed) |
+| get_it | [![pub package](https://img.shields.io/pub/v/get_it.svg)](https://pub.dev/packages/get_it) |
+| geolocator | [![pub package](https://img.shields.io/pub/v/geolocator.svg)](https://pub.dev/packages/geolocator) |
+| geocoding | [![pub package](https://img.shields.io/pub/v/geocoding.svg)](https://pub.dev/packages/geocoding) |
+| reactive_forms | [![pub package](https://img.shields.io/pub/v/reactive_forms.svg)](https://pub.dev/packages/reactive_forms) |
+| reactive_pinput | [![pub package](https://img.shields.io/pub/v/reactive_pinput.svg)](https://pub.dev/packages/reactive_pinput) |
+| cached_network_image | [![pub package](https://img.shields.io/pub/v/cached_network_image.svg)](https://pub.dev/packages/cached_network_image) |
+| flutter_svg | [![pub package](https://img.shields.io/pub/v/flutter_svg.svg)](https://pub.dev/packages/flutter_svg) |
+| dartz | [![pub package](https://img.shields.io/pub/v/dartz.svg)](https://pub.dev/packages/dartz) |
+| velocity_x | [![pub package](https://img.shields.io/pub/v/velocity_x.svg)](https://pub.dev/packages/velocity_x) |
+| permission_handler | [![pub package](https://img.shields.io/pub/v/permission_handler.svg)](https://pub.dev/packages/permission_handler) |
+| flutter_secure_storage | [![pub package](https://img.shields.io/pub/v/flutter_secure_storage.svg)](https://pub.dev/packages/flutter_secure_storage) |
+| logger | [![pub package](https://img.shields.io/pub/v/logger.svg)](https://pub.dev/packages/logger) |
+| connectivity_plus | [![pub package](https://img.shields.io/pub/v/connectivity_plus.svg)](https://pub.dev/packages/connectivity_plus) |
+| intl | [![pub package](https://img.shields.io/pub/v/intl.svg)](https://pub.dev/packages/intl) |
+| stream_transform | [![pub package](https://img.shields.io/pub/v/stream_transform.svg)](https://pub.dev/packages/stream_transform) |
+| flavor | [![pub package](https://img.shields.io/pub/v/flavor.svg)](https://pub.dev/packages/flavor) |
+| shimmer | [![pub package](https://img.shields.io/pub/v/shimmer.svg)](https://pub.dev/packages/shimmer) |
+| flutter_screenutil | [![pub package](https://img.shields.io/pub/v/flutter_screenutil.svg)](https://pub.dev/packages/flutter_screenutil) |
+| flutter_lints | [![pub package](https://img.shields.io/pub/v/flutter_lints.svg)](https://pub.dev/packages/flutter_lints) |
+| change_app_package_name | [![pub package](https://img.shields.io/pub/v/change_app_package_name.svg)](https://pub.dev/packages/change_app_package_name) |
+| icons_launcher | [![pub package](https://img.shields.io/pub/v/icons_launcher.svg)](https://pub.dev/packages/icons_launcher) |
 
 ## Our Social Media
 
