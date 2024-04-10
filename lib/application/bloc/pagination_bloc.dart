@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:equatable/equatable.dart';
-import 'package:next_starter/data/repositories/post_repository.dart';
-import 'package:next_starter/injection.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import '../../data/models/post/post_model.dart';
+import '../../data/repositories/post_repository.dart';
+import '../../injection.dart';
 
 part 'pagination_event.dart';
 part 'pagination_state.dart';

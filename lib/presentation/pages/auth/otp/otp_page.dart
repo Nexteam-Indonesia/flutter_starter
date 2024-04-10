@@ -2,15 +2,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:next_starter/common/extensions/context_extension.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/pages/auth/auth.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:reactive_pinput/reactive_pinput.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
+import '../../../../common/extensions/context_extension.dart';
+import '../../../../injection.dart';
+import '../../../components/components.dart';
+import '../../../theme/theme.dart';
+import '../auth.dart';
 
 class OtpPage extends StatelessWidget {
   const OtpPage({

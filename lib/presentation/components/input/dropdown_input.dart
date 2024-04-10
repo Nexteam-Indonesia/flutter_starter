@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
+import '../../../common/constants.dart';
 import '../../theme/theme.dart';
 
 class DropdownInput<T extends Object> extends StatelessWidget {
@@ -28,11 +29,8 @@ class DropdownInput<T extends Object> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, String Function(Object)> message = {
-      ValidationMessage.required: (_) => 'inputan ini tidak boleh kosong',
-      'validation_error': (e) => (e as String),
-    };
-    message.addAll(validationMessages);
+    final Map<String, String Function(Object)> messages = Constants.messageErrors;
+    messages.addAll(validationMessages);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -65,7 +63,7 @@ class DropdownInput<T extends Object> extends StatelessWidget {
           decoration: GenerateTheme.inputDecoration(hint),
           onChanged: onChanged,
           readOnly: readOnly,
-          validationMessages: message,
+          validationMessages: messages,
           isExpanded: true,
         )
       ],

@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:next_starter/data/models/auth/instance_model.dart';
+
+import 'instance_model.dart';
 
 class UserModel extends Equatable {
   final int? id;
@@ -79,23 +80,15 @@ class UserModel extends Equatable {
         photo: json["photo"],
         phoneNumber: json["phone_number"],
         address: json["address"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         province: json["province"],
         city: json["city"],
-        instance: json["instance"] == null
-            ? null
-            : InstanceModel.fromJson(json["instance"]),
+        instance: json["instance"] == null ? null : InstanceModel.fromJson(json["instance"]),
         units: json["units"] == null
             ? []
             : List<Unit>.from(json["units"]!.map((x) => Unit.fromJson(x))),
-        roles: json["roles"] == null
-            ? []
-            : List<String>.from(json["roles"]!.map((x) => x)),
-        employee: json["employee"] == null
-            ? null
-            : Employee.fromJson(json["employee"]),
+        roles: json["roles"] == null ? [] : List<String>.from(json["roles"]!.map((x) => x)),
+        employee: json["employee"] == null ? null : Employee.fromJson(json["employee"]),
         permissions: json["permissions"] == null
             ? []
             : List<dynamic>.from(json["permissions"]!.map((x) => x)),
@@ -113,14 +106,10 @@ class UserModel extends Equatable {
         "province": province,
         "city": city,
         "instance": instance?.toJson(),
-        "units": units == null
-            ? []
-            : List<dynamic>.from(units!.map((x) => x.toJson())),
+        "units": units == null ? [] : List<dynamic>.from(units!.map((x) => x.toJson())),
         "roles": roles == null ? [] : List<dynamic>.from(roles!.map((x) => x)),
         "employee": employee?.toJson(),
-        "permissions": permissions == null
-            ? []
-            : List<dynamic>.from(permissions!.map((x) => x)),
+        "permissions": permissions == null ? [] : List<dynamic>.from(permissions!.map((x) => x)),
       };
 
   @override
@@ -202,9 +191,7 @@ class Employee {
         position: json["position"],
         positionEn: json["position_en"],
         image: json["image"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -278,12 +265,8 @@ class Unit {
         abbreviation: json["abbreviation"],
         domain: json["domain"],
         logo: json["logo"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
-        instance: json["instance"] == null
-            ? null
-            : InstanceModel.fromJson(json["instance"]),
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+        instance: json["instance"] == null ? null : InstanceModel.fromJson(json["instance"]),
       );
 
   Map<String, dynamic> toJson() => {

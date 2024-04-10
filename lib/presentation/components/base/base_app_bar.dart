@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/common/extensions/context_extension.dart';
 
+import '../../../common/extensions/context_extension.dart';
 import '../../theme/theme.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {

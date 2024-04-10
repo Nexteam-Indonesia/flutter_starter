@@ -2,9 +2,9 @@ import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:next_starter/common/utils/config.dart';
 import 'package:overlay_support/overlay_support.dart';
 
+import '../../common/utils/config.dart';
 import '../components/app_error_view.dart';
 import '../router/app_router.dart';
 import '../theme/theme.dart';

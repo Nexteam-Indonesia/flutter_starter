@@ -1,7 +1,6 @@
-import 'package:next_starter/common/base/base_dio_remote_source.dart';
-import 'package:next_starter/common/utils/api_path.dart';
-import 'package:next_starter/data/dto/register_dto.dart';
-
+import '../../../../common/base/base_dio_remote_source.dart';
+import '../../../../common/utils/api_path.dart';
+import '../../../../data/dto/register_dto.dart';
 import '../../../models/auth/session_model.dart';
 import 'auth_remote.dart';
 

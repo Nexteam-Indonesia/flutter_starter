@@ -3,10 +3,10 @@ import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
 import 'package:file_selector/file_selector.dart';
-import 'package:next_starter/common/storage/storage_path.dart';
 import 'package:path/path.dart' as p;
 
 import '../permission/permission.dart';
+import 'storage_path.dart';
 
 abstract class StorageInterface {
   const StorageInterface();

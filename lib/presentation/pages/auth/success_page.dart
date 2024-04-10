@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/common/extensions/context_extension.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import '../../../common/extensions/context_extension.dart';
+import '../../components/components.dart';
+import '../../theme/theme.dart';
 import 'login_page.dart';
 
 class SuccessPage extends StatelessWidget {

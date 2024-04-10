@@ -1,18 +1,18 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:next_starter/presentation/components/image/image_generator.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'empty_image.dart';
+import 'image_generator.dart';
 
 class UserCircleAvatar extends StatelessWidget {
   const UserCircleAvatar({
-    Key? key,
+    super.key,
     required this.image,
     this.baseUrl,
     this.size,
     required this.name,
-  }) : super(key: key);
+  });
 
   final String? image;
   final String? baseUrl;
@@ -32,8 +32,7 @@ class UserCircleAvatar extends StatelessWidget {
       url = baseUrl ?? 'https://api-kendali.eluxdev.space/storage/';
       url += image!;
     } else {
-      url =
-          '${(image ?? '').split('://').first}://${(image ?? '').split('://').last}';
+      url = '${(image ?? '').split('://').first}://${(image ?? '').split('://').last}';
     }
     return CachedNetworkImage(
       imageUrl: url,

@@ -1,6 +1,6 @@
 import 'package:flavor/flavor.dart';
-import 'package:next_starter/bootstrap.dart';
 
+import 'bootstrap.dart';
 import 'common/utils/config.dart';
 
 void main() {

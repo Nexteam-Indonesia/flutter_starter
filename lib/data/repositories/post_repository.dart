@@ -1,7 +1,6 @@
-import 'package:next_starter/common/base/base_repository.dart';
-import 'package:next_starter/common/typedefs/typedefs.dart';
-import 'package:next_starter/injection.dart';
-
+import '../../common/base/base_repository.dart';
+import '../../common/typedefs/typedefs.dart';
+import '../../injection.dart';
 import '../datasources/remote_datasources/post_remote/post_remote.dart';
 import '../models/post/post_model.dart';
 

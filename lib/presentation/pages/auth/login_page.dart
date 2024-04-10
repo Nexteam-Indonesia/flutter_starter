@@ -3,15 +3,15 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:next_starter/common/extensions/extensions.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/pages/auth/auth.dart';
-import 'package:next_starter/presentation/pages/home/home_page.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
 import '../../../../injection.dart';
+import '../../../common/extensions/extensions.dart';
+import '../../components/components.dart';
 import '../../theme/theme.dart';
+import '../home/home_page.dart';
+import 'auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key, this.isAddAccount = false});

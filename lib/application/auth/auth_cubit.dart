@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:next_starter/data/repositories/auth_repository.dart';
-import 'package:next_starter/injection.dart';
+
+import '../../data/repositories/auth_repository.dart';
+import '../../injection.dart';
 
 part 'auth_state.dart';
 

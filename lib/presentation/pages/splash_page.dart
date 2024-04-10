@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:next_starter/data/datasources/session/session_source.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/pages/auth/auth.dart';
-import 'package:next_starter/presentation/pages/home/home_page.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 
 import '../../common/extensions/extensions.dart';
+import '../../data/datasources/session/session_source.dart';
 import '../../injection.dart';
+import '../components/components.dart';
+import '../theme/theme.dart';
+import 'auth/auth.dart';
+import 'home/home_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});

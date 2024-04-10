@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:next_starter/common/widgets/app_error_widget.dart';
-import 'package:next_starter/common/widgets/loading_indicator_widget.dart';
-import 'package:next_starter/common/widgets/row_loading_widget.dart';
 
 import '../../../application/bloc/pagination_bloc.dart';
+import '../../../common/widgets/app_error_widget.dart';
+import '../../../common/widgets/loading_indicator_widget.dart';
+import '../../../common/widgets/row_loading_widget.dart';
 import '../../../injection.dart';
 import '../../components/base/base_app_bar.dart';
 import '../../components/base/base_scaffold.dart';

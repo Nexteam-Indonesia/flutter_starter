@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:next_starter/common/extensions/extensions.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/pages/auth/auth.dart';
-import 'package:next_starter/presentation/pages/auth/otp/otp_page.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
+import '../../../common/extensions/extensions.dart';
+import '../../../injection.dart';
+import '../../components/components.dart';
 import '../../theme/theme.dart';
+import 'auth.dart';
+import 'otp/otp_page.dart';
 
 class ForgotPasswordPage extends StatelessWidget {
   const ForgotPasswordPage({super.key});
