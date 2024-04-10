@@ -1,7 +1,7 @@
-import 'package:alice/alice.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_alice/alice.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:next_starter/application/auth/auth_cubit.dart';
@@ -20,7 +20,7 @@ import 'package:next_starter/data/datasources/remote_datasources/post_remote/pos
 import 'package:next_starter/data/datasources/session/session_source.dart';
 import 'package:next_starter/data/repositories/auth_repository.dart';
 import 'package:next_starter/data/repositories/post_repository.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
+import 'package:next_starter/presentation/router/app_router.dart';
 
 import 'common/permission/permission.dart';
 

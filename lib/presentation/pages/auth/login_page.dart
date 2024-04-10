@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                               context.route.pop();
                             } else {
                               // context.read<AuthCubit>().login(formG.value);
-                              context.popUntil(HomePage.path);
+                              context.route.go(HomePage.path);
                             }
                           },
                           title: "Masuk",

@@ -24,7 +24,7 @@ if (flutterVersionName == null) {
 
 def compileSdkVer = 34
 def ndkVer = "24.0.8215888"
-def minSdkVer = 22
+def minSdkVer = 21
 
 android {
     namespace "id.nexteam.next_starter"

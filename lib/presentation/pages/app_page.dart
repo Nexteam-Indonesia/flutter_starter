@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:next_starter/common/utils/config.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 import '../components/app_error_view.dart';
-import '../routes/app_router.dart';
+import '../router/app_router.dart';
 import '../theme/theme.dart';
 
 class AppPage extends StatefulWidget {
@@ -35,18 +36,21 @@ class _AppPageState extends State<AppPage> {
       designSize: const Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
-      builder: (context, child) => FlavorBanner(
-        child: MaterialApp.router(
-          title: Configs.titleApp,
-          theme: AppCoreTheme.theme,
-          darkTheme: AppCoreTheme.theme,
-          routeInformationProvider: _appRouter.routeInformationProvider,
-          routeInformationParser: _appRouter.routeInformationParser,
-          routerDelegate: _appRouter.routerDelegate,
-          builder: (BuildContext context, Widget? child) {
-            ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
-            return child!;
-          },
+      builder: (context, child) => OverlaySupport(
+        child: FlavorBanner(
+          child: MaterialApp.router(
+            title: Configs.titleApp,
+            theme: AppCoreTheme.theme,
+            darkTheme: AppCoreTheme.theme,
+            debugShowCheckedModeBanner: false,
+            routeInformationProvider: _appRouter.routeInformationProvider,
+            routeInformationParser: _appRouter.routeInformationParser,
+            routerDelegate: _appRouter.routerDelegate,
+            builder: (BuildContext context, Widget? child) {
+              ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
+              return child!;
+            },
+          ),
         ),
       ),
     );
