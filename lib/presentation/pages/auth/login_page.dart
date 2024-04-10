@@ -46,18 +46,15 @@ class _LoginPageState extends State<LoginPage> {
             padding: const EdgeInsets.fromLTRB(24, 0, 24, 20),
             child: BlocConsumer<AuthCubit, AuthState>(
               listener: (context, state) {
-                state.maybeWhen(
-                  orElse: () {},
-                  loading: () => context.showLoadingIndicator(),
-                  error: (msg) {
-                    context.showSnackbar(title: "Error", message: msg, error: true);
-                  },
-                  success: (msg) {
-                    context.hideLoading();
-                    context.showSnackbar(title: "Sukses", message: msg);
-                    context.route.pushReplacement(HomePage.path);
-                  },
-                );
+                if (state is AuthLoading) {
+                  context.showLoadingIndicator();
+                } else if (state is AuthError) {
+                  context.showSnackbar(title: "Error", message: state.message, error: true);
+                } else if (state is AuthSuccess) {
+                  context.hideLoading();
+                  context.showSnackbar(title: "Sukses", message: state.message);
+                  context.route.pushReplacement(HomePage.path);
+                }
               },
               builder: (context, state) {
                 return ReactiveFormConsumer(

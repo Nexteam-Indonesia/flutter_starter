@@ -1,11 +1,48 @@
 part of 'auth_cubit.dart';
 
-@freezed
-class AuthState with _$AuthState {
-  const factory AuthState.initial() = _Initial;
-  const factory AuthState.loading() = _Loading;
-  const factory AuthState.success(String message) = _Success;
-  const factory AuthState.successAdd(String message) = _SuccessAdd;
-  const factory AuthState.successLogout(String message) = _SuccessLogout;
-  const factory AuthState.error(String message) = _Error;
+sealed class AuthState extends Equatable {
+  const AuthState();
+
+  @override
+  List<Object> get props => [];
+}
+
+final class AuthInitial extends AuthState {}
+
+final class AuthLoading extends AuthState {}
+
+final class AuthSuccessAdd extends AuthState {
+  final String message;
+
+  const AuthSuccessAdd(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class AuthSuccessLogout extends AuthState {
+  final String message;
+
+  const AuthSuccessLogout(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class AuthSuccess extends AuthState {
+  final String message;
+
+  const AuthSuccess(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
+
+final class AuthError extends AuthState {
+  final String message;
+
+  const AuthError(this.message);
+
+  @override
+  List<Object> get props => [message];
 }

@@ -62,21 +62,18 @@ class ForgotPasswordPage extends StatelessWidget {
                 const Spacer(),
                 BlocConsumer<AuthCubit, AuthState>(
                   listener: (context, state) {
-                    state.maybeWhen(
-                      orElse: () {},
-                      loading: () => context.showLoadingIndicator(),
-                      error: (msg) {
-                        context.showSnackbar(title: "Error", message: msg, error: true);
-                      },
-                      success: (msg) {
-                        context.hideLoading();
-                        context.route.goNamed(OtpPage.path, pathParameters: {
-                          "email": formG.rawValue['email'].toString(),
-                          "isResetPassword": true.toString(),
-                        });
-                        context.showSnackbar(title: "Sukses", message: msg);
-                      },
-                    );
+                    if (state is AuthLoading) {
+                      context.showLoadingIndicator();
+                    } else if (state is AuthError) {
+                      context.showSnackbar(title: "Error", message: state.message, error: true);
+                    } else if (state is AuthSuccess) {
+                      context.hideLoading();
+                      context.route.goNamed(OtpPage.path, pathParameters: {
+                        "email": formG.rawValue['email'].toString(),
+                        "isResetPassword": true.toString(),
+                      });
+                      context.showSnackbar(title: "Sukses", message: state.message);
+                    }
                   },
                   builder: (context, state) {
                     return ReactiveFormConsumer(

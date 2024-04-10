@@ -146,36 +146,33 @@ class _OtpViewState extends State<OtpView> {
               15.verticalSpace,
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
-                  state.maybeWhen(
-                    orElse: () {},
-                    loading: () => context.showLoadingIndicator(),
-                    error: (msg) {
-                      context.showSnackbar(title: "Error", message: msg, error: true);
-                    },
-                    success: (msg) {
-                      context.hideLoading();
-                      if (widget.isResetPassword) {
-                        context.route.replaceNamed(
-                          ChangePasswordPage.path,
-                          pathParameters: {
-                            "email": widget.email,
-                            "otp": formG.rawValue['otp'].toString(),
-                          },
-                        );
-                        return;
-                      }
-                      context.route
-                          .replaceNamed(SuccessPage.path, pathParameters: {"message": msg});
-                    },
-                    successAdd: (msg) {
-                      context.hideLoading();
-                      context.showSnackbar(title: "", message: msg);
-                      timerController.currentState?.start();
-                      setState(() {
-                        showResend = false;
-                      });
-                    },
-                  );
+                  if (state is AuthLoading) {
+                    context.showLoadingIndicator();
+                  } else if (state is AuthError) {
+                    context.showSnackbar(title: "Error", message: state.message, error: true);
+                  } else if (state is AuthSuccess) {
+                    context.hideLoading();
+                    if (widget.isResetPassword) {
+                      context.route.replaceNamed(
+                        ChangePasswordPage.path,
+                        pathParameters: {
+                          "email": widget.email,
+                          "otp": formG.rawValue['otp'].toString(),
+                        },
+                      );
+                      return;
+                    }
+                    context.route.replaceNamed(SuccessPage.path, pathParameters: {
+                      "message": state.message,
+                    });
+                  } else if (state is AuthSuccessAdd) {
+                    context.hideLoading();
+                    context.showSnackbar(title: "", message: state.message);
+                    timerController.currentState?.start();
+                    setState(() {
+                      showResend = false;
+                    });
+                  }
                 },
                 builder: (context, state) {
                   return ReactiveFormConsumer(

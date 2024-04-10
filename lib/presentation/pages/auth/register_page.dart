@@ -55,21 +55,18 @@ class RegisterView extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
           child: BlocConsumer<AuthCubit, AuthState>(
             listener: (context, state) {
-              state.maybeWhen(
-                orElse: () {},
-                loading: () => context.showLoadingIndicator(),
-                error: (msg) {
-                  context.showSnackbar(title: "Error", message: msg, error: true);
-                },
-                success: (msg) {
-                  context.hideLoading();
-                  context.route.goNamed(
-                    OtpPage.path,
-                    pathParameters: {"email": form.controls['email']!.value.toString()},
-                  );
-                  context.showSnackbar(title: "Sukses", message: msg);
-                },
-              );
+              if (state is AuthLoading) {
+                context.showLoadingIndicator();
+              } else if (state is AuthError) {
+                context.showSnackbar(title: "Error", message: state.message, error: true);
+              } else if (state is AuthSuccess) {
+                context.hideLoading();
+                context.route.goNamed(
+                  OtpPage.path,
+                  pathParameters: {"email": form.controls['email']!.value.toString()},
+                );
+                context.showSnackbar(title: "Sukses", message: state.message);
+              }
             },
             builder: (context, state) {
               return ReactiveFormConsumer(
