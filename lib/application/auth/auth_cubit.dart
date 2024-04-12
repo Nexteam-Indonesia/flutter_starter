@@ -1,35 +1,31 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:injectable/injectable.dart';
-import 'package:next_starter/data/repositories/auth_repository.dart';
+import 'package:equatable/equatable.dart';
 
-part 'auth_cubit.freezed.dart';
+import '../../data/repositories/auth_repository.dart';
+import '../../injection.dart';
+
 part 'auth_state.dart';
 
-@injectable
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit(
-    this.repo,
-    // this.userRepo,
-  ) : super(const AuthState.initial());
+  AuthCubit() : super(AuthInitial());
 
-  final AuthRepository repo;
+  final AuthRepository repo = locator<AuthRepository>();
 
   Future<void> login(Map<String, dynamic> json) async {
     // final NotificationInterface notification = locator<NotificationInterface>();
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final result = await repo.login(json);
     await result.fold<FutureOr<void>>(
-      (l) => emit(AuthState.error(l.message)),
+      (l) => emit(AuthError(l.message)),
       (r) async {
         // final user = await userRepo.profile();
         // await user.fold<FutureOr<void>>(
-        //   (l) => emit(AuthState.error(l.message)),
+        //   (l) => emit(AuthError(l.message)),
         //   (r) async {
         //     // await notification.setExternalUserByEmail(r.email!);
-        emit(const AuthState.success("Selamat datang kembali!"));
+        emit(const AuthSuccess("Selamat datang kembali!"));
         //   },
         // );
       },
@@ -37,65 +33,65 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> register(Map<String, dynamic> json) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final result = await repo.register(json);
     await result.fold<FutureOr<void>>(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.success("Registrasi berhasil!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccess("Registrasi berhasil!")),
     );
   }
 
   Future<void> verifyOtp(Map<String, dynamic> json) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final result = await repo.verifyOtp(json);
     result.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.success("Email berhasil diverifikasi!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccess("Email berhasil diverifikasi!")),
     );
   }
 
   Future<void> resendOtp(Map<String, dynamic> json) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final rest = await repo.resendOtp(json);
     rest.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.successAdd("Kode OTP berhasil dikirim!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccessAdd("Kode OTP berhasil dikirim!")),
     );
   }
 
   Future<void> requestOtp(Map<String, dynamic> json) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final rest = await repo.requestOtp(json);
     rest.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.success("Kode OTP berhasil dikirim!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccess("Kode OTP berhasil dikirim!")),
     );
   }
 
   Future<void> forgotPassword(Map<String, dynamic> json) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final rest = await repo.forgotPassword(json);
     rest.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.success("Kode OTP berhasil dikirim!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccess("Kode OTP berhasil dikirim!")),
     );
   }
 
   Future<void> resetPassword(Map<String, dynamic> rawValue) async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final result = await repo.resetPassword(rawValue);
     result.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.success("Kata sandi anda telah diperbarui!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccess("Kata sandi anda telah diperbarui!")),
     );
   }
 
   Future<void> logout() async {
-    emit(const AuthState.loading());
+    emit(AuthLoading());
     final result = await repo.logout();
     result.fold(
-      (l) => emit(AuthState.error(l.message)),
-      (r) => emit(const AuthState.successLogout("Berhasil keluar!")),
+      (l) => emit(AuthError(l.message)),
+      (r) => emit(const AuthSuccessLogout("Berhasil keluar!")),
     );
   }
 }

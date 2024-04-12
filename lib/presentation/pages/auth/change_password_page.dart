@@ -1,25 +1,25 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:next_starter/common/extensions/extensions.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/routes/app_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
+import '../../../common/extensions/extensions.dart';
+import '../../../injection.dart';
+import '../../components/components.dart';
 import '../../theme/theme.dart';
+import 'auth.dart';
 
-@RoutePage()
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({
-    Key? key,
+    super.key,
     required this.email,
     required this.otp,
-  }) : super(key: key);
+  });
 
   final String email, otp;
+
+  static const path = "/change-password";
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class ChangePasswordPage extends StatelessWidget {
 
 class ChangePasswordView extends StatelessWidget {
   const ChangePasswordView({
-    Key? key,
+    super.key,
     required this.email,
     required this.otp,
-  }) : super(key: key);
+  });
 
   final String email, otp;
 
@@ -63,10 +63,10 @@ class ChangePasswordView extends StatelessWidget {
                 icon: Icons.arrow_back_ios_new_rounded,
                 size: 36,
                 onTap: () {
-                  context.router.pop();
+                  context.route.pop();
                 },
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               Text(
                 'Setel Ulang Kata Sandi',
                 maxLines: 1,
@@ -77,10 +77,9 @@ class ChangePasswordView extends StatelessWidget {
               ),
               Text(
                 'Kata sandi baru Anda harus berbeda dari kata sandi yang digunakan sebelumnya',
-                style: CustomTextTheme.paragraph1
-                    .copyWith(color: ColorTheme.neutral[600]),
+                style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               const PasswordInput(
                 formControlName: 'password',
                 hint: 'Masukkan Kata Sandi Baru',
@@ -88,7 +87,7 @@ class ChangePasswordView extends StatelessWidget {
                 isRequiredText: true,
                 prefix: Icon(Icons.key),
               ),
-              6.verticalSpaceRadius,
+              6.verticalSpace,
               const PasswordInput(
                 formControlName: 'confirmPassword',
                 hint: 'Masukkan Konfirmasi Kata Sandi',
@@ -99,18 +98,16 @@ class ChangePasswordView extends StatelessWidget {
               const Spacer(),
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
-                  state.maybeWhen(
-                    orElse: () {},
-                    loading: () => context.showLoadingIndicator(),
-                    error: (msg) {
-                      context.showSnackbar(
-                          title: "Error", message: msg, error: true);
-                    },
-                    success: (msg) {
-                      context.hideLoading();
-                      context.route.replace(SuccessRoute(message: msg));
-                    },
-                  );
+                  if (state is AuthLoading) {
+                    context.showLoadingIndicator();
+                  } else if (state is AuthError) {
+                    context.showSnackbar(title: "Error", message: state.message, error: true);
+                  } else if (state is AuthSuccess) {
+                    context.hideLoading();
+                    context.route.replaceNamed(SuccessPage.path, pathParameters: {
+                      "message": state.message,
+                    });
+                  }
                 },
                 builder: (context, state) {
                   return ReactiveFormConsumer(
@@ -122,8 +119,10 @@ class ChangePasswordView extends StatelessWidget {
                           // context
                           //     .read<AuthCubit>()
                           //     .resetPassword(formState.rawValue);
-                          context.route.replace(SuccessRoute(
-                              message: "Berhasil mengubah kata sandi"));
+                          context.route.replaceNamed(
+                            SuccessPage.path,
+                            pathParameters: {"message": "Berhasil mengubah kata sandi"},
+                          );
                         },
                         isEnable: formState.valid,
                       );

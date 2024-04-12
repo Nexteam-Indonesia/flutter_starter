@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:next_starter/common/logging/logger.dart';
 
 import '../../data/datasources/session/session_source.dart';
 import '../errors/api_exception.dart';
 import '../extensions/api_extension.dart';
+import '../logging/logger.dart';
 
 /// [BaseDioRemoteSource] for handling network requests for dio client
 class BaseDioRemoteSource {
@@ -54,8 +54,7 @@ class BaseDioRemoteSource {
         //   );
         // }
       } else {
-        throw const ApiException.serverException(
-            message: 'UnExpected Error in status code!!!');
+        throw const ApiException.serverException(message: 'UnExpected Error in status code!!!');
       }
     } on DioException catch (e) {
       var err = e.toApiException;
@@ -75,8 +74,7 @@ class BaseDioRemoteSource {
       throw err;
     } catch (e) {
       logger.e(e);
-      throw const ApiException.serverException(
-          message: 'UnExpected Error Occurred in dio!!!');
+      throw const ApiException.serverException(message: 'UnExpected Error Occurred in dio!!!');
     }
   }
 }

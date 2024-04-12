@@ -1,19 +1,17 @@
-import 'package:injectable/injectable.dart';
-import 'package:next_starter/common/base/base_repository.dart';
-import 'package:next_starter/common/logging/logger.dart';
-import 'package:next_starter/common/typedefs/typedefs.dart';
-import 'package:next_starter/data/datasources/remote_datasources/auth_remote/auth_remote.dart';
-import 'package:next_starter/data/datasources/session/session_source.dart';
-import 'package:next_starter/data/models/auth/session_model.dart';
-
+import '../../../../common/logging/logger.dart';
+import '../../../../common/typedefs/typedefs.dart';
+import '../../../../data/datasources/remote_datasources/auth_remote/auth_remote.dart';
+import '../../../../data/datasources/session/session_source.dart';
+import '../../../../data/models/auth/session_model.dart';
+import '../../../../injection.dart';
+import '../../common/base/base_repository.dart';
 import '../dto/register_dto.dart';
 
-@lazySingleton
 class AuthRepository extends BaseRepository {
-  AuthRepository(super.networkInfo, this.remote, this.session);
+  AuthRepository(super.networkInfo);
 
-  final AuthRemote remote;
-  final SessionSource session;
+  final AuthRemote remote = locator();
+  final SessionSource session = locator();
 
   EitherResponse<void> forgotPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(

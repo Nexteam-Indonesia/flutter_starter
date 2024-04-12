@@ -25,12 +25,13 @@ Future<void> bootstrap() async {
   return runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
+      final navigatorKey = GlobalKey<NavigatorState>();
+      await initializeDependencies(navigatorKey);
       Bloc.observer = AppBlocObserver();
       FlutterError.onError = (FlutterErrorDetails details) {
         logger.e(details.exceptionAsString(), error: details.exception, stackTrace: details.stack);
       };
-      await configureDependencies();
-      runApp(const AppPage());
+      runApp(AppPage(navigatorKey: navigatorKey));
     },
     (Object error, StackTrace stackTrace) =>
         logger.e(error.toString(), error: error, stackTrace: stackTrace),

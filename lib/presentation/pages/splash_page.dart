@@ -1,16 +1,17 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:next_starter/data/datasources/session/session_source.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
 
 import '../../common/extensions/extensions.dart';
+import '../../data/datasources/session/session_source.dart';
 import '../../injection.dart';
-import '../routes/app_router.dart';
+import '../components/components.dart';
+import '../theme/theme.dart';
+import 'auth/auth.dart';
+import 'home/home_page.dart';
 
-@RoutePage()
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
+
+  static const path = "/";
 
   @override
   State<SplashPage> createState() => _SplashPageState();
@@ -27,10 +28,10 @@ class _SplashPageState extends State<SplashPage> {
     await 3.delayedSeconds;
     final user = await locator<SessionSource>().hasSession;
     if (user) {
-      locator<AppRouter>().replace(const HomeRoute());
+      context.route.replace(HomePage.path);
       return;
     }
-    locator<AppRouter>().replace(LoginRoute());
+    context.route.replace(LoginPage.path);
   }
 
   @override

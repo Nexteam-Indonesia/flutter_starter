@@ -1,18 +1,18 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:next_starter/common/widgets/app_error_widget.dart';
-import 'package:next_starter/common/widgets/loading_indicator_widget.dart';
-import 'package:next_starter/common/widgets/row_loading_widget.dart';
 
 import '../../../application/bloc/pagination_bloc.dart';
+import '../../../common/widgets/app_error_widget.dart';
+import '../../../common/widgets/loading_indicator_widget.dart';
+import '../../../common/widgets/row_loading_widget.dart';
 import '../../../injection.dart';
 import '../../components/base/base_app_bar.dart';
 import '../../components/base/base_scaffold.dart';
 
-@RoutePage()
 class PostPage extends StatelessWidget {
   const PostPage({super.key});
+
+  static const path = "/post";
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +70,7 @@ class _PostViewState extends State<PostView> {
             case PaginationStatus.failure:
               return AppErrorWidget(
                 message: state.errorMessage,
-                onTap: () =>
-                    context.read<PaginationBloc>().add(PaginationFetch()),
+                onTap: () => context.read<PaginationBloc>().add(PaginationFetch()),
               );
             case PaginationStatus.success:
               if (state.posts.isEmpty) {
@@ -88,9 +87,7 @@ class _PostViewState extends State<PostView> {
                           leading: Text("${state.posts[i].id}"),
                         );
                 },
-                itemCount: state.hasReachedMax
-                    ? state.posts.length
-                    : state.posts.length + 1,
+                itemCount: state.hasReachedMax ? state.posts.length : state.posts.length + 1,
                 controller: _scrollController,
               );
             case PaginationStatus.initial:

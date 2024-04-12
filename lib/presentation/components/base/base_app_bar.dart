@@ -1,6 +1,6 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/extensions/context_extension.dart';
 import '../../theme/theme.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -11,13 +11,13 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
 
   const BaseAppBar({
-    Key? key,
+    super.key,
     required this.title,
     this.actions,
     this.isBack = false,
     this.automaticallyImplyLeading = true,
     this.centerTitle = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,14 +29,14 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ),
       leading: isBack
-          ? AutoLeadingButton(
-              builder: (context, leadingType, action) => InkWell(
-                onTap: action,
-                child: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
-                  color: Colors.black,
-                  size: 24,
-                ),
+          ? InkWell(
+              onTap: () {
+                context.route.pop();
+              },
+              child: const Icon(
+                Icons.arrow_back_ios_new_rounded,
+                color: Colors.black,
+                size: 24,
               ),
             )
           : null,

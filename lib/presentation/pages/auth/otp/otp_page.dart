@@ -1,29 +1,27 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:next_starter/common/extensions/context_extension.dart';
-import 'package:next_starter/injection.dart';
-import 'package:next_starter/presentation/components/components.dart';
-import 'package:next_starter/presentation/theme/theme.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:reactive_pinput/reactive_pinput.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
-import '../../../routes/app_router.dart';
-import 'widget/resend_otp_timer.dart';
+import '../../../../common/extensions/context_extension.dart';
+import '../../../../injection.dart';
+import '../../../components/components.dart';
+import '../../../theme/theme.dart';
+import '../auth.dart';
 
-@RoutePage()
 class OtpPage extends StatelessWidget {
   const OtpPage({
-    Key? key,
+    super.key,
     required this.email,
     this.isResetPassword = false,
-  }) : super(key: key);
+  });
 
   final String email;
   final bool isResetPassword;
+  static const path = "/otp";
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +37,10 @@ class OtpPage extends StatelessWidget {
 
 class OtpView extends StatefulWidget {
   const OtpView({
-    Key? key,
+    super.key,
     required this.email,
     this.isResetPassword = false,
-  }) : super(key: key);
+  });
 
   final String email;
   final bool isResetPassword;
@@ -85,10 +83,10 @@ class _OtpViewState extends State<OtpView> {
                 icon: Icons.arrow_back_ios_new_rounded,
                 size: 36,
                 onTap: () {
-                  context.router.pop();
+                  context.route.pop();
                 },
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               Text(
                 'Email Verification',
                 maxLines: 1,
@@ -100,15 +98,14 @@ class _OtpViewState extends State<OtpView> {
               Text(
                 'Masukkan kode verifikasi yang kami kirimkan kepada '
                 'Anda di: ${widget.email}',
-                style: CustomTextTheme.paragraph1
-                    .copyWith(color: ColorTheme.neutral[600]),
+                style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               ReactivePinPut(
                 formControlName: 'otp',
                 length: 5,
               ),
-              20.verticalSpaceRadius,
+              20.verticalSpace,
               Center(
                 child: Text.rich(
                   TextSpan(
@@ -117,9 +114,7 @@ class _OtpViewState extends State<OtpView> {
                       TextSpan(
                         text: 'Kirim Ulang',
                         style: TextStyle(
-                          color: showResend
-                              ? ColorTheme.primary
-                              : ColorTheme.neutral[800],
+                          color: showResend ? ColorTheme.primary : ColorTheme.neutral[800],
                           fontWeight: showResend ? FontWeight.bold : null,
                         ),
                         recognizer: TapGestureRecognizer()
@@ -133,8 +128,7 @@ class _OtpViewState extends State<OtpView> {
                               : null,
                       ),
                     ],
-                    style: CustomTextTheme.paragraph1
-                        .copyWith(color: ColorTheme.neutral[900]),
+                    style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[900]),
                   ),
                 ),
               ),
@@ -149,38 +143,36 @@ class _OtpViewState extends State<OtpView> {
                   },
                 ),
               ),
-              15.verticalSpaceRadius,
+              15.verticalSpace,
               BlocConsumer<AuthCubit, AuthState>(
                 listener: (context, state) {
-                  state.maybeWhen(
-                    orElse: () {},
-                    loading: () => context.showLoadingIndicator(),
-                    error: (msg) {
-                      context.showSnackbar(
-                          title: "Error", message: msg, error: true);
-                    },
-                    success: (msg) {
-                      context.hideLoading();
-                      if (widget.isResetPassword) {
-                        context.route.replace(
-                          ChangePasswordRoute(
-                            email: widget.email,
-                            otp: formG.rawValue['otp'].toString(),
-                          ),
-                        );
-                        return;
-                      }
-                      context.route.replace(SuccessRoute(message: msg));
-                    },
-                    successAdd: (msg) {
-                      context.hideLoading();
-                      context.showSnackbar(title: "", message: msg);
-                      timerController.currentState?.start();
-                      setState(() {
-                        showResend = false;
-                      });
-                    },
-                  );
+                  if (state is AuthLoading) {
+                    context.showLoadingIndicator();
+                  } else if (state is AuthError) {
+                    context.showSnackbar(title: "Error", message: state.message, error: true);
+                  } else if (state is AuthSuccess) {
+                    context.hideLoading();
+                    if (widget.isResetPassword) {
+                      context.route.replaceNamed(
+                        ChangePasswordPage.path,
+                        pathParameters: {
+                          "email": widget.email,
+                          "otp": formG.rawValue['otp'].toString(),
+                        },
+                      );
+                      return;
+                    }
+                    context.route.replaceNamed(SuccessPage.path, pathParameters: {
+                      "message": state.message,
+                    });
+                  } else if (state is AuthSuccessAdd) {
+                    context.hideLoading();
+                    context.showSnackbar(title: "", message: state.message);
+                    timerController.currentState?.start();
+                    setState(() {
+                      showResend = false;
+                    });
+                  }
                 },
                 builder: (context, state) {
                   return ReactiveFormConsumer(
@@ -190,19 +182,20 @@ class _OtpViewState extends State<OtpView> {
                         onTap: () {
                           FocusManager.instance.primaryFocus?.unfocus();
                           if (widget.isResetPassword) {
-                            context.route.replace(
-                              ChangePasswordRoute(
-                                email: widget.email,
-                                otp: formG.rawValue['otp'].toString(),
-                              ),
+                            context.route.replaceNamed(
+                              ChangePasswordPage.path,
+                              pathParameters: {
+                                "email": widget.email,
+                                "otp": formG.rawValue['otp'].toString(),
+                              },
                             );
                           } else {
                             // context.read<AuthCubit>().verifyOtp({
                             //   "email": widget.email,
                             //   "otp": formState.rawValue['otp'],
                             // });
-                            context.route.replace(SuccessRoute(
-                                message: "Berhasil verifikasi OTP"));
+                            context.route.replaceNamed(SuccessPage.path,
+                                pathParameters: {"message": "Berhasil verifikasi OTP"});
                           }
                         },
                         isEnable: formState.valid,

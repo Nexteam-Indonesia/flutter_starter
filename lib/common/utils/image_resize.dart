@@ -2,10 +2,8 @@ import 'dart:io';
 import 'dart:isolate';
 
 import 'package:image/image.dart';
-import 'package:injectable/injectable.dart';
 import 'package:path_provider/path_provider.dart';
 
-@LazySingleton()
 class ImageResizeUtils {
   Future<void> getCompressedImage(SendPort sendPort) async {
     ReceivePort receivePort = ReceivePort();

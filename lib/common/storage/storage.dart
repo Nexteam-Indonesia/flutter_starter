@@ -2,12 +2,11 @@ import 'dart:io' show File;
 import 'dart:typed_data';
 
 import 'package:dio/dio.dart';
-import 'package:file_picker/file_picker.dart';
-import 'package:injectable/injectable.dart';
-import 'package:next_starter/common/storage/storage_path.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:path/path.dart' as p;
 
 import '../permission/permission.dart';
+import 'storage_path.dart';
 
 abstract class StorageInterface {
   const StorageInterface();
@@ -23,16 +22,11 @@ abstract class StorageInterface {
     required String extension,
     String? path,
   });
-  Future<File?> pickFile({
-    List<String>? extensions,
-  });
-  Future<List<File>?> pickFiles({
-    List<String>? extensions,
-  });
+  Future<File?> pickFile({List<String>? extensions, String? label});
+  Future<List<File>> pickFiles({List<String>? extensions, String? label});
   Future<File> download(String url, {bool isTemp = false, String? fileName});
 }
 
-@LazySingleton(as: StorageInterface)
 class Storage extends StorageInterface {
   final PermissionInterface permission;
   final StoragePathInterface storagePath;
@@ -67,40 +61,38 @@ class Storage extends StorageInterface {
   }
 
   @override
-  Future<File?> pickFile({List<String>? extensions}) async {
+  Future<File?> pickFile({List<String>? extensions, String? label}) async {
     try {
-      final picked = await FilePicker.platform.pickFiles(
-        allowedExtensions: extensions,
-        type: extensions != null ? FileType.custom : FileType.any,
-        withData: true,
+      final picked = await openFile(
+        acceptedTypeGroups: [
+          XTypeGroup(
+            label: label ?? 'Images',
+            extensions: extensions,
+          ),
+        ],
       );
-      if (picked == null) return null;
-
-      final pickedPath = picked.files.single.path;
-      if (pickedPath == null) return null;
-
-      return File(pickedPath);
+      return picked == null ? null : File(picked.path);
     } catch (error) {
       rethrow;
     }
   }
 
   @override
-  Future<List<File>?> pickFiles({List<String>? extensions}) async {
+  Future<List<File>> pickFiles({List<String>? extensions, String? label}) async {
     try {
-      final picks = await FilePicker.platform.pickFiles(
-        allowMultiple: true,
-        allowedExtensions: extensions,
-        type: extensions != null ? FileType.custom : FileType.any,
+      final picks = await openFiles(
+        acceptedTypeGroups: [
+          XTypeGroup(
+            label: label ?? 'Images',
+            extensions: extensions,
+          ),
+        ],
       );
-      if (picks == null) return null;
 
       final List<File> files = <File>[];
 
-      for (PlatformFile picked in picks.files) {
-        if (picked.path == null) continue;
-
-        files.add(File(picked.path!));
+      for (XFile picked in picks) {
+        files.add(File(picked.path));
       }
 
       return files;

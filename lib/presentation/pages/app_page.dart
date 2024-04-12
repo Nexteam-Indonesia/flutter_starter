@@ -1,63 +1,58 @@
-import 'package:adaptive_sizer/adaptive_sizer.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
-import 'package:next_starter/common/utils/config.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:overlay_support/overlay_support.dart';
 
-import '../../common/logging/logger.dart';
-import '../../injection.dart';
+import '../../common/utils/config.dart';
 import '../components/app_error_view.dart';
-import '../routes/app_router.dart';
+import '../router/app_router.dart';
 import '../theme/theme.dart';
 
 class AppPage extends StatefulWidget {
-  const AppPage({super.key});
+  const AppPage({
+    super.key,
+    required this.navigatorKey,
+  });
+
+  final GlobalKey<NavigatorState> navigatorKey;
 
   @override
   State<AppPage> createState() => _AppPageState();
 }
 
 class _AppPageState extends State<AppPage> {
-  final _appRouter = locator<AppRouter>();
+  late final GoRouter _appRouter;
+
+  @override
+  void initState() {
+    super.initState();
+    _appRouter = AppRouter.router(widget.navigatorKey);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return AdaptiveSizer(
-      builder: (context) => FlavorBanner(
-        child: MaterialApp.router(
-          title: Configs.titleApp,
-          theme: AppCoreTheme.theme,
-          darkTheme: AppCoreTheme.theme,
-          routeInformationParser: _appRouter.defaultRouteParser(),
-          routerDelegate: _appRouter.delegate(
-            navigatorObservers: () => [
-              MyObserver(),
-            ],
+    return ScreenUtilInit(
+      designSize: const Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) => OverlaySupport(
+        child: FlavorBanner(
+          child: MaterialApp.router(
+            title: Configs.titleApp,
+            theme: AppCoreTheme.theme,
+            darkTheme: AppCoreTheme.theme,
+            debugShowCheckedModeBanner: false,
+            routeInformationProvider: _appRouter.routeInformationProvider,
+            routeInformationParser: _appRouter.routeInformationParser,
+            routerDelegate: _appRouter.routerDelegate,
+            builder: (BuildContext context, Widget? child) {
+              ErrorWidget.builder = (FlutterErrorDetails details) => AppErrorView(details: details);
+              return child!;
+            },
           ),
-          builder: (BuildContext context, Widget? child) {
-            ErrorWidget.builder =
-                (FlutterErrorDetails details) => AppErrorView(details: details);
-            return child!;
-          },
         ),
       ),
     );
-  }
-}
-
-class MyObserver extends AutoRouterObserver {
-  @override
-  void didPush(Route route, Route? previousRoute) {
-    logger.d('New route pushed: ${route.settings.name}');
-  }
-
-  @override
-  void didInitTabRoute(TabPageRoute route, TabPageRoute? previousRoute) {
-    logger.d('Tab route visited: ${route.name}');
-  }
-
-  @override
-  void didChangeTabRoute(TabPageRoute route, TabPageRoute previousRoute) {
-    logger.d('Tab route re-visited: ${route.name}');
   }
 }

@@ -1,9 +1,7 @@
-import 'package:injectable/injectable.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 import 'permission.dart';
 
-@LazySingleton(as: PermissionInterface)
 class KendaliPermission extends PermissionInterface {
   const KendaliPermission() : super();
 
