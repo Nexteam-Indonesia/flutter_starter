@@ -12,6 +12,10 @@ extension BuildContextX on BuildContext {
 
   GoRouter get route => GoRouter.of(this);
 
+  void go(String location, {Object? extra}) {
+    route.go(location, extra: extra);
+  }
+
   popUntil(String path) {
     Navigator.popUntil(this, (state) => state.settings.name == path);
   }

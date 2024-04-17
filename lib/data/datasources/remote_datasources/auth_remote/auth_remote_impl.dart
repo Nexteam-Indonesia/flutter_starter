@@ -31,7 +31,7 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
           "password": password,
         },
       ),
-      onResponse: (r) => SessionModel.fromMap(r['data']),
+      onResponse: (r) => SessionModel.fromMap(r),
       isAuth: false,
     );
   }
@@ -49,7 +49,8 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
         ApiPath.register,
         data: form.toJson(),
       ),
-      onResponse: (r) => r['message'].toString(),
+      onResponse: (r) => r,
+      isMessage: true,
       isAuth: false,
     );
   }
@@ -99,7 +100,7 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
           "otp": oneTimePassword,
         },
       ),
-      onResponse: (r) => r['data'],
+      onResponse: (r) => r,
       isAuth: false,
     );
   }

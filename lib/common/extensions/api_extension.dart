@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 
 import '../errors/api_exception.dart';
+import '../utils/api_utils.dart';
 
 // TODO: tergantung jenis apinya bisa dari data/message untuk mengambil pesan errornya
 extension ApiExceptionDioX on DioException {
@@ -12,20 +13,26 @@ extension ApiExceptionDioX on DioException {
         final code = response?.statusCode!;
         if (code == 422) {
           return ApiException.unprocessableEntity(
-            message: message ?? response?.data['message'],
-            errors: response?.data['data'] ?? {},
+            message: response != null
+                ? ApiUtils.parseResponseMessage(response!)
+                : message ?? 'Error tidak diketahui',
+            errors: response?.data['payload'] ?? {},
           );
         } else if (code == 401) {
           return ApiException.unAuthorized(
-            response?.data['message'] ?? 'Unauthorized',
+            response != null ? ApiUtils.parseResponseMessage(response!) : 'Unauthorized',
           );
         } else if (code == 400) {
           return ApiException.serverException(
-            message: response?.data['message'] ?? 'Error tidak diketahui',
+            message: response != null
+                ? ApiUtils.parseResponseMessage(response!)
+                : 'Error tidak diketahui',
           );
         } else {
           return ApiException.serverException(
-            message: response?.data['message'] ?? message,
+            message: response != null
+                ? ApiUtils.parseResponseMessage(response!)
+                : message ?? 'Error tidak diketahui',
           );
         }
       case DioExceptionType.connectionTimeout:
@@ -50,12 +57,16 @@ extension ApiExceptionDioX on DioException {
           return const ApiException.network();
         } else {
           return ApiException.serverException(
-            message: response?.data['data'] ?? message,
+            message: response != null
+                ? ApiUtils.parseResponseMessage(response!)
+                : message ?? 'Error tidak diketahui',
           );
         }
       default:
         return ApiException.serverException(
-          message: response?.data['data'] ?? message,
+          message: response != null
+              ? ApiUtils.parseResponseMessage(response!)
+              : message ?? 'Error tidak diketahui',
         );
     }
   }
