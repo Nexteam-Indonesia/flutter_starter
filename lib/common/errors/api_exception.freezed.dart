@@ -12,7 +12,7 @@ part of 'api_exception.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$ApiException {
@@ -25,7 +25,7 @@ mixin _$ApiException {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ mixin _$ApiException {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) =>
       throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ mixin _$ApiException {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) =>
@@ -114,20 +114,20 @@ class _$ApiExceptionCopyWithImpl<$Res, $Val extends ApiException>
 }
 
 /// @nodoc
-abstract class _$$_ServerExceptionCopyWith<$Res> {
-  factory _$$_ServerExceptionCopyWith(
-          _$_ServerException value, $Res Function(_$_ServerException) then) =
-      __$$_ServerExceptionCopyWithImpl<$Res>;
+abstract class _$$ServerExceptionImplCopyWith<$Res> {
+  factory _$$ServerExceptionImplCopyWith(_$ServerExceptionImpl value,
+          $Res Function(_$ServerExceptionImpl) then) =
+      __$$ServerExceptionImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_ServerExceptionCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_ServerException>
-    implements _$$_ServerExceptionCopyWith<$Res> {
-  __$$_ServerExceptionCopyWithImpl(
-      _$_ServerException _value, $Res Function(_$_ServerException) _then)
+class __$$ServerExceptionImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ServerExceptionImpl>
+    implements _$$ServerExceptionImplCopyWith<$Res> {
+  __$$ServerExceptionImplCopyWithImpl(
+      _$ServerExceptionImpl _value, $Res Function(_$ServerExceptionImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -135,7 +135,7 @@ class __$$_ServerExceptionCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_ServerException(
+    return _then(_$ServerExceptionImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -146,8 +146,8 @@ class __$$_ServerExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ServerException implements _ServerException {
-  const _$_ServerException({required this.message});
+class _$ServerExceptionImpl implements _ServerException {
+  const _$ServerExceptionImpl({required this.message});
 
   @override
   final String message;
@@ -158,10 +158,10 @@ class _$_ServerException implements _ServerException {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ServerException &&
+            other is _$ServerExceptionImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -171,8 +171,9 @@ class _$_ServerException implements _ServerException {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ServerExceptionCopyWith<_$_ServerException> get copyWith =>
-      __$$_ServerExceptionCopyWithImpl<_$_ServerException>(this, _$identity);
+  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
+      __$$ServerExceptionImplCopyWithImpl<_$ServerExceptionImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -184,7 +185,7 @@ class _$_ServerException implements _ServerException {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return serverException(message);
@@ -200,7 +201,7 @@ class _$_ServerException implements _ServerException {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return serverException?.call(message);
@@ -216,7 +217,7 @@ class _$_ServerException implements _ServerException {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -278,29 +279,29 @@ class _$_ServerException implements _ServerException {
 
 abstract class _ServerException implements ApiException {
   const factory _ServerException({required final String message}) =
-      _$_ServerException;
+      _$ServerExceptionImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_ServerExceptionCopyWith<_$_ServerException> get copyWith =>
+  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UnprocessableEntityCopyWith<$Res> {
-  factory _$$_UnprocessableEntityCopyWith(_$_UnprocessableEntity value,
-          $Res Function(_$_UnprocessableEntity) then) =
-      __$$_UnprocessableEntityCopyWithImpl<$Res>;
+abstract class _$$UnprocessableEntityImplCopyWith<$Res> {
+  factory _$$UnprocessableEntityImplCopyWith(_$UnprocessableEntityImpl value,
+          $Res Function(_$UnprocessableEntityImpl) then) =
+      __$$UnprocessableEntityImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message, Map<String, dynamic> errors});
 }
 
 /// @nodoc
-class __$$_UnprocessableEntityCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_UnprocessableEntity>
-    implements _$$_UnprocessableEntityCopyWith<$Res> {
-  __$$_UnprocessableEntityCopyWithImpl(_$_UnprocessableEntity _value,
-      $Res Function(_$_UnprocessableEntity) _then)
+class __$$UnprocessableEntityImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$UnprocessableEntityImpl>
+    implements _$$UnprocessableEntityImplCopyWith<$Res> {
+  __$$UnprocessableEntityImplCopyWithImpl(_$UnprocessableEntityImpl _value,
+      $Res Function(_$UnprocessableEntityImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -309,7 +310,7 @@ class __$$_UnprocessableEntityCopyWithImpl<$Res>
     Object? message = null,
     Object? errors = null,
   }) {
-    return _then(_$_UnprocessableEntity(
+    return _then(_$UnprocessableEntityImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -324,8 +325,8 @@ class __$$_UnprocessableEntityCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnprocessableEntity implements _UnprocessableEntity {
-  const _$_UnprocessableEntity(
+class _$UnprocessableEntityImpl implements _UnprocessableEntity {
+  const _$UnprocessableEntityImpl(
       {required this.message, required final Map<String, dynamic> errors})
       : _errors = errors;
 
@@ -345,10 +346,10 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnprocessableEntity &&
+            other is _$UnprocessableEntityImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._errors, _errors));
   }
@@ -360,8 +361,8 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnprocessableEntityCopyWith<_$_UnprocessableEntity> get copyWith =>
-      __$$_UnprocessableEntityCopyWithImpl<_$_UnprocessableEntity>(
+  _$$UnprocessableEntityImplCopyWith<_$UnprocessableEntityImpl> get copyWith =>
+      __$$UnprocessableEntityImplCopyWithImpl<_$UnprocessableEntityImpl>(
           this, _$identity);
 
   @override
@@ -374,7 +375,7 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return unprocessableEntity(message, errors);
@@ -390,7 +391,7 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return unprocessableEntity?.call(message, errors);
@@ -406,7 +407,7 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -469,30 +470,30 @@ class _$_UnprocessableEntity implements _UnprocessableEntity {
 abstract class _UnprocessableEntity implements ApiException {
   const factory _UnprocessableEntity(
       {required final String message,
-      required final Map<String, dynamic> errors}) = _$_UnprocessableEntity;
+      required final Map<String, dynamic> errors}) = _$UnprocessableEntityImpl;
 
   String get message;
   Map<String, dynamic> get errors;
   @JsonKey(ignore: true)
-  _$$_UnprocessableEntityCopyWith<_$_UnprocessableEntity> get copyWith =>
+  _$$UnprocessableEntityImplCopyWith<_$UnprocessableEntityImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_UnAuthorizedCopyWith<$Res> {
-  factory _$$_UnAuthorizedCopyWith(
-          _$_UnAuthorized value, $Res Function(_$_UnAuthorized) then) =
-      __$$_UnAuthorizedCopyWithImpl<$Res>;
+abstract class _$$UnAuthorizedImplCopyWith<$Res> {
+  factory _$$UnAuthorizedImplCopyWith(
+          _$UnAuthorizedImpl value, $Res Function(_$UnAuthorizedImpl) then) =
+      __$$UnAuthorizedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_UnAuthorizedCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_UnAuthorized>
-    implements _$$_UnAuthorizedCopyWith<$Res> {
-  __$$_UnAuthorizedCopyWithImpl(
-      _$_UnAuthorized _value, $Res Function(_$_UnAuthorized) _then)
+class __$$UnAuthorizedImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$UnAuthorizedImpl>
+    implements _$$UnAuthorizedImplCopyWith<$Res> {
+  __$$UnAuthorizedImplCopyWithImpl(
+      _$UnAuthorizedImpl _value, $Res Function(_$UnAuthorizedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -500,7 +501,7 @@ class __$$_UnAuthorizedCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_UnAuthorized(
+    return _then(_$UnAuthorizedImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -511,8 +512,8 @@ class __$$_UnAuthorizedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_UnAuthorized implements _UnAuthorized {
-  const _$_UnAuthorized(this.message);
+class _$UnAuthorizedImpl implements _UnAuthorized {
+  const _$UnAuthorizedImpl(this.message);
 
   @override
   final String message;
@@ -523,10 +524,10 @@ class _$_UnAuthorized implements _UnAuthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnAuthorized &&
+            other is _$UnAuthorizedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -536,8 +537,8 @@ class _$_UnAuthorized implements _UnAuthorized {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_UnAuthorizedCopyWith<_$_UnAuthorized> get copyWith =>
-      __$$_UnAuthorizedCopyWithImpl<_$_UnAuthorized>(this, _$identity);
+  _$$UnAuthorizedImplCopyWith<_$UnAuthorizedImpl> get copyWith =>
+      __$$UnAuthorizedImplCopyWithImpl<_$UnAuthorizedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -549,7 +550,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return unAuthorized(message);
@@ -565,7 +566,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return unAuthorized?.call(message);
@@ -581,7 +582,7 @@ class _$_UnAuthorized implements _UnAuthorized {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -642,33 +643,34 @@ class _$_UnAuthorized implements _UnAuthorized {
 }
 
 abstract class _UnAuthorized implements ApiException {
-  const factory _UnAuthorized(final String message) = _$_UnAuthorized;
+  const factory _UnAuthorized(final String message) = _$UnAuthorizedImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_UnAuthorizedCopyWith<_$_UnAuthorized> get copyWith =>
+  _$$UnAuthorizedImplCopyWith<_$UnAuthorizedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_NetworkCopyWith<$Res> {
-  factory _$$_NetworkCopyWith(
-          _$_Network value, $Res Function(_$_Network) then) =
-      __$$_NetworkCopyWithImpl<$Res>;
+abstract class _$$NetworkImplCopyWith<$Res> {
+  factory _$$NetworkImplCopyWith(
+          _$NetworkImpl value, $Res Function(_$NetworkImpl) then) =
+      __$$NetworkImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_NetworkCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_Network>
-    implements _$$_NetworkCopyWith<$Res> {
-  __$$_NetworkCopyWithImpl(_$_Network _value, $Res Function(_$_Network) _then)
+class __$$NetworkImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$NetworkImpl>
+    implements _$$NetworkImplCopyWith<$Res> {
+  __$$NetworkImplCopyWithImpl(
+      _$NetworkImpl _value, $Res Function(_$NetworkImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_Network implements _Network {
-  const _$_Network();
+class _$NetworkImpl implements _Network {
+  const _$NetworkImpl();
 
   @override
   String toString() {
@@ -676,9 +678,9 @@ class _$_Network implements _Network {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Network);
+        (other.runtimeType == runtimeType && other is _$NetworkImpl);
   }
 
   @override
@@ -694,7 +696,7 @@ class _$_Network implements _Network {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return network();
@@ -710,7 +712,7 @@ class _$_Network implements _Network {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return network?.call();
@@ -726,7 +728,7 @@ class _$_Network implements _Network {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -787,29 +789,29 @@ class _$_Network implements _Network {
 }
 
 abstract class _Network implements ApiException {
-  const factory _Network() = _$_Network;
+  const factory _Network() = _$NetworkImpl;
 }
 
 /// @nodoc
-abstract class _$$_ConnectionTimeOutCopyWith<$Res> {
-  factory _$$_ConnectionTimeOutCopyWith(_$_ConnectionTimeOut value,
-          $Res Function(_$_ConnectionTimeOut) then) =
-      __$$_ConnectionTimeOutCopyWithImpl<$Res>;
+abstract class _$$ConnectionTimeOutImplCopyWith<$Res> {
+  factory _$$ConnectionTimeOutImplCopyWith(_$ConnectionTimeOutImpl value,
+          $Res Function(_$ConnectionTimeOutImpl) then) =
+      __$$ConnectionTimeOutImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ConnectionTimeOutCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_ConnectionTimeOut>
-    implements _$$_ConnectionTimeOutCopyWith<$Res> {
-  __$$_ConnectionTimeOutCopyWithImpl(
-      _$_ConnectionTimeOut _value, $Res Function(_$_ConnectionTimeOut) _then)
+class __$$ConnectionTimeOutImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$ConnectionTimeOutImpl>
+    implements _$$ConnectionTimeOutImplCopyWith<$Res> {
+  __$$ConnectionTimeOutImplCopyWithImpl(_$ConnectionTimeOutImpl _value,
+      $Res Function(_$ConnectionTimeOutImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_ConnectionTimeOut implements _ConnectionTimeOut {
-  const _$_ConnectionTimeOut();
+class _$ConnectionTimeOutImpl implements _ConnectionTimeOut {
+  const _$ConnectionTimeOutImpl();
 
   @override
   String toString() {
@@ -817,9 +819,9 @@ class _$_ConnectionTimeOut implements _ConnectionTimeOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ConnectionTimeOut);
+        (other.runtimeType == runtimeType && other is _$ConnectionTimeOutImpl);
   }
 
   @override
@@ -835,7 +837,7 @@ class _$_ConnectionTimeOut implements _ConnectionTimeOut {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return connectionTimeOut();
@@ -851,7 +853,7 @@ class _$_ConnectionTimeOut implements _ConnectionTimeOut {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return connectionTimeOut?.call();
@@ -867,7 +869,7 @@ class _$_ConnectionTimeOut implements _ConnectionTimeOut {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -928,29 +930,29 @@ class _$_ConnectionTimeOut implements _ConnectionTimeOut {
 }
 
 abstract class _ConnectionTimeOut implements ApiException {
-  const factory _ConnectionTimeOut() = _$_ConnectionTimeOut;
+  const factory _ConnectionTimeOut() = _$ConnectionTimeOutImpl;
 }
 
 /// @nodoc
-abstract class _$$_BadCertificateCopyWith<$Res> {
-  factory _$$_BadCertificateCopyWith(
-          _$_BadCertificate value, $Res Function(_$_BadCertificate) then) =
-      __$$_BadCertificateCopyWithImpl<$Res>;
+abstract class _$$BadCertificateImplCopyWith<$Res> {
+  factory _$$BadCertificateImplCopyWith(_$BadCertificateImpl value,
+          $Res Function(_$BadCertificateImpl) then) =
+      __$$BadCertificateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_BadCertificateCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_BadCertificate>
-    implements _$$_BadCertificateCopyWith<$Res> {
-  __$$_BadCertificateCopyWithImpl(
-      _$_BadCertificate _value, $Res Function(_$_BadCertificate) _then)
+class __$$BadCertificateImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$BadCertificateImpl>
+    implements _$$BadCertificateImplCopyWith<$Res> {
+  __$$BadCertificateImplCopyWithImpl(
+      _$BadCertificateImpl _value, $Res Function(_$BadCertificateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_BadCertificate implements _BadCertificate {
-  const _$_BadCertificate();
+class _$BadCertificateImpl implements _BadCertificate {
+  const _$BadCertificateImpl();
 
   @override
   String toString() {
@@ -958,9 +960,9 @@ class _$_BadCertificate implements _BadCertificate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BadCertificate);
+        (other.runtimeType == runtimeType && other is _$BadCertificateImpl);
   }
 
   @override
@@ -976,7 +978,7 @@ class _$_BadCertificate implements _BadCertificate {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return badCertificate();
@@ -992,7 +994,7 @@ class _$_BadCertificate implements _BadCertificate {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return badCertificate?.call();
@@ -1008,7 +1010,7 @@ class _$_BadCertificate implements _BadCertificate {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -1069,43 +1071,69 @@ class _$_BadCertificate implements _BadCertificate {
 }
 
 abstract class _BadCertificate implements ApiException {
-  const factory _BadCertificate() = _$_BadCertificate;
+  const factory _BadCertificate() = _$BadCertificateImpl;
 }
 
 /// @nodoc
-abstract class _$$_BadResponseCopyWith<$Res> {
-  factory _$$_BadResponseCopyWith(
-          _$_BadResponse value, $Res Function(_$_BadResponse) then) =
-      __$$_BadResponseCopyWithImpl<$Res>;
+abstract class _$$BadResponseImplCopyWith<$Res> {
+  factory _$$BadResponseImplCopyWith(
+          _$BadResponseImpl value, $Res Function(_$BadResponseImpl) then) =
+      __$$BadResponseImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$_BadResponseCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_BadResponse>
-    implements _$$_BadResponseCopyWith<$Res> {
-  __$$_BadResponseCopyWithImpl(
-      _$_BadResponse _value, $Res Function(_$_BadResponse) _then)
+class __$$BadResponseImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$BadResponseImpl>
+    implements _$$BadResponseImplCopyWith<$Res> {
+  __$$BadResponseImplCopyWithImpl(
+      _$BadResponseImpl _value, $Res Function(_$BadResponseImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$BadResponseImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_BadResponse implements _BadResponse {
-  const _$_BadResponse();
+class _$BadResponseImpl implements _BadResponse {
+  const _$BadResponseImpl(this.message);
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ApiException.badResponse()';
+    return 'ApiException.badResponse(message: $message)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BadResponse);
+        (other.runtimeType == runtimeType &&
+            other is _$BadResponseImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BadResponseImplCopyWith<_$BadResponseImpl> get copyWith =>
+      __$$BadResponseImplCopyWithImpl<_$BadResponseImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1117,10 +1145,10 @@ class _$_BadResponse implements _BadResponse {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
-    return badResponse();
+    return badResponse(message);
   }
 
   @override
@@ -1133,10 +1161,10 @@ class _$_BadResponse implements _BadResponse {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
-    return badResponse?.call();
+    return badResponse?.call(message);
   }
 
   @override
@@ -1149,12 +1177,12 @@ class _$_BadResponse implements _BadResponse {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
     if (badResponse != null) {
-      return badResponse();
+      return badResponse(message);
     }
     return orElse();
   }
@@ -1210,24 +1238,29 @@ class _$_BadResponse implements _BadResponse {
 }
 
 abstract class _BadResponse implements ApiException {
-  const factory _BadResponse() = _$_BadResponse;
+  const factory _BadResponse(final String message) = _$BadResponseImpl;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$BadResponseImplCopyWith<_$BadResponseImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_DatabaseCopyWith<$Res> {
-  factory _$$_DatabaseCopyWith(
-          _$_Database value, $Res Function(_$_Database) then) =
-      __$$_DatabaseCopyWithImpl<$Res>;
+abstract class _$$DatabaseImplCopyWith<$Res> {
+  factory _$$DatabaseImplCopyWith(
+          _$DatabaseImpl value, $Res Function(_$DatabaseImpl) then) =
+      __$$DatabaseImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$_DatabaseCopyWithImpl<$Res>
-    extends _$ApiExceptionCopyWithImpl<$Res, _$_Database>
-    implements _$$_DatabaseCopyWith<$Res> {
-  __$$_DatabaseCopyWithImpl(
-      _$_Database _value, $Res Function(_$_Database) _then)
+class __$$DatabaseImplCopyWithImpl<$Res>
+    extends _$ApiExceptionCopyWithImpl<$Res, _$DatabaseImpl>
+    implements _$$DatabaseImplCopyWith<$Res> {
+  __$$DatabaseImplCopyWithImpl(
+      _$DatabaseImpl _value, $Res Function(_$DatabaseImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1235,7 +1268,7 @@ class __$$_DatabaseCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$_Database(
+    return _then(_$DatabaseImpl(
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -1246,8 +1279,8 @@ class __$$_DatabaseCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Database implements _Database {
-  const _$_Database({required this.message});
+class _$DatabaseImpl implements _Database {
+  const _$DatabaseImpl({required this.message});
 
   @override
   final String message;
@@ -1258,10 +1291,10 @@ class _$_Database implements _Database {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Database &&
+            other is _$DatabaseImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -1271,8 +1304,8 @@ class _$_Database implements _Database {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_DatabaseCopyWith<_$_Database> get copyWith =>
-      __$$_DatabaseCopyWithImpl<_$_Database>(this, _$identity);
+  _$$DatabaseImplCopyWith<_$DatabaseImpl> get copyWith =>
+      __$$DatabaseImplCopyWithImpl<_$DatabaseImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1284,7 +1317,7 @@ class _$_Database implements _Database {
     required TResult Function() network,
     required TResult Function() connectionTimeOut,
     required TResult Function() badCertificate,
-    required TResult Function() badResponse,
+    required TResult Function(String message) badResponse,
     required TResult Function(String message) database,
   }) {
     return database(message);
@@ -1300,7 +1333,7 @@ class _$_Database implements _Database {
     TResult? Function()? network,
     TResult? Function()? connectionTimeOut,
     TResult? Function()? badCertificate,
-    TResult? Function()? badResponse,
+    TResult? Function(String message)? badResponse,
     TResult? Function(String message)? database,
   }) {
     return database?.call(message);
@@ -1316,7 +1349,7 @@ class _$_Database implements _Database {
     TResult Function()? network,
     TResult Function()? connectionTimeOut,
     TResult Function()? badCertificate,
-    TResult Function()? badResponse,
+    TResult Function(String message)? badResponse,
     TResult Function(String message)? database,
     required TResult orElse(),
   }) {
@@ -1377,10 +1410,10 @@ class _$_Database implements _Database {
 }
 
 abstract class _Database implements ApiException {
-  const factory _Database({required final String message}) = _$_Database;
+  const factory _Database({required final String message}) = _$DatabaseImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$_DatabaseCopyWith<_$_Database> get copyWith =>
+  _$$DatabaseImplCopyWith<_$DatabaseImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

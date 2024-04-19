@@ -28,7 +28,7 @@ class ApiException with _$ApiException implements Exception {
   const factory ApiException.badCertificate() = _BadCertificate;
 
   // for error from client
-  const factory ApiException.badResponse() = _BadResponse;
+  const factory ApiException.badResponse(String message) = _BadResponse;
 
   // for error from client
   const factory ApiException.database({

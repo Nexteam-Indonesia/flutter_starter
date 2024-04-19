@@ -46,7 +46,9 @@ extension ApiExceptionDioX on DioException {
       case DioExceptionType.badCertificate:
         return const ApiException.badCertificate();
       case DioExceptionType.badResponse:
-        return const ApiException.badResponse();
+        return ApiException.badResponse(
+          response != null ? ApiUtils.parseResponseMessage(response!) : 'Response tidak valid',
+        );
       case DioExceptionType.unknown:
         if (response == null) {
           return const ApiException.serverException(
