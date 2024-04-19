@@ -65,14 +65,14 @@ class ForgotPasswordPage extends StatelessWidget {
                     if (state is AuthLoading) {
                       context.showLoadingIndicator();
                     } else if (state is AuthError) {
-                      context.showSnackbar(title: "Error", message: state.message, error: true);
+                      context.showSnackbar(isPop: true, message: state.message, error: true);
                     } else if (state is AuthSuccess) {
                       context.hideLoading();
                       context.route.goNamed(OtpPage.path, pathParameters: {
                         "email": formG.rawValue['email'].toString(),
                         "isResetPassword": true.toString(),
                       });
-                      context.showSnackbar(title: "Sukses", message: state.message);
+                      context.showSnackbar(message: state.message, isPop: false);
                     }
                   },
                   builder: (context, state) {
