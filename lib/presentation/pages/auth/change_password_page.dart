@@ -101,7 +101,7 @@ class ChangePasswordView extends StatelessWidget {
                   if (state is AuthLoading) {
                     context.showLoadingIndicator();
                   } else if (state is AuthError) {
-                    context.showSnackbar(title: "Error", message: state.message, error: true);
+                    context.showSnackbar(message: state.message, error: true, isPop: true);
                   } else if (state is AuthSuccess) {
                     context.hideLoading();
                     context.route.replaceNamed(SuccessPage.path, pathParameters: {

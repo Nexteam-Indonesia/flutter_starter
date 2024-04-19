@@ -149,7 +149,7 @@ class _OtpViewState extends State<OtpView> {
                   if (state is AuthLoading) {
                     context.showLoadingIndicator();
                   } else if (state is AuthError) {
-                    context.showSnackbar(title: "Error", message: state.message, error: true);
+                    context.showSnackbar(message: state.message, error: true);
                   } else if (state is AuthSuccess) {
                     context.hideLoading();
                     if (widget.isResetPassword) {
@@ -166,8 +166,7 @@ class _OtpViewState extends State<OtpView> {
                       "message": state.message,
                     });
                   } else if (state is AuthSuccessAdd) {
-                    context.hideLoading();
-                    context.showSnackbar(title: "", message: state.message);
+                    context.showSnackbar(message: state.message);
                     timerController.currentState?.start();
                     setState(() {
                       showResend = false;

@@ -58,14 +58,14 @@ class RegisterView extends StatelessWidget {
               if (state is AuthLoading) {
                 context.showLoadingIndicator();
               } else if (state is AuthError) {
-                context.showSnackbar(title: "Error", message: state.message, error: true);
+                context.showSnackbar(message: state.message, error: true);
               } else if (state is AuthSuccess) {
                 context.hideLoading();
                 context.route.goNamed(
                   OtpPage.path,
                   pathParameters: {"email": form.controls['email']!.value.toString()},
                 );
-                context.showSnackbar(title: "Sukses", message: state.message);
+                context.showSnackbar(message: state.message, isPop: false);
               }
             },
             builder: (context, state) {

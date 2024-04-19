@@ -4,6 +4,7 @@ import '../../data/datasources/session/session_source.dart';
 import '../errors/api_exception.dart';
 import '../extensions/api_extension.dart';
 import '../logging/logger.dart';
+import '../utils/api_utils.dart';
 
 /// [BaseDioRemoteSource] for handling network requests for dio client
 class BaseDioRemoteSource {
@@ -24,6 +25,9 @@ class BaseDioRemoteSource {
     required Future<Response> Function(Dio dio) request,
     required T Function(dynamic data) onResponse,
     bool isAuth = false,
+    bool isPaginate = false,
+    bool isMessage = false,
+    bool isResponseAll = false,
   }) async {
     try {
       if (isAuth) {
@@ -45,15 +49,22 @@ class BaseDioRemoteSource {
         await _session.deleteToken();
       }
       if (response.statusCode! >= 200 || response.statusCode! < 300) {
+        final rest = isPaginate
+            ? ApiUtils.parseResponsePaginate(response)
+            : ApiUtils.parseResponseData(response);
+        if (isResponseAll) {
+          return onResponse(response.data);
+        }
         // if (response.data['status'] == "success") {
         // print('response.data: ${response.data['data']['data']}');
-        return onResponse(response.data);
+        return isMessage ? onResponse(ApiUtils.parseResponseMessage(response)) : onResponse(rest);
         // } else {
         //   throw ApiException.database(
         //     message: response.data['message'],
         //   );
         // }
       } else {
+        logger.e("Success with Error: ${response.statusCode}");
         throw const ApiException.serverException(message: 'UnExpected Error in status code!!!');
       }
     } on DioException catch (e) {

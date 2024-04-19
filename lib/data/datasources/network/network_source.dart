@@ -16,8 +16,8 @@ abstract class ApiService {
         connectTimeout: const Duration(minutes: 3),
         receiveTimeout: const Duration(minutes: 3),
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
+          "Accept": "application/json",
+          "Content-Type": "application/json; charset=UTF-8",
         },
       ),
     );

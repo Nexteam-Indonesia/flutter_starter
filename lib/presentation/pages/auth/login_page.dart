@@ -49,10 +49,9 @@ class _LoginPageState extends State<LoginPage> {
                 if (state is AuthLoading) {
                   context.showLoadingIndicator();
                 } else if (state is AuthError) {
-                  context.showSnackbar(title: "Error", message: state.message, error: true);
+                  context.showSnackbar(message: state.message, error: true);
                 } else if (state is AuthSuccess) {
-                  context.hideLoading();
-                  context.showSnackbar(title: "Sukses", message: state.message);
+                  context.showSnackbar(message: state.message);
                   context.route.pushReplacement(HomePage.path);
                 }
               },
