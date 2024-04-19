@@ -122,8 +122,6 @@ extension BuildContextX on BuildContext {
                       message: 'Berkas berhasil diunduh, cek folder "Download/$fileName"',
                       error: true,
                     );
-                  } finally {
-                    hideLoading();
                   }
                 },
                 child: const Text('OK'),
