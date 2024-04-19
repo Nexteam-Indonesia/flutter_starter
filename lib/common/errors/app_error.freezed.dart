@@ -12,7 +12,7 @@ part of 'app_error.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppError {
@@ -92,8 +92,8 @@ mixin _$AppError {
 
 /// @nodoc
 
-class _$_ServerError implements _ServerError {
-  const _$_ServerError({this.code = 400, required this.message});
+class _$ServerErrorImpl implements _ServerError {
+  const _$ServerErrorImpl({this.code = 400, required this.message});
 
   @override
   @JsonKey()
@@ -107,10 +107,10 @@ class _$_ServerError implements _ServerError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ServerError &&
+            other is _$ServerErrorImpl &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.message, message) || other.message == message));
   }
@@ -216,7 +216,7 @@ class _$_ServerError implements _ServerError {
 
 abstract class _ServerError implements AppError {
   const factory _ServerError({final int code, required final String message}) =
-      _$_ServerError;
+      _$ServerErrorImpl;
 
   int get code;
   @override
@@ -225,8 +225,8 @@ abstract class _ServerError implements AppError {
 
 /// @nodoc
 
-class _$_ValidationError implements _ValidationError {
-  const _$_ValidationError(
+class _$ValidationErrorImpl implements _ValidationError {
+  const _$ValidationErrorImpl(
       {required this.message, final Map<String, dynamic> errors = const {}})
       : _errors = errors;
 
@@ -247,10 +247,10 @@ class _$_ValidationError implements _ValidationError {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ValidationError &&
+            other is _$ValidationErrorImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other._errors, _errors));
   }
@@ -358,7 +358,7 @@ class _$_ValidationError implements _ValidationError {
 abstract class _ValidationError implements AppError {
   const factory _ValidationError(
       {required final String message,
-      final Map<String, dynamic> errors}) = _$_ValidationError;
+      final Map<String, dynamic> errors}) = _$ValidationErrorImpl;
 
   @override
   String get message;
@@ -367,8 +367,8 @@ abstract class _ValidationError implements AppError {
 
 /// @nodoc
 
-class _$_NoInternet implements _NoInternet {
-  const _$_NoInternet({this.message = "Anda Tidak terhubung ke internet!"});
+class _$NoInternetImpl implements _NoInternet {
+  const _$NoInternetImpl({this.message = "Anda Tidak terhubung ke internet!"});
 
   @override
   @JsonKey()
@@ -380,10 +380,10 @@ class _$_NoInternet implements _NoInternet {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NoInternet &&
+            other is _$NoInternetImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -487,7 +487,7 @@ class _$_NoInternet implements _NoInternet {
 }
 
 abstract class _NoInternet implements AppError {
-  const factory _NoInternet({final String message}) = _$_NoInternet;
+  const factory _NoInternet({final String message}) = _$NoInternetImpl;
 
   @override
   String get message;
@@ -495,8 +495,8 @@ abstract class _NoInternet implements AppError {
 
 /// @nodoc
 
-class _$_TimeOut implements _TimeOut {
-  const _$_TimeOut({this.message = "Koneksi gagal karena waktu habis!"});
+class _$TimeOutImpl implements _TimeOut {
+  const _$TimeOutImpl({this.message = "Koneksi gagal karena waktu habis!"});
 
   @override
   @JsonKey()
@@ -508,10 +508,10 @@ class _$_TimeOut implements _TimeOut {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_TimeOut &&
+            other is _$TimeOutImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -615,7 +615,7 @@ class _$_TimeOut implements _TimeOut {
 }
 
 abstract class _TimeOut implements AppError {
-  const factory _TimeOut({final String message}) = _$_TimeOut;
+  const factory _TimeOut({final String message}) = _$TimeOutImpl;
 
   @override
   String get message;
@@ -623,8 +623,8 @@ abstract class _TimeOut implements AppError {
 
 /// @nodoc
 
-class _$_BadCertificate implements _BadCertificate {
-  const _$_BadCertificate({this.message = "Sertifikat tidak valid!"});
+class _$BadCertificateImpl implements _BadCertificate {
+  const _$BadCertificateImpl({this.message = "Sertifikat tidak valid!"});
 
   @override
   @JsonKey()
@@ -636,10 +636,10 @@ class _$_BadCertificate implements _BadCertificate {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BadCertificate &&
+            other is _$BadCertificateImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -743,7 +743,7 @@ class _$_BadCertificate implements _BadCertificate {
 }
 
 abstract class _BadCertificate implements AppError {
-  const factory _BadCertificate({final String message}) = _$_BadCertificate;
+  const factory _BadCertificate({final String message}) = _$BadCertificateImpl;
 
   @override
   String get message;
@@ -751,8 +751,8 @@ abstract class _BadCertificate implements AppError {
 
 /// @nodoc
 
-class _$_BadResponse implements _BadResponse {
-  const _$_BadResponse({this.message = "Respon tidak valid!"});
+class _$BadResponseImpl implements _BadResponse {
+  const _$BadResponseImpl({this.message = "Respon tidak valid!"});
 
   @override
   @JsonKey()
@@ -764,10 +764,10 @@ class _$_BadResponse implements _BadResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BadResponse &&
+            other is _$BadResponseImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -871,7 +871,7 @@ class _$_BadResponse implements _BadResponse {
 }
 
 abstract class _BadResponse implements AppError {
-  const factory _BadResponse({final String message}) = _$_BadResponse;
+  const factory _BadResponse({final String message}) = _$BadResponseImpl;
 
   @override
   String get message;
@@ -879,8 +879,8 @@ abstract class _BadResponse implements AppError {
 
 /// @nodoc
 
-class _$_UnAuthorized implements _UnAuthorized {
-  const _$_UnAuthorized({this.message = "Anda tidak memiliki akses!"});
+class _$UnAuthorizedImpl implements _UnAuthorized {
+  const _$UnAuthorizedImpl({this.message = "Anda tidak memiliki akses!"});
 
   @override
   @JsonKey()
@@ -892,10 +892,10 @@ class _$_UnAuthorized implements _UnAuthorized {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_UnAuthorized &&
+            other is _$UnAuthorizedImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -999,7 +999,7 @@ class _$_UnAuthorized implements _UnAuthorized {
 }
 
 abstract class _UnAuthorized implements AppError {
-  const factory _UnAuthorized({final String message}) = _$_UnAuthorized;
+  const factory _UnAuthorized({final String message}) = _$UnAuthorizedImpl;
 
   @override
   String get message;
