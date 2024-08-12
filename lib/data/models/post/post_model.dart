@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:next_starter/common/extensions/object_extension.dart';
 
 class PostModel extends Equatable {
   final int? userId;
@@ -8,11 +9,11 @@ class PostModel extends Equatable {
 
   const PostModel({this.userId, this.id, this.title, this.body});
 
-  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
-        userId: json['userId'] is String ? int.parse(json['userId']) : json['userId'] as int?,
-        id: json['id'] is String ? int.parse(json['id']) : json['id'] as int?,
-        title: json['title'] as String?,
-        body: json['body'] as String?,
+  factory PostModel.fromJson(Map<String, Object?> json) => PostModel(
+        userId: json['userId'].toIntX(),
+        id: json['id'].toIntX(),
+        title: json['title'].toStringX(),
+        body: json['body'].toStringX(),
       );
 
   Map<String, dynamic> toJson() => {

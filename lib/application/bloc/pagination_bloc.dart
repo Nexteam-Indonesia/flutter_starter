@@ -40,12 +40,13 @@ class PaginationBloc extends Bloc<PaginationEvent, PaginationState> {
         emit(
           r.length < 10
               ? state.copyWith(
+                  posts: List.of(state.posts)..addAll(r),
                   status: PaginationStatus.success,
                   hasReachedMax: true,
                 )
               : state.copyWith(
-                  status: PaginationStatus.success,
                   posts: List.of(state.posts)..addAll(r),
+                  status: PaginationStatus.success,
                   hasReachedMax: false,
                 ),
         );

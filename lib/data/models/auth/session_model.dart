@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:next_starter/common/extensions/object_extension.dart';
 
 class SessionModel extends Equatable {
   final String? token;
@@ -8,11 +9,9 @@ class SessionModel extends Equatable {
 
   const SessionModel({this.token, this.expiresAt});
 
-  factory SessionModel.fromMap(Map<String, dynamic> data) => SessionModel(
-        token: data['token'] as String?,
-        expiresAt: data['expires_at'] == null
-            ? null
-            : DateTime.parse(data['expires_at'] as String),
+  factory SessionModel.fromMap(Map<String, Object?> data) => SessionModel(
+        token: data['token'].toStringX(),
+        expiresAt: data['expires_at'].toDateX(),
       );
 
   Map<String, dynamic> toMap() => {
