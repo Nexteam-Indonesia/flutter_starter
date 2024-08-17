@@ -69,9 +69,7 @@ class InstanceModel {
         address: json["address"],
         postalCode: json["postal_code"],
         logo: json["logo"],
-        createdAt: json["created_at"] == null
-            ? null
-            : DateTime.parse(json["created_at"]),
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
         attendancePolicy: json["attendance_policy"] == null
             ? null
             : AttendancePolicyModel.fromJson(json["attendance_policy"]),

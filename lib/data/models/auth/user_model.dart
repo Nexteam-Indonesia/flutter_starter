@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:next_starter/common/extensions/object_extension.dart';
 
 import 'instance_model.dart';
 
@@ -72,26 +73,31 @@ class UserModel extends Equatable {
         permissions: permissions ?? this.permissions,
       );
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        gender: json["gender"],
-        photo: json["photo"],
-        phoneNumber: json["phone_number"],
-        address: json["address"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+  factory UserModel.fromJson(Map<String, Object> json) => UserModel(
+        id: json["id"].toIntX(),
+        name: json["name"].toStringX(),
+        email: json["email"].toStringX(),
+        gender: json["gender"].toStringX(),
+        photo: json["photo"].toStringX(),
+        phoneNumber: json["phone_number"].toStringX(),
+        address: json["address"].toStringX(),
+        createdAt: json["created_at"].toDateX(),
         province: json["province"],
         city: json["city"],
-        instance: json["instance"] == null ? null : InstanceModel.fromJson(json["instance"]),
+        instance: json["instance"] == null
+            ? null
+            : InstanceModel.fromJson(json["instance"] as Map<String, Object?>),
         units: json["units"] == null
             ? []
-            : List<Unit>.from(json["units"]!.map((x) => Unit.fromJson(x))),
-        roles: json["roles"] == null ? [] : List<String>.from(json["roles"]!.map((x) => x)),
-        employee: json["employee"] == null ? null : Employee.fromJson(json["employee"]),
+            : List<Unit>.from((json["units"]! as List).map((x) => Unit.fromJson(x))),
+        roles:
+            json["roles"] == null ? [] : List<String>.from((json["roles"]! as List).map((x) => x)),
+        employee: json["employee"] == null
+            ? null
+            : Employee.fromJson(json["employee"] as Map<String, Object?>),
         permissions: json["permissions"] == null
             ? []
-            : List<dynamic>.from(json["permissions"]!.map((x) => x)),
+            : List<dynamic>.from((json["permissions"]! as List).map((x) => x)),
       );
 
   Map<String, dynamic> toJson() => {
@@ -178,20 +184,20 @@ class Employee {
         createdAt: createdAt ?? this.createdAt,
       );
 
-  factory Employee.fromJson(Map<String, dynamic> json) => Employee(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        nip: json["nip"],
-        phoneNumber: json["phone_number"],
-        npwp: json["npwp"],
-        personalIdentifier: json["personal_identifier"],
-        nonEmployee: json["non_employee"],
-        rank: json["rank"],
-        position: json["position"],
-        positionEn: json["position_en"],
-        image: json["image"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+  factory Employee.fromJson(Map<String, Object?> json) => Employee(
+        id: json["id"].toIntX(),
+        name: json["name"].toStringX(),
+        email: json["email"].toStringX(),
+        nip: json["nip"].toStringX(),
+        phoneNumber: json["phone_number"].toStringX(),
+        npwp: json["npwp"].toStringX(),
+        personalIdentifier: json["personal_identifier"].toStringX(),
+        nonEmployee: json["non_employee"].toIntX(),
+        rank: json["rank"].toStringX(),
+        position: json["position"].toStringX(),
+        positionEn: json["position_en"].toStringX(),
+        image: json["image"].toStringX(),
+        createdAt: json["created_at"].toDateX(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -257,16 +263,18 @@ class Unit {
         instance: instance ?? this.instance,
       );
 
-  factory Unit.fromJson(Map<String, dynamic> json) => Unit(
-        id: json["id"],
-        name: json["name"],
-        code: json["code"],
-        unitLevel: json["unit_level"],
-        abbreviation: json["abbreviation"],
-        domain: json["domain"],
-        logo: json["logo"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-        instance: json["instance"] == null ? null : InstanceModel.fromJson(json["instance"]),
+  factory Unit.fromJson(Map<String, Object?> json) => Unit(
+        id: json["id"].toIntX(),
+        name: json["name"].toStringX(),
+        code: json["code"].toStringX(),
+        unitLevel: json["unit_level"].toStringX(),
+        abbreviation: json["abbreviation"].toStringX(),
+        domain: json["domain"].toStringX(),
+        logo: json["logo"].toStringX(),
+        createdAt: json["created_at"].toDateX(),
+        instance: json["instance"] == null
+            ? null
+            : InstanceModel.fromJson(json["instance"] as Map<String, Object?>),
       );
 
   Map<String, dynamic> toJson() => {

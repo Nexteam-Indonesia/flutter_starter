@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:next_starter/common/extensions/object_extension.dart';
 
 import 'instance_model.dart';
 
@@ -29,16 +30,16 @@ class UnitInstanceModel extends Equatable {
     this.attendanceUnitSetting,
   });
 
-  factory UnitInstanceModel.fromJson(Map<String, dynamic> json) {
+  factory UnitInstanceModel.fromJson(Map<String, Object?> json) {
     return UnitInstanceModel(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-      code: json['code'] as String?,
-      unitLevel: json['unit_level'] as String?,
-      abbreviation: json['abbreviation'] as String?,
-      domain: json['domain'] as String?,
-      logo: json['logo'] as String?,
-      createdAt: json['created_at'] as String?,
+      id: json['id'].toIntX(),
+      name: json['name'].toStringX(),
+      code: json['code'].toStringX(),
+      unitLevel: json['unit_level'].toStringX(),
+      abbreviation: json['abbreviation'].toStringX(),
+      domain: json['domain'].toStringX(),
+      logo: json['logo'].toStringX(),
+      createdAt: json['created_at'].toStringX(),
       parent: json['parent'] as dynamic,
       instance: json['instance'] == null
           ? null
@@ -85,8 +86,7 @@ class UnitInstanceModel extends Equatable {
       createdAt: createdAt ?? this.createdAt,
       parent: parent ?? this.parent,
       instance: instance ?? this.instance,
-      attendanceUnitSetting:
-          attendanceUnitSetting ?? this.attendanceUnitSetting,
+      attendanceUnitSetting: attendanceUnitSetting ?? this.attendanceUnitSetting,
     );
   }
 

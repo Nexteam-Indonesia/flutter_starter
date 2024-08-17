@@ -49,12 +49,13 @@ class BaseDioRemoteSource {
         await _session.deleteToken();
       }
       if (response.statusCode! >= 200 || response.statusCode! < 300) {
-        final rest = isPaginate
-            ? ApiUtils.parseResponsePaginate(response)
-            : ApiUtils.parseResponseData(response);
+        logger.d("Success with Response: ${response.statusCode}");
         if (isResponseAll) {
           return onResponse(response.data);
         }
+        final rest = isPaginate
+            ? ApiUtils.parseResponsePaginate(response)
+            : ApiUtils.parseResponseData(response);
         // if (response.data['status'] == "success") {
         // print('response.data: ${response.data['data']['data']}');
         return isMessage ? onResponse(ApiUtils.parseResponseMessage(response)) : onResponse(rest);
@@ -65,9 +66,10 @@ class BaseDioRemoteSource {
         // }
       } else {
         logger.e("Success with Error: ${response.statusCode}");
-        throw const ApiException.serverException(message: 'UnExpected Error in status code!!!');
+        throw const ApiException.serverException(message: 'Success with Error in dio!!!');
       }
     } on DioException catch (e) {
+      logger.e(e);
       var err = e.toApiException;
       // TODO: if auto redirect to login page
       // await err.maybeWhen(

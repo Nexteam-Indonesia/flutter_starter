@@ -1,5 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../utils/currency_utils.dart';
 
 extension NumExtensionX on num {
   Duration get microseconds => Duration(microseconds: toInt());
@@ -45,4 +49,28 @@ extension NumExtensionX on num {
   EdgeInsets get vertical => EdgeInsets.symmetric(vertical: toDouble().h);
 
   Iterable<int> get range => Iterable<int>.generate(toInt());
+  bool get isEmpty => this == 0;
+
+  String get getRandomString {
+    const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    Random rnd = Random();
+    return String.fromCharCodes(
+      Iterable.generate(
+        toInt(),
+        (_) => chars.codeUnitAt(rnd.nextInt(chars.length)),
+      ),
+    );
+  }
+}
+
+extension NumSafetyExtensionX on num? {
+  bool get isEmpty => this == 0 || this == null;
+}
+
+extension IntExtensionX on int {
+  String get currency => CurrencyUtils.formatCurrency(this);
+}
+
+extension IntExtensionXNullable on int? {
+  String get currency => CurrencyUtils.formatCurrency(this ?? 0);
 }
