@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 
 class EmptyImage extends StatelessWidget {
   const EmptyImage({
-    Key? key,
+    super.key,
     this.size,
     this.width,
     this.child,
-  }) : super(key: key);
+  });
 
   final double? size, width;
   final Widget? child;

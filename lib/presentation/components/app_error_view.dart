@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // TODO We can customize this screen as per our design to show errors on debug and release mode
 class AppErrorView extends StatelessWidget {
-  const AppErrorView({Key? key, required this.details}) : super(key: key);
+  const AppErrorView({super.key, required this.details});
 
   final FlutterErrorDetails details;
 
