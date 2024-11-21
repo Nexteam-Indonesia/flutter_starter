@@ -3,15 +3,14 @@ import '../../../../common/typedefs/typedefs.dart';
 import '../../../../data/datasources/remote_datasources/auth_remote/auth_remote.dart';
 import '../../../../data/datasources/session/session_source.dart';
 import '../../../../data/models/auth/session_model.dart';
-import '../../../../injection.dart';
 import '../../common/base/base_repository.dart';
 import '../dto/register_dto.dart';
 
 class AuthRepository extends BaseRepository {
-  AuthRepository(super.networkInfo);
+  AuthRepository(super.networkInfo, this.remote, this.session);
 
-  final AuthRemote remote = locator();
-  final SessionSource session = locator();
+  final AuthRemote remote;
+  final SessionSource session;
 
   EitherResponse<void> forgotPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(
