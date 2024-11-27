@@ -8,16 +8,15 @@ class ResendOtpTimer extends StatefulWidget {
   final VoidCallback? onElapsed;
 
   const ResendOtpTimer({
-    Key? key,
+    super.key,
     this.onElapsed,
-  }) : super(key: key);
+  });
 
   @override
   State<ResendOtpTimer> createState() => ResendOtpTimerState();
 }
 
-class ResendOtpTimerState extends State<ResendOtpTimer>
-    with TickerProviderStateMixin {
+class ResendOtpTimerState extends State<ResendOtpTimer> with TickerProviderStateMixin {
   late Timer? _timer;
   static const int seconds = 60;
   final remainingTime = ValueNotifier<Duration>(const Duration(
@@ -88,8 +87,7 @@ class ResendOtpTimerState extends State<ResendOtpTimer>
             ),
             Text(
               '$mm:$ss',
-              style: CustomTextTheme.paragraph1
-                  .copyWith(color: ColorTheme.neutral[600]),
+              style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
             ),
           ],
         );

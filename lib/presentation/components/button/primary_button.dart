@@ -4,7 +4,7 @@ import '../../theme/theme.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
-    Key? key,
+    super.key,
     required this.title,
     this.onTap,
     this.isEnable = true,
@@ -12,7 +12,7 @@ class PrimaryButton extends StatelessWidget {
     this.width,
     this.isFullWidth = true,
     this.backgroundColor = ColorTheme.primary,
-  }) : super(key: key);
+  });
 
   final String title;
   final VoidCallback? onTap;

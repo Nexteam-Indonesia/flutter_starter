@@ -50,10 +50,10 @@ Future<void> initializeDependencies(GlobalKey<NavigatorState> navigatorKey) asyn
 
   // auth
   locator.registerSingleton<AuthRemote>(AuthRemoteImpl(locator.get(), locator.get()));
-  locator.registerSingleton(AuthRepository(locator.get()));
+  locator.registerSingleton(AuthRepository(locator.get(), locator.get(), locator.get()));
   locator.registerFactory(AuthCubit.new);
   // post
   locator.registerSingleton<PostRemote>(PostRemoteImpl(locator.get(), locator.get()));
-  locator.registerSingleton(PostRepository(locator.get()));
+  locator.registerSingleton(PostRepository(locator.get(), locator.get()));
   locator.registerFactory(PaginationBloc.new);
 }

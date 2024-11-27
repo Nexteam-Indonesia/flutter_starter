@@ -7,10 +7,10 @@ import '../../presentation/theme/theme.dart';
 // TODO We can customize this screen as per our design to show errors on debug and release mode
 class AppErrorWidget extends StatelessWidget {
   const AppErrorWidget({
-    Key? key,
+    super.key,
     required this.message,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final String message;
   final VoidCallback? onTap;

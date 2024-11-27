@@ -4,7 +4,7 @@ import '../../../common/extensions/extensions.dart';
 
 class BaseScaffold extends StatelessWidget {
   const BaseScaffold({
-    Key? key,
+    super.key,
     required this.body,
     this.appBar,
     this.padding,
@@ -12,7 +12,7 @@ class BaseScaffold extends StatelessWidget {
     this.floatingActionButtonLocation = FloatingActionButtonLocation.endFloat,
     this.bottomSheet,
     this.bottomNavigationBar,
-  }) : super(key: key);
+  });
 
   final Widget body;
   final PreferredSizeWidget? appBar;

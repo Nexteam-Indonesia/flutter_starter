@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RowLoadingWidget extends StatelessWidget {
-  const RowLoadingWidget({Key? key, this.isLeft = false}) : super(key: key);
+  const RowLoadingWidget({super.key, this.isLeft = false});
 
   final bool isLeft;
 

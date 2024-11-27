@@ -4,13 +4,13 @@ import '../../theme/theme.dart';
 
 class BackRoundButton extends StatelessWidget {
   const BackRoundButton({
-    Key? key,
+    super.key,
     this.onTap,
     required this.icon,
     this.color = Colors.black,
     this.size = 40,
     this.radius = 8,
-  }) : super(key: key);
+  });
 
   final VoidCallback? onTap;
   final IconData icon;

@@ -7,7 +7,7 @@ import 'empty_image.dart';
 
 class ImageWithLoader extends StatelessWidget {
   const ImageWithLoader({
-    Key? key,
+    super.key,
     required this.imageUrl,
     this.size = 100,
     this.width,
@@ -18,7 +18,7 @@ class ImageWithLoader extends StatelessWidget {
     this.isBG = false,
     this.fit,
     this.border,
-  }) : super(key: key);
+  });
 
   final String imageUrl;
   final double size;
