@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:next_starter/common/extensions/extensions.dart';
 import 'package:next_starter/common/storage/storage.dart';
 import 'package:next_starter/common/widgets/loading_indicator_widget.dart';
 import 'package:next_starter/injection.dart';
 import 'package:path/path.dart' as path;
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 import '../../presentation/theme/theme.dart';
 import '../widgets/top_snackbar.dart';

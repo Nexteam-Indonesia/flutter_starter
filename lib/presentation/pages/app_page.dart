@@ -1,6 +1,4 @@
-import 'package:dio_log/dio_log.dart';
 import 'package:flavor/flavor.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -28,9 +26,6 @@ class _AppPageState extends State<AppPage> {
   @override
   void initState() {
     super.initState();
-    if (kDebugMode) {
-      showDebugBtn(context);
-    }
     _appRouter = AppRouter.router(widget.navigatorKey);
   }
 

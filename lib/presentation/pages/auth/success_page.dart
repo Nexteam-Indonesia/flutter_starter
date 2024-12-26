@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:next_starter/common/extensions/widget_extension.dart';
 
 import '../../../common/extensions/context_extension.dart';
 import '../../components/components.dart';
@@ -25,10 +25,10 @@ class SuccessPage extends StatelessWidget {
         onTap: () {
           context.route.go(LoginPage.path);
         },
-      ).p20(),
+      ).pad(20),
       body: SizedBox(
-        width: context.safePercentWidth * 100,
-        height: context.safePercentHeight * 100,
+        width: context.width,
+        height: context.height,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

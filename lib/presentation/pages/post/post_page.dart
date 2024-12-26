@@ -1,3 +1,5 @@
+import 'package:dio_log/dio_log.dart';
+import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,6 +38,9 @@ class _PostViewState extends State<PostView> {
   @override
   void initState() {
     super.initState();
+    if (Flavor.instance.environment != Environment.production) {
+      showDebugBtn(context, btnColor: Colors.green);
+    }
     _scrollController.addListener(_onScroll);
   }
 
