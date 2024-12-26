@@ -214,9 +214,9 @@ class AppCoreTheme {
       dividerColor: Colors.transparent,
       indicatorColor: primaryColor,
       indicatorSize: TabBarIndicatorSize.label,
-      overlayColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.pressed)) {
+      overlayColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.pressed)) {
           return AppCoreColor.primary.focus;
         }
 
@@ -234,9 +234,9 @@ class AppCoreTheme {
     // CheckBox Button Theme
     checkboxTheme: CheckboxThemeData(
       splashRadius: 5.0,
-      fillColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
+      fillColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
 
@@ -245,9 +245,9 @@ class AppCoreTheme {
     ),
     // Radio Button Theme
     radioTheme: RadioThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color?>(
-          (Set<MaterialState> states) {
-        if (states.contains(MaterialState.selected)) {
+      fillColor: WidgetStateProperty.resolveWith<Color?>(
+          (Set<WidgetState> states) {
+        if (states.contains(WidgetState.selected)) {
           return primaryColor;
         }
 
