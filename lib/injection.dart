@@ -29,7 +29,7 @@ final locator = GetIt.instance;
 class ApiServiceImpl extends ApiService {}
 
 // TODO: Register harus ada typenya jika dia punya interface contoh:
-// locator.registerLazySingleton<PermissionInterface>(() => const KendaliPermission());
+// locator.registerLazySingleton<PermissionInterface>(() => const AppPermission());
 Future<void> initializeDependencies(GlobalKey<NavigatorState> navigatorKey) async {
   final apiService = ApiServiceImpl();
   final log = DioLogInterceptor();
@@ -41,11 +41,11 @@ Future<void> initializeDependencies(GlobalKey<NavigatorState> navigatorKey) asyn
   locator.registerLazySingleton<ImageResizeUtils>(() => ImageResizeUtils());
   locator.registerLazySingleton<Connectivity>(() => apiService.internetConnectionChecker());
   locator.registerSingleton<NetworkInfo>(NetworkInfoImpl(locator.get()));
-  locator.registerLazySingleton<PermissionInterface>(() => const KendaliPermission());
+  locator.registerLazySingleton<PermissionInterface>(() => const AppPermission());
   locator.registerSingleton<SharedPrefStorageInterface>(SharedPreferenceStorage());
   locator.registerLazySingleton<StorageInterface>(
       () => Storage(permission: locator.get(), storagePath: locator.get()));
-  locator.registerLazySingleton<SessionSource>(() => SessionSource(shared: locator()));
+  locator.registerLazySingleton<SessionSource>(() => SessionSource(shared: locator.get()));
 
   // auth
   locator.registerSingleton<AuthRemote>(AuthRemoteImpl(locator.get(), locator.get()));
