@@ -4,7 +4,7 @@ import 'package:next_starter/common/extensions/widget_extension.dart';
 import '../../../common/extensions/context_extension.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
-import 'login_page.dart';
+import 'login/login_page.dart';
 
 class SuccessPage extends StatelessWidget {
   const SuccessPage({
