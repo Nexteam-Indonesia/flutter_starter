@@ -31,9 +31,8 @@ class BaseDioRemoteSource {
   }) async {
     try {
       if (isAuth) {
-        final token = await _session.hasSession;
-        // Vx.log('user: $user');
-        if (token) {
+        if (await _session.hasSession) {
+          final token = await _session.token;
           _dio.options.headers.addAll({
             "Authorization": "Bearer $token",
           });

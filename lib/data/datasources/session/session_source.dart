@@ -20,5 +20,7 @@ class SessionSource {
     await shared.remove(_key);
   }
 
+  Future<void> deleteAll() async => await shared.reset();
+
   Future<bool> get hasSession async => await shared.hasData(_key);
 }

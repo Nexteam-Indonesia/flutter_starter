@@ -23,10 +23,10 @@ class AppErrorWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.error_outline,
             color: Colors.red,
-            size: 60,
+            size: 60.r,
           ),
           16.verticalSpace,
           Text(
