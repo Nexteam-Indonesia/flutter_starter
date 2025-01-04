@@ -27,7 +27,8 @@ class LoginController {
   }
 
   void goRegister() => context.route.goNamed(RegisterPage.path);
-  void goForgotPassword() => () => context.route.pushNamed(ForgotPasswordPage.path);
+  void goForgotPassword() => context.route.pushNamed(ForgotPasswordPage.path);
+
   void authListener(BuildContext cxt, AuthState state) {
     if (state is AuthLoading) {
       context.showLoadingIndicator();
