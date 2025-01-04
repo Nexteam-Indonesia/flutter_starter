@@ -87,7 +87,8 @@ class _LoginPageState extends State<LoginPage> {
                                   color: ColorTheme.primary,
                                 ),
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => context.route.goNamed(RegisterPage.path),
+                                  ..onTap = () =>
+                                      context.route.goNamed(RegisterPage.path),
                               ),
                             ],
                           ),
@@ -156,7 +157,8 @@ class _LoginPageState extends State<LoginPage> {
                           color: ColorTheme.primary,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => context.route.goNamed(ForgotPasswordPage.path),
+                          ..onTap = () =>
+                              context.route.pushNamed(ForgotPasswordPage.path),
                       ),
                     ],
                   ),

@@ -5,6 +5,7 @@ import 'package:reactive_forms/reactive_forms.dart';
 
 import '../../../../application/auth/auth_cubit.dart';
 import '../../../common/extensions/extensions.dart';
+import '../../../common/logging/logger.dart';
 import '../../../injection.dart';
 import '../../components/components.dart';
 import '../../theme/theme.dart';
@@ -48,7 +49,8 @@ class ForgotPasswordPage extends StatelessWidget {
                 ),
                 Text(
                   'Masukkan email yang terkait dengan akun anda dan kami akan mengirimkan email berisi kode verifikasi untuk mengatur ulang kata sandi anda ',
-                  style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
+                  style: CustomTextTheme.paragraph1
+                      .copyWith(color: ColorTheme.neutral[600]),
                 ),
                 20.verticalSpace,
                 const TextInput(
@@ -65,14 +67,16 @@ class ForgotPasswordPage extends StatelessWidget {
                     if (state is AuthLoading) {
                       context.showLoadingIndicator();
                     } else if (state is AuthError) {
-                      context.showSnackbar(isPop: true, message: state.message, error: true);
+                      context.showSnackbar(
+                          isPop: true, message: state.message, error: true);
                     } else if (state is AuthSuccess) {
                       context.hideLoading();
-                      context.route.goNamed(OtpPage.path, pathParameters: {
+                      context.route.goNamed(OtpPage.path, queryParameters: {
                         "email": formG.rawValue['email'].toString(),
                         "isResetPassword": true.toString(),
                       });
-                      context.showSnackbar(message: state.message, isPop: false);
+                      context.showSnackbar(
+                          message: state.message, isPop: false);
                     }
                   },
                   builder: (context, state) {
@@ -85,7 +89,9 @@ class ForgotPasswordPage extends StatelessWidget {
                             // context
                             //     .read<AuthCubit>()
                             //     .forgotPassword(formState.rawValue);
-                            context.route.goNamed(OtpPage.path, pathParameters: {
+                            logger.d(formG.rawValue['email'].toString());
+                            context.route
+                                .goNamed(OtpPage.path, queryParameters: {
                               "email": formG.rawValue['email'].toString(),
                               "isResetPassword": true.toString(),
                             });

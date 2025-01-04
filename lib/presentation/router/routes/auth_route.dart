@@ -18,25 +18,34 @@ class AuthRoute {
     GoRoute(
       path: OtpPage.path,
       name: OtpPage.path,
-      builder: (context, state) => OtpPage(
-        email: state.pathParameters['email']!,
-        isResetPassword: state.pathParameters['isResetPassword'] == 'true',
-      ),
+      builder: (context, state) {
+        final query = state.uri.queryParameters;
+        return OtpPage(
+          email: query['email']!,
+          isResetPassword: query['isResetPassword'] == 'true',
+        );
+      },
     ),
     GoRoute(
       path: ChangePasswordPage.path,
       name: ChangePasswordPage.path,
-      builder: (context, state) => ChangePasswordPage(
-        email: state.pathParameters['email'] as String,
-        otp: state.pathParameters['otp'] as String,
-      ),
+      builder: (context, state) {
+        final query = state.uri.queryParameters;
+        return ChangePasswordPage(
+          email: query['email'] as String,
+          otp: query['otp'] as String,
+        );
+      },
     ),
     GoRoute(
       path: SuccessPage.path,
       name: SuccessPage.path,
-      builder: (context, state) => SuccessPage(
-        message: state.pathParameters['message']!,
-      ),
+      builder: (context, state) {
+        final query = state.uri.queryParameters;
+        return SuccessPage(
+          message: query['message'] as String,
+        );
+      },
     ),
     GoRoute(
       path: ForgotPasswordPage.path,
