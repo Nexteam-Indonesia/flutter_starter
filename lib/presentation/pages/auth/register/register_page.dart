@@ -4,12 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../application/auth/auth_cubit.dart';
-import '../../../../injection.dart';
-import '../../../common/extensions/extensions.dart';
-import '../../components/components.dart';
-import '../../theme/theme.dart';
-import 'auth.dart';
+import '../../../../../application/auth/auth_cubit.dart';
+import '../../../../../injection.dart';
+import '../../../../common/extensions/extensions.dart';
+import '../../../components/components.dart';
+import '../../../theme/theme.dart';
+import '../auth.dart';
+
+part 'register_controller.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -36,50 +38,19 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final formG = fb.group(
-      {
-        'name': ['', Validators.required],
-        'email': ['', Validators.required, Validators.email],
-        'password': ['', Validators.required, Validators.minLength(8)],
-        'phone_number': [
-          '',
-          Validators.required,
-          Validators.pattern(r'^[0-9]+$'),
-        ],
-      },
-    );
+    final c = RegisterController(context);
     return ReactiveFormBuilder(
-      form: () => formG,
+      form: () => c.formG,
       builder: (context, form, child) => BaseScaffold(
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
           child: BlocConsumer<AuthCubit, AuthState>(
-            listener: (context, state) {
-              if (state is AuthLoading) {
-                context.showLoadingIndicator();
-              } else if (state is AuthError) {
-                context.showSnackbar(message: state.message, error: true);
-              } else if (state is AuthSuccess) {
-                context.hideLoading();
-                context.route.goNamed(
-                  OtpPage.path,
-                  pathParameters: {"email": form.controls['email']!.value.toString()},
-                );
-                context.showSnackbar(message: state.message, isPop: false);
-              }
-            },
+            listener: (context, state) => c.authListener(context, state, form),
             builder: (context, state) {
               return ReactiveFormConsumer(
                 builder: (context, formL, child) {
                   return PrimaryButton(
-                    onTap: () {
-                      FocusManager.instance.primaryFocus?.unfocus();
-                      // context.read<AuthCubit>().register(formL.rawValue);
-                      context.route.goNamed(
-                        OtpPage.path,
-                        pathParameters: {"email": form.controls['email']!.value.toString()},
-                      );
-                    },
+                    onTap: () => c.onSubmit(formL),
                     title: "Daftar",
                     isEnable: formL.valid && formL.control('unit_1').value != -1,
                   );
@@ -156,9 +127,7 @@ class RegisterView extends StatelessWidget {
                 hint: "Masukkan Password anda",
                 isRequiredText: true,
                 prefix: const Icon(Icons.key),
-                validationMessages: {
-                  ValidationMessage.minLength: (p0) => 'Password Minimal 8 karakter',
-                },
+                validationMessages: c.passwordMessages,
               ),
               18.verticalSpace,
               Text.rich(
@@ -175,7 +144,7 @@ class RegisterView extends StatelessWidget {
                       ),
                       // recognizer: TapGestureRecognizer()
                       // ..onTap = () => context.route.push(OtpRoute(email: "Aaab".toString())),
-                      recognizer: TapGestureRecognizer()..onTap = () => context.route.pop(),
+                      recognizer: TapGestureRecognizer()..onTap = c.onLogin,
                     ),
                   ],
                 ),

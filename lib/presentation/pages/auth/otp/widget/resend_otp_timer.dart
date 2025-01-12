@@ -16,7 +16,8 @@ class ResendOtpTimer extends StatefulWidget {
   State<ResendOtpTimer> createState() => ResendOtpTimerState();
 }
 
-class ResendOtpTimerState extends State<ResendOtpTimer> with TickerProviderStateMixin {
+class ResendOtpTimerState extends State<ResendOtpTimer>
+    with TickerProviderStateMixin {
   late Timer? _timer;
   static const int seconds = 60;
   final remainingTime = ValueNotifier<Duration>(const Duration(
@@ -45,8 +46,8 @@ class ResendOtpTimerState extends State<ResendOtpTimer> with TickerProviderState
   }
 
   void reset() {
-    stop();
     remainingTime.value = const Duration(seconds: seconds);
+    start();
   }
 
   // Formatting Remainder
@@ -87,7 +88,8 @@ class ResendOtpTimerState extends State<ResendOtpTimer> with TickerProviderState
             ),
             Text(
               '$mm:$ss',
-              style: CustomTextTheme.paragraph1.copyWith(color: ColorTheme.neutral[600]),
+              style: CustomTextTheme.paragraph1
+                  .copyWith(color: ColorTheme.neutral[600]),
             ),
           ],
         );

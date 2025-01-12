@@ -64,12 +64,6 @@ extension ApiExceptionDioX on DioException {
                 : message ?? 'Error tidak diketahui',
           );
         }
-      default:
-        return ApiException.serverException(
-          message: response != null
-              ? ApiUtils.parseResponseMessage(response!)
-              : message ?? 'Error tidak diketahui',
-        );
     }
   }
 }

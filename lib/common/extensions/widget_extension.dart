@@ -56,4 +56,9 @@ extension WidgetExtensionX on Widget {
         padding: EdgeInsets.only(left: left.w, top: top.h, right: right.w, bottom: bottom.h),
         child: this,
       );
+  SizedBox wFull(BuildContext context, {Key? key}) => SizedBox(
+        width: context.size?.width,
+        key: key,
+        child: this,
+      );
 }

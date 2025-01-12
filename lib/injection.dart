@@ -1,7 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:dio_log/dio_log.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_alice/alice.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -29,24 +29,23 @@ final locator = GetIt.instance;
 class ApiServiceImpl extends ApiService {}
 
 // TODO: Register harus ada typenya jika dia punya interface contoh:
-// locator.registerLazySingleton<PermissionInterface>(() => const KendaliPermission());
+// locator.registerLazySingleton<PermissionInterface>(() => const AppPermission());
 Future<void> initializeDependencies(GlobalKey<NavigatorState> navigatorKey) async {
   final apiService = ApiServiceImpl();
-  final alice = Alice(showNotification: true, navigatorKey: navigatorKey);
+  final log = DioLogInterceptor();
 
   locator.registerLazySingleton<AppRouter>(() => AppRouter());
-  locator.registerLazySingleton<Dio>(
-      () => apiService.dio()..interceptors.add(alice.getDioInterceptor()));
+  locator.registerLazySingleton<Dio>(() => apiService.dio()..interceptors.add(log));
   locator.registerLazySingleton<ImagePicker>(() => apiService.imagePicker);
   locator.registerFactoryAsync<StoragePathInterface>(apiService.init);
   locator.registerLazySingleton<ImageResizeUtils>(() => ImageResizeUtils());
   locator.registerLazySingleton<Connectivity>(() => apiService.internetConnectionChecker());
   locator.registerSingleton<NetworkInfo>(NetworkInfoImpl(locator.get()));
-  locator.registerLazySingleton<PermissionInterface>(() => const KendaliPermission());
+  locator.registerLazySingleton<PermissionInterface>(() => const AppPermission());
   locator.registerSingleton<SharedPrefStorageInterface>(SharedPreferenceStorage());
   locator.registerLazySingleton<StorageInterface>(
       () => Storage(permission: locator.get(), storagePath: locator.get()));
-  locator.registerLazySingleton<SessionSource>(() => SessionSource(shared: locator()));
+  locator.registerLazySingleton<SessionSource>(() => SessionSource(shared: locator.get()));
 
   // auth
   locator.registerSingleton<AuthRemote>(AuthRemoteImpl(locator.get(), locator.get()));

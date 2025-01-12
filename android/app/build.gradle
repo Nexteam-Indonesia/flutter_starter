@@ -28,7 +28,7 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-def compileSdkVer = 34
+def compileSdkVer = 35
 // def ndkVer = "24.0.8215888"
 def ndkVer = "26.1.10909125"
 def minSdkVer = 21

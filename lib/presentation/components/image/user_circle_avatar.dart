@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
@@ -21,15 +22,22 @@ class UserCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var imgGenerate = ImageGenerator(
+      name: name,
+      size: size ?? 50,
+    );
     if (image == null || image == '' || image == 'default.png') {
-      return ImageGenerator(
-        name: name,
-        size: size ?? 50,
-      );
+      return imgGenerate;
     }
     String url = image!;
     if (!image!.contains('://')) {
-      url = baseUrl ?? 'https://api-kendali.eluxdev.space/storage/';
+      var storage = ((Flavor.I.getString(Keys.apiUrl) != null)
+          ? ('${Flavor.I.getString(Keys.apiUrl)!}storage/')
+          : "-");
+      if (storage == "-") {
+        return imgGenerate;
+      }
+      url = baseUrl ?? storage;
       url += image!;
     } else {
       url = '${(image ?? '').split('://').first}://${(image ?? '').split('://').last}';

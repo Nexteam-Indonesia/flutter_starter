@@ -2,8 +2,8 @@ import 'package:permission_handler/permission_handler.dart';
 
 import 'permission.dart';
 
-class KendaliPermission extends PermissionInterface {
-  const KendaliPermission() : super();
+class AppPermission extends PermissionInterface {
+  const AppPermission() : super();
 
   @override
   Future<void> camera() async {

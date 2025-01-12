@@ -1,3 +1,5 @@
+import 'package:dio_log/dio_log.dart';
+import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/extensions/extensions.dart';
@@ -26,6 +28,9 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> init() async {
     await 3.delayedSeconds;
+    if (Flavor.instance.environment != Environment.production) {
+      showDebugBtn(context, btnColor: Colors.green);
+    }
     final user = await locator<SessionSource>().hasSession;
     if (user) {
       context.route.replace(HomePage.path);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:velocity_x/velocity_x.dart';
+import 'package:next_starter/common/extensions/extensions.dart';
 
 import '../../presentation/theme/theme.dart';
 
@@ -23,10 +23,10 @@ class AppErrorWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const Icon(
+          Icon(
             Icons.error_outline,
             color: Colors.red,
-            size: 60,
+            size: 60.r,
           ),
           16.verticalSpace,
           Text(

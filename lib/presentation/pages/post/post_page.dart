@@ -9,6 +9,8 @@ import '../../../injection.dart';
 import '../../components/base/base_app_bar.dart';
 import '../../components/base/base_scaffold.dart';
 
+part 'post_controller.dart';
+
 class PostPage extends StatelessWidget {
   const PostPage({super.key});
 
@@ -31,31 +33,18 @@ class PostView extends StatefulWidget {
 }
 
 class _PostViewState extends State<PostView> {
-  final _scrollController = ScrollController();
+  late final PostController c;
 
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(_onScroll);
+    c = PostController(context: context);
   }
 
   @override
   void dispose() {
-    _scrollController
-      ..removeListener(_onScroll)
-      ..dispose();
+    c.dispose();
     super.dispose();
-  }
-
-  void _onScroll() {
-    if (_isBottom) context.read<PaginationBloc>().add(PaginationFetch());
-  }
-
-  bool get _isBottom {
-    if (!_scrollController.hasClients) return false;
-    final maxScroll = _scrollController.position.maxScrollExtent;
-    final currentScroll = _scrollController.offset;
-    return currentScroll >= (maxScroll * 0.9);
   }
 
   @override
@@ -87,8 +76,8 @@ class _PostViewState extends State<PostView> {
                           leading: Text("${state.posts[i].id}"),
                         );
                 },
-                itemCount: state.hasReachedMax ? state.posts.length : state.posts.length + 1,
-                controller: _scrollController,
+                itemCount: c.itemCount(state),
+                controller: c.scrollController,
               );
             case PaginationStatus.initial:
               return const LoadingIndicatorWidget();

@@ -46,7 +46,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   dio: ^5.7.0
   dio_http2_adapter: ^2.5.3
-  flutter_alice: ^1.1.1
+  dio_log: ^5.3.0
   equatable: ^2.0.5
   
   freezed: ^2.5.7
@@ -59,7 +59,6 @@ dependencies:
   cached_network_image: ^3.4.1
   flutter_svg: ^2.0.11
   dartz: ^0.10.1
-  velocity_x: ^4.2.1
   permission_handler: ^11.3.1
   flutter_secure_storage: ^9.2.2
   logger: ^2.4.0
@@ -95,8 +94,7 @@ dev_dependencies:
   # drift_dev: ^2.5.2
 
 dependency_overrides:
-  intl: ^0.19.0
-  http: ^1.2.2
+  smart_auth: ^3.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
