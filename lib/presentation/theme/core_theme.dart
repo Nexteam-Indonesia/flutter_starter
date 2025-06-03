@@ -179,50 +179,6 @@ class AppCoreTheme {
         minHeight: 55,
       ),
     ),
-    // Modal Dialog Theme
-    dialogTheme: DialogTheme(
-      // titleTextStyle: TextStyle(fontSize: 12,),
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-    // Card Theme
-    cardTheme: CardTheme(
-      elevation: 1.0,
-      color: Colors.white,
-      surfaceTintColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
-    ),
-    // Tab Bar Theme
-    tabBarTheme: TabBarTheme(
-      labelPadding: EdgeInsets.zero,
-      labelColor: primaryColor,
-      labelStyle: const TextStyle(
-        color: primaryColor,
-        fontSize: 14,
-        fontWeight: FontWeight.w600,
-      ),
-      unselectedLabelColor: AppCoreColor.neutral.n60,
-      unselectedLabelStyle: TextStyle(
-        color: AppCoreColor.neutral.n60,
-        fontSize: 14,
-      ),
-      dividerColor: Colors.transparent,
-      indicatorColor: primaryColor,
-      indicatorSize: TabBarIndicatorSize.label,
-      overlayColor: WidgetStateProperty.resolveWith<Color?>(
-          (Set<WidgetState> states) {
-        if (states.contains(WidgetState.pressed)) {
-          return AppCoreColor.primary.focus;
-        }
-
-        return null;
-      }),
-    ),
     // ExpansionTile
     expansionTileTheme: const ExpansionTileThemeData(
       shape: RoundedRectangleBorder(
