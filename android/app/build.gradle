@@ -28,10 +28,9 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-def compileSdkVer = 35
-// def ndkVer = "24.0.8215888"
-def ndkVer = "26.1.10909125"
-def minSdkVer = 21
+def compileSdkVer = 36
+def ndkVer = "28.2.13676358"
+def minSdkVer = 24
 
 android {
     namespace = "id.nexteam.next_starter"
@@ -39,12 +38,12 @@ android {
     ndkVersion = ndkVer
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
+        jvmTarget = JavaVersion.VERSION_21
     }
 
     sourceSets {

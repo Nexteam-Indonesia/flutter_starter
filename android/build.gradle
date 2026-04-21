@@ -16,8 +16,12 @@ allprojects {
             if (project.plugins.hasPlugin("com.android.application") ||
                     project.plugins.hasPlugin("com.android.library")) {
                 project.android {
-                    compileSdkVersion 35
-                    buildToolsVersion "35.0.0"
+                    compileSdkVersion 36
+                    buildToolsVersion "36.0.0"
+                    compileOptions {
+                        sourceCompatibility = JavaVersion.VERSION_21
+                        targetCompatibility = JavaVersion.VERSION_21
+                    }
                 }
             }
         }
@@ -39,4 +43,12 @@ tasks.register("clean", Delete) {
 
 tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:-options"
+}
+
+subprojects {
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        kotlinOptions {
+            jvmTarget = "21"
+        }
+    }
 }
