@@ -93,7 +93,7 @@ class AppCoreTheme {
       selectedItemColor: primaryColor,
     ),
     // Bottom AppBar Theme
-    bottomAppBarTheme: const BottomAppBarTheme(
+    bottomAppBarTheme: const BottomAppBarThemeData(
       elevation: 10,
       color: Colors.white,
       surfaceTintColor: Colors.white,
