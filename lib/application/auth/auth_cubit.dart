@@ -1,8 +1,7 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../common/typedefs/typedefs.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../injection.dart';
 
@@ -14,84 +13,84 @@ class AuthCubit extends Cubit<AuthState> {
   final AuthRepository repo = locator<AuthRepository>();
 
   Future<void> login(Map<String, dynamic> json) async {
-    // final NotificationInterface notification = locator<NotificationInterface>();
     emit(AuthLoading());
-    final result = await repo.login(json);
-    await result.fold<FutureOr<void>>(
-      (l) => emit(AuthError(l.message)),
-      (r) async {
-        // final user = await userRepo.profile();
-        // await user.fold<FutureOr<void>>(
-        //   (l) => emit(AuthError(l.message)),
-        //   (r) async {
-        //     // await notification.setExternalUserByEmail(r.email!);
+    // TODO: fetch the user profile here once a user repository exists, so the
+    // session is fully hydrated before AuthSuccess is emitted.
+    switch (await repo.login(json)) {
+      case Success():
         emit(const AuthSuccess("Selamat datang kembali!"));
-        //   },
-        // );
-      },
-    );
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> register(Map<String, dynamic> json) async {
     emit(AuthLoading());
-    final result = await repo.register(json);
-    await result.fold<FutureOr<void>>(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccess("Registrasi berhasil!")),
-    );
+    switch (await repo.register(json)) {
+      case Success():
+        emit(const AuthSuccess("Registrasi berhasil!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> verifyOtp(Map<String, dynamic> json) async {
     emit(AuthLoading());
-    final result = await repo.verifyOtp(json);
-    result.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccess("Email berhasil diverifikasi!")),
-    );
+    switch (await repo.verifyOtp(json)) {
+      case Success():
+        emit(const AuthSuccess("Email berhasil diverifikasi!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> resendOtp(Map<String, dynamic> json) async {
     emit(AuthLoading());
-    final rest = await repo.resendOtp(json);
-    rest.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccessAdd("Kode OTP berhasil dikirim!")),
-    );
+    switch (await repo.resendOtp(json)) {
+      case Success():
+        emit(const AuthSuccessAdd("Kode OTP berhasil dikirim!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> requestOtp(Map<String, dynamic> json) async {
     emit(AuthLoading());
-    final rest = await repo.requestOtp(json);
-    rest.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccess("Kode OTP berhasil dikirim!")),
-    );
+    switch (await repo.requestOtp(json)) {
+      case Success():
+        emit(const AuthSuccess("Kode OTP berhasil dikirim!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> forgotPassword(Map<String, dynamic> json) async {
     emit(AuthLoading());
-    final rest = await repo.forgotPassword(json);
-    rest.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccess("Kode OTP berhasil dikirim!")),
-    );
+    switch (await repo.forgotPassword(json)) {
+      case Success():
+        emit(const AuthSuccess("Kode OTP berhasil dikirim!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> resetPassword(Map<String, dynamic> rawValue) async {
     emit(AuthLoading());
-    final result = await repo.resetPassword(rawValue);
-    result.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccess("Kata sandi anda telah diperbarui!")),
-    );
+    switch (await repo.resetPassword(rawValue)) {
+      case Success():
+        emit(const AuthSuccess("Kata sandi anda telah diperbarui!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 
   Future<void> logout() async {
     emit(AuthLoading());
-    final result = await repo.logout();
-    result.fold(
-      (l) => emit(AuthError(l.message)),
-      (r) => emit(const AuthSuccessLogout("Berhasil keluar!")),
-    );
+    switch (await repo.logout()) {
+      case Success():
+        emit(const AuthSuccessLogout("Berhasil keluar!"));
+      case Failure(:final error):
+        emit(AuthError(error.message));
+    }
   }
 }

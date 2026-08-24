@@ -2,36 +2,40 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'api_exception.freezed.dart';
 
-@freezed
-class ApiException with _$ApiException implements Exception {
-  // for status code 400,500
+/// A transport-layer failure raised by the datasource layer.
+///
+/// The repository layer translates this into an [AppError] before it reaches
+/// application code — see `BaseRepository.handleNetworkCall`.
+@Freezed(copyWith: false, fromJson: false, toJson: false)
+sealed class ApiException with _$ApiException implements Exception {
+  /// Status code 400 or 500.
   const factory ApiException.serverException({
     required String message,
-  }) = _ServerException;
+  }) = ApiServerException;
 
-  //if status code is 422
+  /// Status code 422.
   const factory ApiException.unprocessableEntity({
     required String message,
     required Map<String, dynamic> errors,
-  }) = _UnprocessableEntity;
+  }) = ApiUnprocessableEntity;
 
-  // for status code 401
-  const factory ApiException.unAuthorized(String message) = _UnAuthorized;
+  /// Status code 401.
+  const factory ApiException.unAuthorized(String message) = ApiUnAuthorized;
 
-  // for socket exception from server
-  const factory ApiException.network() = _Network;
+  /// A socket failure while reaching the server.
+  const factory ApiException.network() = ApiNetworkException;
 
-  // for connection time out
-  const factory ApiException.connectionTimeOut() = _ConnectionTimeOut;
+  /// The request exceeded one of Dio's timeouts.
+  const factory ApiException.connectionTimeOut() = ApiTimeOutException;
 
-  // for error from client
-  const factory ApiException.badCertificate() = _BadCertificate;
+  /// The server presented an untrusted certificate.
+  const factory ApiException.badCertificate() = ApiBadCertificate;
 
-  // for error from client
-  const factory ApiException.badResponse(String message) = _BadResponse;
+  /// The response body did not match the expected shape.
+  const factory ApiException.badResponse(String message) = ApiBadResponse;
 
-  // for error from client
+  /// A local persistence failure.
   const factory ApiException.database({
     required String message,
-  }) = _Database;
+  }) = ApiDatabaseException;
 }

@@ -23,9 +23,8 @@ class SharedPreferenceStorage extends SharedPrefStorageInterface {
           collections: <String, String>{},
         ) {
     storage = const FlutterSecureStorage(
-      aOptions: AndroidOptions(
-        encryptedSharedPreferences: true,
-      ),
+      // AndroidOptions intentionally left at defaults: `encryptedSharedPreferences`
+      // is deprecated and removed in v11, and existing data migrates automatically.
       iOptions: IOSOptions(
         accessibility: KeychainAccessibility.first_unlock,
       ),

@@ -7,6 +7,6 @@ class Constants {
     ValidationMessage.number: (_) => 'Inputan hanya boleh angka',
     ValidationMessage.minLength: (e) => "Minimal ${(e as Map)['requiredLength']} karakter",
     ValidationMessage.maxLength: (e) => 'Maksimal ${(e as Map)['requiredLength']} karakter',
-    'validation_error': (e) => (e as String),
+    'validation_error': (e) => e as String,
   };
 }

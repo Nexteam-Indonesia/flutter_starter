@@ -8,9 +8,7 @@ class SessionSource {
     required this.shared,
   });
 
-  Future<String?> get token async {
-    return await shared.get(_key);
-  }
+  Future<String?> get token => shared.get(_key);
 
   Future<void> setToken(String token) async {
     await shared.store(_key, token);
@@ -20,7 +18,7 @@ class SessionSource {
     await shared.remove(_key);
   }
 
-  Future<void> deleteAll() async => await shared.reset();
+  Future<void> deleteAll() => shared.reset();
 
-  Future<bool> get hasSession async => await shared.hasData(_key);
+  Future<bool> get hasSession => shared.hasData(_key);
 }

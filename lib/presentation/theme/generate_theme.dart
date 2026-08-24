@@ -21,7 +21,7 @@ class GenerateTheme {
       );
 
   static List<Widget> generateDots(int length, int index) {
-    List<Widget> widgets = [];
+    final widgets = <Widget>[];
 
     for (var i = 0; i < length; i++) {
       widgets.add(

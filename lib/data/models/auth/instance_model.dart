@@ -1,3 +1,4 @@
+import '../../../common/extensions/object_extension.dart';
 import 'attendance_policy_model.dart';
 
 class InstanceModel {
@@ -58,24 +59,24 @@ class InstanceModel {
         attendancePolicy: attendancePolicy ?? this.attendancePolicy,
       );
 
-  factory InstanceModel.fromJson(Map<String, dynamic> json) => InstanceModel(
-        id: json["id"],
-        name: json["name"],
-        code: json["code"],
-        email: json["email"],
-        phoneNumber: json["phone_number"],
-        fax: json["fax"],
-        website: json["website"],
-        address: json["address"],
-        postalCode: json["postal_code"],
-        logo: json["logo"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+  factory InstanceModel.fromJson(Map<String, Object?> json) => InstanceModel(
+        id: json["id"].toIntX(),
+        name: json["name"].toStringX(),
+        code: json["code"].toStringX(),
+        email: json["email"].toStringX(),
+        phoneNumber: json["phone_number"].toStringX(),
+        fax: json["fax"].toStringX(),
+        website: json["website"].toStringX(),
+        address: json["address"].toStringX(),
+        postalCode: json["postal_code"].toStringX(),
+        logo: json["logo"].toStringX(),
+        createdAt: json["created_at"].toDateX(),
         attendancePolicy: json["attendance_policy"] == null
             ? null
-            : AttendancePolicyModel.fromJson(json["attendance_policy"]),
+            : AttendancePolicyModel.fromJson(json["attendance_policy"]! as Map<String, Object?>),
       );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, Object?> toJson() => <String, Object?>{
         "id": id,
         "name": name,
         "code": code,

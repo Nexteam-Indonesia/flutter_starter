@@ -29,7 +29,7 @@ class TextInput extends StatefulWidget {
   final int maxLines;
   final Widget? prefix;
   final Widget? suffix;
-  final Function(FormControl<Object?>)? onChanged;
+  final void Function(FormControl<Object?>)? onChanged;
 
   @override
   State<TextInput> createState() => _TextInputState();

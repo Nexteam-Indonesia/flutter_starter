@@ -22,7 +22,7 @@ class BaseDioRemoteSource {
   /// throws [ApiException]
 
   Future<T> networkRequest<T>({
-    required Future<Response> Function(Dio dio) request,
+    required Future<Response<dynamic>> Function(Dio dio) request,
     required T Function(dynamic data) onResponse,
     bool isAuth = false,
     bool isPaginate = false,
@@ -69,7 +69,7 @@ class BaseDioRemoteSource {
       }
     } on DioException catch (e) {
       logger.e(e);
-      var err = e.toApiException;
+      final err = e.toApiException;
       // TODO: if auto redirect to login page
       // await err.maybeWhen(
       //   orElse: () {},

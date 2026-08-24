@@ -23,7 +23,7 @@ class DropdownInput<T extends Object> extends StatelessWidget {
   final String hint;
   final List<Map<String, dynamic>> items;
   final bool isRequiredText;
-  final Function(FormControl<T?>?)? onChanged;
+  final void Function(FormControl<T?>?)? onChanged;
   final bool readOnly;
   final Map<String, String Function(Object)> validationMessages;
 
@@ -54,8 +54,8 @@ class DropdownInput<T extends Object> extends StatelessWidget {
           items: items
               .map(
                 (e) => DropdownMenuItem<T>(
-                  value: e['value'],
-                  child: Text(e['text'] ?? '-', style: CustomTextTheme.paragraph1),
+                  value: e['value'] as T?,
+                  child: Text(e['text'] as String? ?? '-', style: CustomTextTheme.paragraph1),
                 ),
               )
               .toList(),

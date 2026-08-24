@@ -29,7 +29,7 @@ class OtpController extends Cubit<bool> {
     } else if (state is AuthSuccess) {
       context.hideLoading();
       if (isResetPassword) {
-        context.route.replaceNamed(
+        context.route.replaceNamed<void>(
           ChangePasswordPage.path,
           queryParameters: {
             "email": email,
@@ -38,7 +38,7 @@ class OtpController extends Cubit<bool> {
         );
         return;
       }
-      context.route.replaceNamed(SuccessPage.path, queryParameters: {
+      context.route.replaceNamed<void>(SuccessPage.path, queryParameters: {
         "message": state.message,
       });
     } else if (state is AuthSuccessAdd) {
@@ -63,7 +63,7 @@ class OtpController extends Cubit<bool> {
   void btnVerification(FormGroup formG) {
     FocusManager.instance.primaryFocus?.unfocus();
     if (isResetPassword) {
-      context.route.replaceNamed(
+      context.route.replaceNamed<void>(
         ChangePasswordPage.path,
         queryParameters: {
           "email": email,
@@ -75,7 +75,7 @@ class OtpController extends Cubit<bool> {
       //   "email": email,
       //   "otp": formState.rawValue['otp'],
       // });
-      context.route.replaceNamed(SuccessPage.path,
+      context.route.replaceNamed<void>(SuccessPage.path,
           queryParameters: {"message": "Berhasil verifikasi OTP"});
     }
   }

@@ -1,8 +1,8 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:dartz/dartz.dart';
 
 import '../errors/api_exception.dart';
 import '../errors/app_error.dart';
+import '../extensions/api_extension.dart';
 import '../network/network_info.dart';
 import '../typedefs/typedefs.dart';
 
@@ -14,43 +14,33 @@ class BaseRepository {
 
   final NetworkInfo _networkInfo;
 
-  /// [T] is Return type for [EitherResponse]
+  /// Runs [call] when the device is online and wraps the outcome in a [Result].
   ///
-  /// [R] is response type from server that is params for [onSuccess] callback
-  ///
-  /// [onSuccess] callback returns the [T] and accept [R]
-
-  EitherResponse<T> handleNetworkCall<R, T>({
+  /// [R] is the response type from the server, [T] the value the caller wants.
+  /// [onSuccess] maps the former to the latter. When offline, [getOnLocal] is
+  /// returned if supplied, otherwise the call fails with `AppError.noInternet`.
+  FutureResult<T> handleNetworkCall<R, T>({
     required Future<R> call,
     required T Function(R data) onSuccess,
     Future<void> Function(R data)? onSaveToLocal,
     T? getOnLocal,
   }) async {
-    if ((await _networkInfo.getStatus()).first != ConnectivityResult.none) {
-      try {
-        final data = await call;
-        if (onSaveToLocal != null) {
-          await onSaveToLocal(data);
-        }
-        return right(onSuccess(data));
-      } on ApiException catch (e) {
-        return left(e.when(
-          serverException: (message) => AppError.serverError(message: message),
-          unprocessableEntity: (message, errors) =>
-              AppError.validationError(message: message, errors: errors),
-          unAuthorized: (message) => AppError.unAuthorized(message: message),
-          network: () => const AppError.noInternet(),
-          database: (message) => AppError.serverError(message: message, code: 200),
-          connectionTimeOut: () => const AppError.timeOut(),
-          badCertificate: () => const AppError.badCertificate(),
-          badResponse: (msg) => AppError.badResponse(message: msg),
-        ));
-      }
-    } else {
+    final isOffline = (await _networkInfo.getStatus()).first == ConnectivityResult.none;
+    if (isOffline) {
       if (getOnLocal != null) {
-        return right(getOnLocal);
+        return Success<T>(getOnLocal);
       }
-      return left(const AppError.noInternet());
+      return Failure<T>(const AppError.noInternet());
+    }
+
+    try {
+      final data = await call;
+      if (onSaveToLocal != null) {
+        await onSaveToLocal(data);
+      }
+      return Success<T>(onSuccess(data));
+    } on ApiException catch (e) {
+      return Failure<T>(e.toAppError);
     }
   }
 }

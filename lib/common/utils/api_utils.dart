@@ -3,32 +3,43 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 class ApiUtils {
-  static dynamic parseResponseData(Response<dynamic> response) {
-    if (response.data is String) {
-      return jsonDecode(response.data)['payload']['data'];
-    }
-    if (response.data['payload'] == null) {
+  static Object? parseResponseData(Response<dynamic> response) {
+    final payload = _payloadOf(response);
+    if (payload == null) {
       return parseResponseMessage(response);
     }
-    return response.data['payload']['data'];
+    return payload['data'];
   }
 
-  static dynamic parseResponsePaginate(Response<dynamic> response) {
-    if (response.data is String) {
-      return jsonDecode(response.data)['payload'];
-    }
-    if (response.data['payload'] == null) {
+  static Object? parseResponsePaginate(Response<dynamic> response) {
+    final payload = _payloadOf(response);
+    if (payload == null) {
       return parseResponseMessage(response);
     }
-    return response.data['payload'];
+    return payload;
   }
 
   static String parseResponseMessage(Response<dynamic> response) {
-    if (response.data is String) {
-      return validationMessageError(jsonDecode(response.data)['message'], response.statusCode);
-    }
+    final body = _bodyOf(response);
+    final message = body?['message'];
     return validationMessageError(
-        response.data['message'] ?? 'Terjadi Error pada server', response.statusCode);
+      message is String ? message : 'Terjadi Error pada server',
+      response.statusCode,
+    );
+  }
+
+  /// The response body as a map, decoding it first when the server replied with
+  /// a raw JSON string. Returns `null` when the body is not a JSON object.
+  static Map<String, Object?>? _bodyOf(Response<dynamic> response) {
+    final data = response.data;
+    final decoded = data is String ? jsonDecode(data) : data;
+    return decoded is Map ? decoded.cast<String, Object?>() : null;
+  }
+
+  /// The `payload` object of the response body, or `null` when absent.
+  static Map<String, Object?>? _payloadOf(Response<dynamic> response) {
+    final payload = _bodyOf(response)?['payload'];
+    return payload is Map ? payload.cast<String, Object?>() : null;
   }
 
   static String validationMessageError(String message, int? code) {

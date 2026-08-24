@@ -18,7 +18,7 @@ extension StringX on String {
   bool get isNullOrEmpty => isEmpty || this == '-';
 
   Color get randColor {
-    var r = Random(hashCode);
+    final r = Random(hashCode);
     const chars = '0123456789ABC';
     return HexColor('#${List.generate(6, (index) => chars[r.nextInt(chars.length)]).join()}');
   }

@@ -22,18 +22,18 @@ class UserCircleAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var imgGenerate = ImageGenerator(
+    final imgGenerate = ImageGenerator(
       name: name,
       size: size ?? 50,
     );
     if (image == null || image == '' || image == 'default.png') {
       return imgGenerate;
     }
-    String url = image!;
+    var url = image!;
     if (!image!.contains('://')) {
-      var storage = ((Flavor.I.getString(Keys.apiUrl) != null)
-          ? ('${Flavor.I.getString(Keys.apiUrl)!}storage/')
-          : "-");
+      final storage = Flavor.I.getString(Keys.apiUrl) != null
+          ? '${Flavor.I.getString(Keys.apiUrl)!}storage/'
+          : "-";
       if (storage == "-") {
         return imgGenerate;
       }

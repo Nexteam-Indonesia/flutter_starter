@@ -4,47 +4,52 @@ import 'dart:isolate';
 import 'package:image/image.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// Resizes and re-encodes images on a background isolate so large photos never
+/// block the UI thread.
 class ImageResizeUtils {
+  /// Isolate entry point. Receives `[srcPath, name, destDirPath, replyPort]`
+  /// over [sendPort] and replies with the compressed file's path.
   Future<void> getCompressedImage(SendPort sendPort) async {
-    ReceivePort receivePort = ReceivePort();
+    final receivePort = ReceivePort();
 
     sendPort.send(receivePort.sendPort);
-    List msg = (await receivePort.first) as List;
+    final msg = (await receivePort.first) as List<Object?>;
 
-    String srcPath = msg[0];
-    String name = msg[1];
-    String destDirPath = msg[2];
-    SendPort replyPort = msg[3];
+    final srcPath = msg[0]! as String;
+    final name = msg[1]! as String;
+    final destDirPath = msg[2]! as String;
+    final replyPort = msg[3]! as SendPort;
 
-    Image image = decodeImage(File(srcPath).readAsBytesSync())!;
+    var image = decodeImage(File(srcPath).readAsBytesSync())!;
 
     if (image.width > 600 || image.height > 600) {
       image = copyResize(image, width: 600);
     }
 
-    File destFile = File('$destDirPath/$name');
+    final destFile = File('$destDirPath/$name');
     await destFile.writeAsBytes(encodeJpg(image, quality: 80));
 
     replyPort.send(destFile.path);
   }
 
+  /// Compresses [f] on a background isolate and returns the resulting file.
   Future<File> compressImage(File f) async {
-    ReceivePort receivePort = ReceivePort();
+    final handshakePort = ReceivePort();
 
-    await Isolate.spawn(getCompressedImage, receivePort.sendPort);
-    SendPort sendPort = await receivePort.first;
+    await Isolate.spawn(getCompressedImage, handshakePort.sendPort);
+    final sendPort = await handshakePort.first as SendPort;
 
-    ReceivePort receivePort2 = ReceivePort();
+    final resultPort = ReceivePort();
 
-    sendPort.send([
+    sendPort.send(<Object?>[
       f.path,
       f.uri.pathSegments.last,
       (await getTemporaryDirectory()).path,
-      receivePort2.sendPort,
+      resultPort.sendPort,
     ]);
 
-    var msg = await receivePort2.first;
+    final compressedPath = await resultPort.first as String;
 
-    return File(msg);
+    return File(compressedPath);
   }
 }

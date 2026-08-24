@@ -39,7 +39,7 @@ class _PasswordInputState extends State<PasswordInput> {
       ValidationMessage.required: (_) => 'inputan ini tidak boleh kosong',
       ValidationMessage.minLength: (_) => 'inputan password kurang dari 8 karakter',
       ValidationMessage.mustMatch: (_) => 'inputan password tidak sama',
-      'validation_error': (e) => (e as String),
+      'validation_error': (e) => e as String,
     });
     messages.addAll(widget.validationMessages);
   }
@@ -65,7 +65,7 @@ class _PasswordInputState extends State<PasswordInput> {
           style: CustomTextTheme.paragraph1.copyWith(fontWeight: FontWeight.w700),
         ),
         8.verticalSpace,
-        ReactiveTextField(
+        ReactiveTextField<String>(
           formControlName: widget.formControlName,
           obscureText: !showPassword,
           style: CustomTextTheme.paragraph2.copyWith(color: ColorTheme.neutral[800]),

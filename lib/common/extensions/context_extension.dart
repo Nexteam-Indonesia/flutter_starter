@@ -20,7 +20,7 @@ extension BuildContextX on BuildContext {
     route.go(location, extra: extra);
   }
 
-  popUntil(String path) {
+  void popUntil(String path) {
     Navigator.popUntil(this, (state) => state.settings.name == path);
   }
 
@@ -40,7 +40,7 @@ extension BuildContextX on BuildContext {
     bool isPop = true,
   }) {
     if (isPop) hideLoading();
-    return showDialog(
+    return showDialog<T>(
       context: this,
       builder: (context) => AlertDialog(
         title: title,
@@ -62,7 +62,7 @@ extension BuildContextX on BuildContext {
     bool isPop = true,
   }) {
     if (isPop) hideLoading();
-    return showDialog(
+    return showDialog<T>(
       context: this,
       builder: (context) => AlertDialog(
         content: Row(
@@ -133,7 +133,7 @@ extension BuildContextX on BuildContext {
     );
   }
 
-  void hideLoading<T>([T? result]) {
+  void hideLoading([Object? result]) {
     if (Navigator.of(this).canPop()) {
       pop(result);
     }
@@ -147,7 +147,7 @@ extension BuildContextX on BuildContext {
     if (FocusScope.of(this).hasFocus) {
       FocusScope.of(this).unfocus();
     }
-    showDialog(
+    showDialog<void>(
       context: this,
       builder: (context) => PopScope(
         canPop: false,
@@ -215,7 +215,7 @@ extension BuildContextX on BuildContext {
                 const SizedBox(height: 10),
                 ...messages.entries.map(
                   (e) => Text(
-                    e.value is List ? e.value.last : e.value.toString(),
+                    e.value is List ? '${(e.value as List).last}' : e.value.toString(),
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12.sp,

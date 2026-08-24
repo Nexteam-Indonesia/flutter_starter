@@ -88,16 +88,19 @@ class UserModel extends Equatable {
             ? null
             : InstanceModel.fromJson(json["instance"] as Map<String, Object?>),
         units: json["units"] == null
-            ? []
-            : List<Unit>.from((json["units"]! as List).map((x) => Unit.fromJson(x))),
+            ? <Unit>[]
+            : List<Unit>.from((json["units"]! as List<Object?>)
+                .map((x) => Unit.fromJson(x! as Map<String, Object?>))),
         roles:
-            json["roles"] == null ? [] : List<String>.from((json["roles"]! as List).map((x) => x)),
+            json["roles"] == null
+                ? <String>[]
+                : List<String>.from(json["roles"]! as List<Object?>),
         employee: json["employee"] == null
             ? null
             : Employee.fromJson(json["employee"] as Map<String, Object?>),
         permissions: json["permissions"] == null
-            ? []
-            : List<dynamic>.from((json["permissions"]! as List).map((x) => x)),
+            ? <Object?>[]
+            : List<Object?>.from(json["permissions"]! as List<Object?>),
       );
 
   Map<String, dynamic> toJson() => {
@@ -112,10 +115,10 @@ class UserModel extends Equatable {
         "province": province,
         "city": city,
         "instance": instance?.toJson(),
-        "units": units == null ? [] : List<dynamic>.from(units!.map((x) => x.toJson())),
-        "roles": roles == null ? [] : List<dynamic>.from(roles!.map((x) => x)),
+        "units": units == null ? <Object?>[] : units!.map((x) => x.toJson()).toList(),
+        "roles": roles == null ? <String>[] : List<String>.from(roles!),
         "employee": employee?.toJson(),
-        "permissions": permissions == null ? [] : List<dynamic>.from(permissions!.map((x) => x)),
+        "permissions": permissions == null ? <Object?>[] : List<Object?>.from(permissions!),
       };
 
   @override

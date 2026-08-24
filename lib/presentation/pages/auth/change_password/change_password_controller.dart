@@ -34,7 +34,7 @@ class ChangePasswordController {
       context.showSnackbar(message: state.message, error: true, isPop: true);
     } else if (state is AuthSuccess) {
       context.hideLoading();
-      context.route.replaceNamed(SuccessPage.path, queryParameters: {
+      context.route.replaceNamed<void>(SuccessPage.path, queryParameters: {
         "message": state.message,
       });
     }
@@ -45,7 +45,7 @@ class ChangePasswordController {
     // context
     //     .read<AuthCubit>()
     //     .resetPassword(formState.rawValue);
-    context.route.replaceNamed(
+    context.route.replaceNamed<void>(
       SuccessPage.path,
       queryParameters: {"message": "Berhasil mengubah kata sandi"},
     );

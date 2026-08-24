@@ -12,14 +12,14 @@ class AuthRepository extends BaseRepository {
   final AuthRemote remote;
   final SessionSource session;
 
-  EitherResponse<void> forgotPassword(Map<String, dynamic> json) async {
+  FutureResult<void> forgotPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.forgotPassword(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
-  EitherResponse<SessionModel> login(Map<String, dynamic> json) async {
+  FutureResult<SessionModel> login(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.login(
         email: json['email'].toString().trim(),
@@ -30,7 +30,7 @@ class AuthRepository extends BaseRepository {
     );
   }
 
-  EitherResponse<String> register(Map<String, dynamic> json) async {
+  FutureResult<String> register(Map<String, dynamic> json) async {
     logger.d(json);
     return handleNetworkCall(
       call: remote.register(RegisterDto.fromJson(json)),
@@ -38,21 +38,21 @@ class AuthRepository extends BaseRepository {
     );
   }
 
-  EitherResponse<void> requestOtp(Map<String, dynamic> json) async {
+  FutureResult<void> requestOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.requestOtp(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
-  EitherResponse<void> resendOtp(Map<String, dynamic> json) async {
+  FutureResult<void> resendOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.resendOtp(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
-  EitherResponse<bool> verifyOtp(Map<String, dynamic> json) async {
+  FutureResult<bool> verifyOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.verifyOtp(
         email: json['email'].toString().trim(),
@@ -62,7 +62,7 @@ class AuthRepository extends BaseRepository {
     );
   }
 
-  EitherResponse<void> resetPassword(Map<String, dynamic> json) async {
+  FutureResult<void> resetPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(
       call: remote.resetPassword(
         email: json['email'].toString().trim(),
@@ -74,7 +74,7 @@ class AuthRepository extends BaseRepository {
     );
   }
 
-  EitherResponse<void> logout() async {
+  FutureResult<void> logout() async {
     return handleNetworkCall(
       call: session.deleteToken(),
       onSuccess: (r) => r,

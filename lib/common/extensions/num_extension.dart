@@ -18,15 +18,15 @@ extension NumExtensionX on num {
 
   Duration get days => Duration(days: toInt());
 
-  Future get delayedMicroSeconds async => Future.delayed(toInt().microseconds);
+  Future<void> get delayedMicroSeconds async => Future<void>.delayed(toInt().microseconds);
 
-  Future get delayedMilliSeconds async => Future.delayed(toInt().milliseconds);
+  Future<void> get delayedMilliSeconds async => Future<void>.delayed(toInt().milliseconds);
 
-  Future get delayedSeconds async => Future.delayed(toInt().seconds);
+  Future<void> get delayedSeconds async => Future<void>.delayed(toInt().seconds);
 
-  Future get delayedMinutes async => Future.delayed(toInt().minutes);
+  Future<void> get delayedMinutes async => Future<void>.delayed(toInt().minutes);
 
-  Future get delayedHours async => Future.delayed(toInt().hours);
+  Future<void> get delayedHours async => Future<void>.delayed(toInt().hours);
 
   Radius get circular => Radius.circular(toDouble().r);
 
@@ -53,7 +53,7 @@ extension NumExtensionX on num {
 
   String get getRandomString {
     const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
-    Random rnd = Random();
+    final rnd = Random();
     return String.fromCharCodes(
       Iterable.generate(
         toInt(),

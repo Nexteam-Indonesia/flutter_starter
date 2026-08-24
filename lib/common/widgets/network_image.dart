@@ -33,13 +33,13 @@ class NetworkImage extends StatelessWidget {
       height: height,
       fit: fit,
       //TODO implement placeholder image
-      placeholder: (_, __) {
+      placeholder: (_, _) {
         return placeholderWidget ??
             const Center(
               child: Text('Loading Widget'),
             );
       },
-      errorWidget: (_, __, error) {
+      errorWidget: (_, _, error) {
         return errorWidget ??
             Center(
               child: Text('Error Text ${error.toString()}'),

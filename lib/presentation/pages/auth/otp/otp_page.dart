@@ -80,7 +80,7 @@ class OtpView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ReactivePinPut(
+                      ReactivePinPut<String>(
                         formControlName: 'otp',
                         length: 5,
                       ),

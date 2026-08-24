@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio_log/dio_log.dart';
 import 'package:flavor/flavor.dart';
 import 'package:flutter/material.dart';
@@ -28,15 +30,16 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> init() async {
     await 3.delayedSeconds;
+    // The splash can be popped or backgrounded during either await, which
+    // deactivates this element; touching `context` afterwards would throw.
+    if (!mounted) return;
     if (Flavor.instance.environment != Environment.production) {
       showDebugBtn(context, btnColor: Colors.green);
     }
-    final user = await locator<SessionSource>().hasSession;
-    if (user) {
-      context.route.replace(HomePage.path);
-      return;
-    }
-    context.route.replace(LoginPage.path);
+
+    final hasSession = await locator<SessionSource>().hasSession;
+    if (!mounted) return;
+    unawaited(context.route.replace<void>(hasSession ? HomePage.path : LoginPage.path));
   }
 
   @override

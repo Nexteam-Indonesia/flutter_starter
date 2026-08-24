@@ -9,13 +9,13 @@ import 'presentation/pages/app_page.dart';
 
 class AppBlocObserver extends BlocObserver {
   @override
-  Future<void> onChange(BlocBase bloc, Change change) async {
+  Future<void> onChange(BlocBase<Object?> bloc, Change<Object?> change) async {
     super.onChange(bloc, change);
     logger.d('onChange(${bloc.runtimeType}, change)');
   }
 
   @override
-  void onError(BlocBase bloc, Object error, StackTrace stackTrace) {
+  void onError(BlocBase<Object?> bloc, Object error, StackTrace stackTrace) {
     logger.e('onError(${bloc.runtimeType})', error: error, stackTrace: stackTrace);
     super.onError(bloc, error, stackTrace);
   }

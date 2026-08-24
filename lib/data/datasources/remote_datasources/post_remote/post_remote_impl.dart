@@ -14,13 +14,13 @@ class PostRemoteImpl extends BaseDioRemoteSource implements PostRemote {
         queryParameters: {'_start': startIn, '_limit': limit},
       ),
       isResponseAll: true,
-      onResponse: (json) => json != null
-          ? (json as List)
+      onResponse: (json) => json == null
+          ? <PostModel>[]
+          : (json as List<Object?>)
               .map<PostModel>(
-                (post) => PostModel.fromJson(post),
+                (post) => PostModel.fromJson(post! as Map<String, dynamic>),
               )
-              .toList()
-          : [],
+              .toList(),
     );
   }
 }

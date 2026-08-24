@@ -1,5 +1,6 @@
-import 'package:dartz/dartz.dart';
+import 'result.dart';
 
-import '../errors/app_error.dart';
+export 'result.dart';
 
-typedef EitherResponse<T> = Future<Either<AppError, T>>;
+/// An asynchronous operation that yields a value or an `AppError`.
+typedef FutureResult<T> = Future<Result<T>>;
