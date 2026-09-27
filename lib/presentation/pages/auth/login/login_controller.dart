@@ -2,28 +2,15 @@ part of 'login_page.dart';
 
 class LoginController {
   final form = fb.group({
-    'email': [
-      kDebugMode ? 'agus@nexteam.id' : '',
-      Validators.required,
-      Validators.email,
-    ],
-    'password': [kDebugMode ? '123a123a123' : '', Validators.required],
+    'email': ['', Validators.required, Validators.email],
+    'password': ['', Validators.required],
   });
   final BuildContext context;
-  final bool isAddAccount;
-  LoginController({
-    required this.context,
-    required this.isAddAccount,
-  });
+  LoginController({required this.context});
 
   void onLogin() {
     FocusManager.instance.primaryFocus?.unfocus();
-    if (isAddAccount) {
-      context.route.pop();
-    } else {
-      // context.read<AuthCubit>().login(formG.value);
-      context.route.go(HomePage.path);
-    }
+    context.read<AuthCubit>().login(form.value);
   }
 
   void goRegister() => context.route.goNamed(RegisterPage.path);
@@ -36,7 +23,7 @@ class LoginController {
       context.showSnackbar(message: state.message, error: true);
     } else if (state is AuthSuccess) {
       context.showSnackbar(message: state.message);
-      context.route.pushReplacement(HomePage.path);
+      context.route.go(HomePage.path);
     }
   }
 }

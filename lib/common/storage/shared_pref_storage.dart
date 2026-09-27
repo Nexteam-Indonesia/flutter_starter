@@ -34,7 +34,7 @@ class SharedPreferenceStorage extends SharedPrefStorageInterface {
   @override
   Future<String?> get(String key) async {
     try {
-      return storage.read(key: key);
+      return await storage.read(key: key);
     } catch (e) {
       return collections[key];
     }
@@ -85,7 +85,7 @@ class SharedPreferenceStorage extends SharedPrefStorageInterface {
   @override
   Future<bool> hasData(String key) async {
     try {
-      return storage.containsKey(key: key);
+      return await storage.containsKey(key: key);
     } catch (e) {
       return collections.containsKey(key);
     }

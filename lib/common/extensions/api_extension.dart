@@ -17,64 +17,46 @@ Map<String, dynamic> _payloadErrors(Response<dynamic>? response) {
 extension ApiExceptionDioX on DioException {
   ApiException get toApiException {
     switch (type) {
-      case DioExceptionType.connectionError:
-        final code = response?.statusCode!;
-        if (code == 422) {
-          return ApiException.unprocessableEntity(
-            message: response != null
-                ? ApiUtils.parseResponseMessage(response!)
-                : message ?? 'Error tidak diketahui',
-            errors: _payloadErrors(response),
-          );
-        } else if (code == 401) {
-          return ApiException.unAuthorized(
-            response != null ? ApiUtils.parseResponseMessage(response!) : 'Unauthorized',
-          );
-        } else if (code == 400) {
-          return ApiException.serverException(
-            message: response != null
-                ? ApiUtils.parseResponseMessage(response!)
-                : 'Error tidak diketahui',
-          );
-        } else {
-          return ApiException.serverException(
-            message: response != null
-                ? ApiUtils.parseResponseMessage(response!)
-                : message ?? 'Error tidak diketahui',
-          );
-        }
       case DioExceptionType.connectionTimeout:
-        return const ApiException.connectionTimeOut();
       case DioExceptionType.sendTimeout:
-        return const ApiException.connectionTimeOut();
       case DioExceptionType.receiveTimeout:
-        return const ApiException.connectionTimeOut();
       case DioExceptionType.transformTimeout:
         return const ApiException.connectionTimeOut();
       case DioExceptionType.cancel:
         return const ApiException.network();
       case DioExceptionType.badCertificate:
         return const ApiException.badCertificate();
+      // The server answered, but with a status outside `validateStatus` (non-2xx).
       case DioExceptionType.badResponse:
-        return ApiException.badResponse(
-          response != null ? ApiUtils.parseResponseMessage(response!) : 'Response tidak valid',
-        );
+        return response != null
+            ? _fromErrorResponse(response!)
+            : const ApiException.badResponse('Response tidak valid');
+      // DNS lookup, refused connection, dropped socket: no response exists.
+      case DioExceptionType.connectionError:
+        return const ApiException.network();
       case DioExceptionType.unknown:
-        if (response == null) {
-          return const ApiException.serverException(
-            message: "Tidak ada respon dari server",
-          );
-        }
         if (error is SocketException) {
           return const ApiException.network();
-        } else {
-          return ApiException.serverException(
-            message: response != null
-                ? ApiUtils.parseResponseMessage(response!)
-                : message ?? 'Error tidak diketahui',
-          );
         }
+        if (response != null) {
+          return _fromErrorResponse(response!);
+        }
+        return ApiException.serverException(
+          message: message ?? 'Tidak ada respon dari server',
+        );
     }
+  }
+
+  static ApiException _fromErrorResponse(Response<dynamic> response) {
+    final message = ApiUtils.parseResponseMessage(response);
+    return switch (response.statusCode) {
+      422 => ApiException.unprocessableEntity(
+          message: message,
+          errors: _payloadErrors(response),
+        ),
+      401 => ApiException.unAuthorized(message),
+      _ => ApiException.serverException(message: message),
+    };
   }
 }
 

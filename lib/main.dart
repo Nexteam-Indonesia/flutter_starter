@@ -1,24 +1,5 @@
-import 'package:flavor/flavor.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
+import 'main_dev.dart' as dev;
 
-import 'bootstrap.dart';
-import 'common/utils/config.dart';
-
-void main() {
-  Flavor.create(
-    Environment.dev,
-    color: Colors.green,
-    name: 'PREVIEW',
-    properties: {
-      Keys.apiUrl: 'https://jsonplaceholder.typicode.com/',
-      // Keys.apiKey: 'jksdhfkjhs83rjkh324kj23h4',
-      Configs.customKey: 'value',
-    },
-  );
-  if (kDebugMode) {
-    Logger.root.level = Level.ALL;
-  }
-  bootstrap();
-}
+/// Default entrypoint (`flutter run`). Runs the dev flavor; use
+/// `-t lib/main_prod.dart` for production.
+void main() => dev.main();

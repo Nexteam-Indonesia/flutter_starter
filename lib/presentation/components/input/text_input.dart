@@ -36,16 +36,9 @@ class TextInput extends StatefulWidget {
 }
 
 class _TextInputState extends State<TextInput> {
-  final Map<String, String Function(Object)> messages = Constants.messageErrors;
-
-  @override
-  void initState() {
-    super.initState();
-    messages.addAll(widget.validationMessages);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final messages = {...Constants.messageErrors, ...widget.validationMessages};
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

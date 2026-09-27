@@ -3,6 +3,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import '../errors/api_exception.dart';
 import '../errors/app_error.dart';
 import '../extensions/api_extension.dart';
+import '../logging/logger.dart';
 import '../network/network_info.dart';
 import '../typedefs/typedefs.dart';
 
@@ -19,8 +20,11 @@ class BaseRepository {
   /// [R] is the response type from the server, [T] the value the caller wants.
   /// [onSuccess] maps the former to the latter. When offline, [getOnLocal] is
   /// returned if supplied, otherwise the call fails with `AppError.noInternet`.
+  ///
+  /// [call] is a callback rather than a `Future` so that no request is sent
+  /// until the connectivity check has passed.
   FutureResult<T> handleNetworkCall<R, T>({
-    required Future<R> call,
+    required Future<R> Function() call,
     required T Function(R data) onSuccess,
     Future<void> Function(R data)? onSaveToLocal,
     T? getOnLocal,
@@ -34,13 +38,18 @@ class BaseRepository {
     }
 
     try {
-      final data = await call;
+      final data = await call();
       if (onSaveToLocal != null) {
         await onSaveToLocal(data);
       }
       return Success<T>(onSuccess(data));
     } on ApiException catch (e) {
       return Failure<T>(e.toAppError);
+    } catch (e, stackTrace) {
+      // A failure in [onSuccess] or [onSaveToLocal] (mapping, local storage)
+      // must still surface as a [Result], never as an unhandled exception.
+      logger.e('Unexpected repository failure', error: e, stackTrace: stackTrace);
+      return Failure<T>(const AppError.serverError(message: 'Terjadi kesalahan tak terduga'));
     }
   }
 }

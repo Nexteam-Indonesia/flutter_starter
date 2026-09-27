@@ -34,11 +34,7 @@ class RegisterController {
 
   void onSubmit(FormGroup form) {
     FocusManager.instance.primaryFocus?.unfocus();
-    // context.read<AuthCubit>().register(formL.rawValue);
-    context.route.goNamed(
-      OtpPage.path,
-      queryParameters: {"email": form.controls['email']!.value.toString()},
-    );
+    context.read<AuthCubit>().register(form.value);
   }
 
   Map<String, String Function(Object)> passwordMessages = {

@@ -4,7 +4,7 @@ import '../../../../data/models/post/post_model.dart';
 import 'post_remote.dart';
 
 class PostRemoteImpl extends BaseDioRemoteSource implements PostRemote {
-  PostRemoteImpl(super.dio, super.session);
+  PostRemoteImpl(super.dio);
 
   @override
   Future<List<PostModel>> getPosts(int startIn, int limit) {

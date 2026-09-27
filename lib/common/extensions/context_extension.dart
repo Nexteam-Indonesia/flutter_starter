@@ -119,7 +119,7 @@ extension BuildContextX on BuildContext {
                     );
                   } catch (e) {
                     showSnackbar(
-                      message: 'Berkas berhasil diunduh, cek folder "Download/$fileName"',
+                      message: 'Gagal mengunduh berkas "$fileName"',
                       error: true,
                     );
                   }

@@ -1,7 +1,5 @@
 import 'package:flavor/flavor.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:logging/logging.dart';
 
 import 'bootstrap.dart';
 import 'common/utils/config.dart';
@@ -17,8 +15,5 @@ void main() {
       Configs.customKey: 'value',
     },
   );
-  if (kDebugMode) {
-    Logger.root.level = Level.ALL;
-  }
   bootstrap();
 }

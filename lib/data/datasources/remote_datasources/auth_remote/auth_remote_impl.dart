@@ -1,11 +1,17 @@
+import 'package:dio/dio.dart';
+
 import '../../../../common/base/base_dio_remote_source.dart';
 import '../../../../common/utils/api_path.dart';
 import '../../../../data/dto/register_dto.dart';
 import '../../../models/auth/session_model.dart';
+import '../../network/auth_interceptor.dart';
 import 'auth_remote.dart';
 
 class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
-  AuthRemoteImpl(super.dio, super.session);
+  AuthRemoteImpl(super.dio);
+
+  /// Auth endpoints are called before a session exists, so never send a token.
+  Options get _public => Options(extra: {AuthInterceptor.skipAuth: true});
 
   @override
   Future<void> forgotPassword({required String email}) {
@@ -15,9 +21,9 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
         data: {
           "email": email,
         },
+        options: _public,
       ),
       onResponse: (r) => r,
-      isAuth: false,
     );
   }
 
@@ -30,28 +36,22 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
           "email": email,
           "password": password,
         },
+        options: _public,
       ),
       onResponse: (r) => SessionModel.fromMap(r! as Map<String, dynamic>),
-      isAuth: false,
     );
   }
 
   @override
   Future<String> register(RegisterDto dto) {
-    final form = dto.copyWith(
-      unit1: dto.unit1 == -1 ? null : dto.unit1,
-      unit2: dto.unit2 == -1 ? null : dto.unit2,
-      unit3: dto.unit3 == -1 ? null : dto.unit3,
-    );
-
     return networkRequest(
       request: (dio) => dio.post(
         ApiPath.register,
-        data: form.toJson(),
+        data: dto.toJson(),
+        options: _public,
       ),
       onResponse: (r) => r! as String,
       isMessage: true,
-      isAuth: false,
     );
   }
 
@@ -60,9 +60,9 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
     return networkRequest(
       request: (dio) => dio.post(
         ApiPath.requestOtp + email,
+        options: _public,
       ),
       onResponse: (r) => r,
-      isAuth: false,
     );
   }
 
@@ -85,9 +85,9 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
           "password_confirmation": confirmPassword,
           "otp": otp,
         },
+        options: _public,
       ),
       onResponse: (r) => r,
-      isAuth: false,
     );
   }
 
@@ -99,9 +99,9 @@ class AuthRemoteImpl extends BaseDioRemoteSource implements AuthRemote {
         data: {
           "otp": oneTimePassword,
         },
+        options: _public,
       ),
       onResponse: (r) => r! as bool,
-      isAuth: false,
     );
   }
 }

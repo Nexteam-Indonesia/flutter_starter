@@ -30,22 +30,15 @@ class PasswordInput extends StatefulWidget {
 class _PasswordInputState extends State<PasswordInput> {
   bool showPassword = false;
 
-  final Map<String, String Function(Object)> messages = Constants.messageErrors;
-
   @override
-  void initState() {
-    super.initState();
-    messages.addAll({
+  Widget build(BuildContext context) {
+    final messages = {
+      ...Constants.messageErrors,
       ValidationMessage.required: (_) => 'inputan ini tidak boleh kosong',
       ValidationMessage.minLength: (_) => 'inputan password kurang dari 8 karakter',
       ValidationMessage.mustMatch: (_) => 'inputan password tidak sama',
-      'validation_error': (e) => e as String,
-    });
-    messages.addAll(widget.validationMessages);
-  }
-
-  @override
-  Widget build(BuildContext context) {
+      ...widget.validationMessages,
+    };
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

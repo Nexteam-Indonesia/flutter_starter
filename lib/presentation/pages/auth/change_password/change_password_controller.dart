@@ -42,12 +42,6 @@ class ChangePasswordController {
 
   void btnSubmit() {
     FocusManager.instance.primaryFocus?.unfocus();
-    // context
-    //     .read<AuthCubit>()
-    //     .resetPassword(formState.rawValue);
-    context.route.replaceNamed<void>(
-      SuccessPage.path,
-      queryParameters: {"message": "Berhasil mengubah kata sandi"},
-    );
+    context.read<AuthCubit>().resetPassword(fGroup.rawValue);
   }
 }

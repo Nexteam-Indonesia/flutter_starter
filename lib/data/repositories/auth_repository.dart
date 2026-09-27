@@ -1,3 +1,4 @@
+import '../../../../common/errors/app_error.dart';
 import '../../../../common/logging/logger.dart';
 import '../../../../common/typedefs/typedefs.dart';
 import '../../../../data/datasources/remote_datasources/auth_remote/auth_remote.dart';
@@ -14,14 +15,14 @@ class AuthRepository extends BaseRepository {
 
   FutureResult<void> forgotPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.forgotPassword(email: json['email'].toString().trim()),
+      call: () => remote.forgotPassword(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
   FutureResult<SessionModel> login(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.login(
+      call: () => remote.login(
         email: json['email'].toString().trim(),
         password: json['password'].toString().trim(),
       ),
@@ -31,30 +32,29 @@ class AuthRepository extends BaseRepository {
   }
 
   FutureResult<String> register(Map<String, dynamic> json) async {
-    logger.d(json);
     return handleNetworkCall(
-      call: remote.register(RegisterDto.fromJson(json)),
+      call: () => remote.register(RegisterDto.fromJson(json)),
       onSuccess: (r) => r,
     );
   }
 
   FutureResult<void> requestOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.requestOtp(email: json['email'].toString().trim()),
+      call: () => remote.requestOtp(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
   FutureResult<void> resendOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.resendOtp(email: json['email'].toString().trim()),
+      call: () => remote.resendOtp(email: json['email'].toString().trim()),
       onSuccess: (r) => r,
     );
   }
 
   FutureResult<bool> verifyOtp(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.verifyOtp(
+      call: () => remote.verifyOtp(
         email: json['email'].toString().trim(),
         oneTimePassword: json['otp'].toString().trim(),
       ),
@@ -64,7 +64,7 @@ class AuthRepository extends BaseRepository {
 
   FutureResult<void> resetPassword(Map<String, dynamic> json) async {
     return handleNetworkCall(
-      call: remote.resetPassword(
+      call: () => remote.resetPassword(
         email: json['email'].toString().trim(),
         password: json['password'].toString().trim(),
         confirmPassword: json['confirmPassword'].toString().trim(),
@@ -74,10 +74,14 @@ class AuthRepository extends BaseRepository {
     );
   }
 
+  /// Clears the local session. Local-only, so it works offline.
   FutureResult<void> logout() async {
-    return handleNetworkCall(
-      call: session.deleteToken(),
-      onSuccess: (r) => r,
-    );
+    try {
+      await session.deleteAll();
+      return const Success(null);
+    } catch (e, stackTrace) {
+      logger.e('Failed to clear the session', error: e, stackTrace: stackTrace);
+      return const Failure(AppError.serverError(message: 'Gagal keluar, silakan coba lagi'));
+    }
   }
 }

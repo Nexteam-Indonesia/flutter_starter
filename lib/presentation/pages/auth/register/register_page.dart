@@ -52,7 +52,7 @@ class RegisterView extends StatelessWidget {
                   return PrimaryButton(
                     onTap: () => c.onSubmit(formL),
                     title: "Daftar",
-                    isEnable: formL.valid && formL.control('unit_1').value != -1,
+                    isEnable: formL.valid,
                   );
                 },
               );
@@ -86,15 +86,6 @@ class RegisterView extends StatelessWidget {
                 ),
               ),
               28.verticalSpace,
-              // const TextInput(
-              //   title: "Nip",
-              //   formControlName: "nip",
-              //   hint: 'Masukkan NIP',
-              //   prefix: Icon(Icons.numbers),
-              //   textInputType: TextInputType.number,
-              //   isRequiredText: true,
-              // ),
-              // 6.verticalSpace,
               const TextInput(
                 title: "Nama",
                 formControlName: "name",
@@ -142,8 +133,6 @@ class RegisterView extends StatelessWidget {
                       style: AppStyles.text14PxBold.copyWith(
                         color: ColorTheme.primary,
                       ),
-                      // recognizer: TapGestureRecognizer()
-                      // ..onTap = () => context.route.push(OtpRoute(email: "Aaab".toString())),
                       recognizer: TapGestureRecognizer()..onTap = c.onLogin,
                     ),
                   ],

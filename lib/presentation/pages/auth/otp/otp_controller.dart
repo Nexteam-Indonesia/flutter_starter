@@ -71,12 +71,10 @@ class OtpController extends Cubit<bool> {
         },
       );
     } else {
-      // context.read<AuthCubit>().verifyOtp({
-      //   "email": email,
-      //   "otp": formState.rawValue['otp'],
-      // });
-      context.route.replaceNamed<void>(SuccessPage.path,
-          queryParameters: {"message": "Berhasil verifikasi OTP"});
+      context.read<AuthCubit>().verifyOtp({
+        "email": email,
+        "otp": formG.rawValue['otp'],
+      });
     }
   }
 

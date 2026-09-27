@@ -1,13 +1,13 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 
-import '../../../../../application/auth/auth_cubit.dart';
-import '../../../../../injection.dart';
+import '../../../../application/auth/auth_cubit.dart';
 import '../../../../common/extensions/extensions.dart';
+import '../../../../common/utils/config.dart';
+import '../../../../injection.dart';
 import '../../../components/components.dart';
 import '../../../theme/theme.dart';
 import '../../home/home_page.dart';
@@ -16,31 +16,25 @@ import '../auth.dart';
 part 'login_controller.dart';
 
 class LoginPage extends StatelessWidget {
-  final bool isAddAccount;
   static const path = "/login";
 
-  const LoginPage({super.key, this.isAddAccount = false});
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => locator<AuthCubit>(),
-      child: LoginView(isAddAccount: isAddAccount),
+      child: const LoginView(),
     );
   }
 }
 
 class LoginView extends StatelessWidget {
-  final bool isAddAccount;
-
-  const LoginView({
-    super.key,
-    required this.isAddAccount,
-  });
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final c = LoginController(context: context, isAddAccount: isAddAccount);
+    final c = LoginController(context: context);
     return ReactiveFormBuilder(
       form: () => c.form,
       builder: (context, form, child) => BaseScaffold(
@@ -97,7 +91,7 @@ class LoginView extends StatelessWidget {
                 child: BaseLogo(isSmall: true),
               ),
               Text(
-                'Selamat datang di Nexteam',
+                'Selamat datang di ${Configs.titleApp}',
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: CustomTextTheme.paragraph3.copyWith(

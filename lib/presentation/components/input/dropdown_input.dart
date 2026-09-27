@@ -29,8 +29,7 @@ class DropdownInput<T extends Object> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, String Function(Object)> messages = Constants.messageErrors;
-    messages.addAll(validationMessages);
+    final messages = {...Constants.messageErrors, ...validationMessages};
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

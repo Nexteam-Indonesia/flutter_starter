@@ -10,7 +10,7 @@ class PostRepository extends BaseRepository {
 
   FutureResult<List<PostModel>> getPosts({int? startIn, int limit = 10}) {
     return handleNetworkCall(
-      call: remote.getPosts(startIn ?? 1, limit),
+      call: () => remote.getPosts(startIn ?? 1, limit),
       onSuccess: (r) => r,
     );
   }

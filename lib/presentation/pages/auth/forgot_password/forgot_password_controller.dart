@@ -30,12 +30,6 @@ class ForgotPasswordController {
 
   void onSubmit(FormGroup formG) {
     FocusManager.instance.primaryFocus?.unfocus();
-    // context
-    //     .read<AuthCubit>()
-    //     .forgotPassword(formState.rawValue);
-    context.route.goNamed(OtpPage.path, queryParameters: {
-      "email": formG.rawValue['email'].toString(),
-      "isResetPassword": true.toString(),
-    });
+    context.read<AuthCubit>().forgotPassword(formG.rawValue);
   }
 }
